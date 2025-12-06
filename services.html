@@ -1,0 +1,1528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services | Sunweek Media - Social Media That Actually Works</title>
+    <meta name="description" content="From social media management to content creation, we offer comprehensive services that help small businesses grow their online presence and convert followers into customers.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Allura&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #C24B7D;
+            --lime: #D4FF3D;
+            --cream: #F5F3EF;
+            --soft-pink: #F5BAD2;
+            --black: #1A1A1A;
+            --white: #FFFFFF;
+            --transition: cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--black);
+            line-height: 1.6;
+            background: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--pink);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--lime);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor.hover {
+            transform: translate(-50%, -50%) scale(2);
+            background: rgba(194, 75, 125, 0.1);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.2;
+        }
+
+        .script {
+            font-family: 'Allura', cursive;
+            font-weight: 400;
+        }
+
+        /* Loading Screen */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .loader-logo span {
+            color: var(--pink);
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(194, 75, 125, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .loader-progress {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--pink), var(--lime));
+            border-radius: 2px;
+            animation: loading 1.2s ease forwards;
+        }
+
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s var(--transition);
+        }
+
+        nav.scrolled {
+            padding: 0.75rem 5%;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--black);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--pink);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--pink);
+            transition: width 0.3s var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--pink);
+        }
+
+        .cta-nav {
+            background: var(--lime);
+            color: var(--black);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-nav:hover::before {
+            left: 100%;
+        }
+
+        .cta-nav:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(212, 255, 61, 0.5);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            z-index: 1001;
+            color: var(--black);
+            padding: 0.5rem;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: -4px 0 40px rgba(0, 0, 0, 0.15);
+            padding: 6rem 2rem 2rem;
+            transition: right 0.4s var(--transition);
+            z-index: 999;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            font-size: 1.3rem;
+            display: block;
+            padding: 0.5rem 0;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--pink);
+            transform: translateX(10px);
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+        }
+
+        .mobile-overlay.active {
+            display: block;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: var(--lime);
+            color: var(--black);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s var(--transition);
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(212, 255, 61, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--pink);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            border: 2px solid var(--pink);
+            transition: all 0.3s var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            background: var(--pink);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 5% 5rem;
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 50%, var(--cream) 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--soft-pink);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--lime);
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(0, -50px) scale(1); }
+            75% { transform: translate(-30px, -20px) scale(0.95); }
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 7vw, 4.5rem);
+            margin-bottom: 1rem;
+            animation: slideUp 1s ease;
+        }
+
+        .page-hero .script {
+            font-size: clamp(3rem, 9vw, 6rem);
+            color: var(--pink);
+            display: block;
+            animation: slideUp 1s ease 0.2s both;
+        }
+
+        .page-hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: #666;
+            margin-top: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: slideUp 1s ease 0.4s both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Floating Icons */
+        .floating-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.4;
+            animation: floatIcon 15s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 25%; right: 15%; animation-delay: -2s; }
+        .floating-icon:nth-child(3) { bottom: 30%; left: 8%; animation-delay: -4s; }
+        .floating-icon:nth-child(4) { bottom: 20%; right: 12%; animation-delay: -6s; }
+        .floating-icon:nth-child(5) { top: 40%; left: 20%; animation-delay: -8s; }
+        .floating-icon:nth-child(6) { top: 60%; right: 20%; animation-delay: -10s; }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(20px, -20px) rotate(10deg); }
+            50% { transform: translate(-10px, -30px) rotate(-5deg); }
+            75% { transform: translate(-20px, -10px) rotate(5deg); }
+        }
+
+        /* Services Detailed Section */
+        .services-detailed {
+            padding: clamp(5rem, 12vw, 10rem) 5%;
+            background: var(--white);
+        }
+
+        .service-detail {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            margin-bottom: 8rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s var(--transition);
+        }
+
+        .service-detail.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-detail:nth-child(even) {
+            direction: rtl;
+        }
+
+        .service-detail:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .service-detail:last-child {
+            margin-bottom: 0;
+        }
+
+        .service-visual {
+            position: relative;
+        }
+
+        .service-visual-card {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--white) 100%);
+            border-radius: 30px;
+            padding: 3rem;
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: transform 0.5s var(--transition), box-shadow 0.5s var(--transition);
+        }
+
+        .service-visual-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-visual-card::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: var(--lime);
+            border-radius: 50%;
+            opacity: 0.3;
+            top: -50px;
+            right: -50px;
+            transition: transform 0.5s;
+        }
+
+        .service-visual-card:hover::before {
+            transform: scale(1.2);
+        }
+
+        .service-visual-card::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: var(--pink);
+            border-radius: 50%;
+            opacity: 0.2;
+            bottom: -30px;
+            left: -30px;
+            transition: transform 0.5s;
+        }
+
+        .service-visual-card:hover::after {
+            transform: scale(1.3);
+        }
+
+        .service-emoji {
+            font-size: 6rem;
+            position: relative;
+            z-index: 1;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .service-visual-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            color: var(--black);
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-content {
+            padding: 2rem 0;
+        }
+
+        .service-number {
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--lime);
+            line-height: 1;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .service-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .service-content h2 .highlight {
+            color: var(--pink);
+        }
+
+        .service-tagline {
+            font-size: 1.2rem;
+            color: var(--pink);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-content > p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2.5rem;
+        }
+
+        .service-features li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            font-size: 1rem;
+            transition: transform 0.3s, padding-left 0.3s;
+        }
+
+        .service-features li:hover {
+            transform: translateX(10px);
+            padding-left: 10px;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            background: var(--lime);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 0.9rem;
+        }
+
+        .feature-text strong {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-text span {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* What You Get Section */
+        .what-you-get {
+            padding: clamp(5rem, 12vw, 10rem) 5%;
+            background: var(--pink);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .what-you-get::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 800px;
+            height: 800px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+        }
+
+        .what-you-get .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .what-you-get .section-header .script {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--lime);
+        }
+
+        .what-you-get .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-top: 0.5rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 2.5rem;
+            transition: all 0.4s var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--lime);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--lime);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .benefit-card:hover .benefit-icon {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* Process Mini Section */
+        .process-mini {
+            padding: clamp(5rem, 12vw, 10rem) 5%;
+            background: var(--cream);
+        }
+
+        .process-mini .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .process-mini .section-header .script {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--pink);
+        }
+
+        .process-mini .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .process-steps {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-step-card {
+            flex: 1;
+            min-width: 250px;
+            max-width: 280px;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .step-circle {
+            width: 100px;
+            height: 100px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: all 0.4s var(--transition);
+        }
+
+        .process-step-card:hover .step-circle {
+            transform: scale(1.1);
+            box-shadow: 0 15px 50px rgba(194, 75, 125, 0.2);
+        }
+
+        .step-number-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            width: 35px;
+            height: 35px;
+            background: var(--lime);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .process-step-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+            color: var(--pink);
+        }
+
+        .process-step-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Connector Lines */
+        .process-step-card::after {
+            content: '→';
+            position: absolute;
+            right: -1.5rem;
+            top: 50px;
+            font-size: 2rem;
+            color: var(--pink);
+            opacity: 0.3;
+        }
+
+        .process-step-card:last-child::after {
+            display: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: clamp(5rem, 12vw, 10rem) 5%;
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--pink) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section .script {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--lime);
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin: 1rem 0 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 5rem 5% 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--lime);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            color: var(--lime);
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .service-detail {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .service-detail:nth-child(even) {
+                direction: ltr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .cta-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .process-step-card::after {
+                display: none;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand p {
+                max-width: 100%;
+            }
+
+            .cursor, .cursor-dot {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .service-visual-card {
+                padding: 2rem;
+            }
+
+            .service-emoji {
+                font-size: 4rem;
+            }
+
+            .service-number {
+                font-size: 3rem;
+            }
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s var(--transition);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-logo">Sunweek <span>Media</span></div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="index.html" class="logo">Sunweek <span>Media</span></a>
+        <ul class="nav-links">
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="work.html">Our Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="cta-nav">Get Started</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Open menu">☰</button>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="work.html">Our Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li style="margin-top: 1rem;">
+                <a href="contact.html" class="btn-primary" style="width: 100%; justify-content: center;">Get Started ✨</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="floating-icons">
+            <span class="floating-icon">📱</span>
+            <span class="floating-icon">🎨</span>
+            <span class="floating-icon">📊</span>
+            <span class="floating-icon">🚀</span>
+            <span class="floating-icon">✨</span>
+            <span class="floating-icon">💡</span>
+        </div>
+        <div class="page-hero-content">
+            <h1>Services That</h1>
+            <span class="script">Actually Work</span>
+            <p>We don't do cookie-cutter. Every strategy is built around your unique business, goals, and audience. Here's how we make your social media unforgettable.</p>
+        </div>
+    </section>
+
+    <!-- Detailed Services -->
+    <section class="services-detailed">
+        <!-- Service 1: Social Media Management -->
+        <div class="service-detail" id="management">
+            <div class="service-visual">
+                <div class="service-visual-card">
+                    <div class="service-emoji">📱</div>
+                    <div class="service-visual-text">Full Management</div>
+                </div>
+            </div>
+            <div class="service-content">
+                <div class="service-number">01</div>
+                <h2>Social Media <span class="highlight">Management</span></h2>
+                <p class="service-tagline">Set it and forget it (kinda)</p>
+                <p>Stop spending hours on social media that could be spent running your business. We handle everything from content planning to community engagement, so you can focus on what you do best.</p>
+                <ul class="service-features">
+                    <li>
+                        <div class="feature-icon">📅</div>
+                        <div class="feature-text">
+                            <strong>Content Calendar</strong>
+                            <span>Monthly planning with strategic posting schedule</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">💬</div>
+                        <div class="feature-text">
+                            <strong>Community Management</strong>
+                            <span>We reply to comments and DMs like we're you (but better)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">📈</div>
+                        <div class="feature-text">
+                            <strong>Performance Reports</strong>
+                            <span>Monthly analytics that actually make sense</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-text">
+                            <strong>Growth Strategy</strong>
+                            <span>Hashtag research, optimal posting times, audience targeting</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Start Managing →</a>
+            </div>
+        </div>
+
+        <!-- Service 2: Content Creation -->
+        <div class="service-detail" id="content">
+            <div class="service-visual">
+                <div class="service-visual-card">
+                    <div class="service-emoji">🎨</div>
+                    <div class="service-visual-text">Creative Content</div>
+                </div>
+            </div>
+            <div class="service-content">
+                <div class="service-number">02</div>
+                <h2>Content <span class="highlight">Creation</span></h2>
+                <p class="service-tagline">Scroll-stopping visuals that convert</p>
+                <p>Your content should make people stop mid-scroll. We create thumb-stopping posts, stories, and reels that not only look amazing but actually drive engagement and sales.</p>
+                <ul class="service-features">
+                    <li>
+                        <div class="feature-icon">📸</div>
+                        <div class="feature-text">
+                            <strong>Feed Posts</strong>
+                            <span>Custom graphics, carousels, and photo editing</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">🎬</div>
+                        <div class="feature-text">
+                            <strong>Video Content</strong>
+                            <span>Reels, TikToks, and Stories that get views</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">✍️</div>
+                        <div class="feature-text">
+                            <strong>Copywriting</strong>
+                            <span>Captions that sound like you but actually convert</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">🎭</div>
+                        <div class="feature-text">
+                            <strong>Brand Templates</strong>
+                            <span>Consistent visual identity across all platforms</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Get Creative →</a>
+            </div>
+        </div>
+
+        <!-- Service 3: Strategy Development -->
+        <div class="service-detail" id="strategy">
+            <div class="service-visual">
+                <div class="service-visual-card">
+                    <div class="service-emoji">📊</div>
+                    <div class="service-visual-text">Smart Strategy</div>
+                </div>
+            </div>
+            <div class="service-content">
+                <div class="service-number">03</div>
+                <h2>Strategy <span class="highlight">Development</span></h2>
+                <p class="service-tagline">Posting with purpose, not panic</p>
+                <p>No more "I don't know what to post" moments. We develop comprehensive strategies based on your goals, audience, and industry—so every post has a purpose.</p>
+                <ul class="service-features">
+                    <li>
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-text">
+                            <strong>Audience Research</strong>
+                            <span>Deep dive into who your ideal customers are</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">🏆</div>
+                        <div class="feature-text">
+                            <strong>Competitor Analysis</strong>
+                            <span>What's working in your industry (and what's not)</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">📝</div>
+                        <div class="feature-text">
+                            <strong>Content Pillars</strong>
+                            <span>Core themes that build your brand authority</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-text">
+                            <strong>KPI Setting</strong>
+                            <span>Clear goals and how we'll measure success</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Build Strategy →</a>
+            </div>
+        </div>
+
+        <!-- Service 4: Creative Direction -->
+        <div class="service-detail" id="creative">
+            <div class="service-visual">
+                <div class="service-visual-card">
+                    <div class="service-emoji">🎬</div>
+                    <div class="service-visual-text">Full Direction</div>
+                </div>
+            </div>
+            <div class="service-content">
+                <div class="service-number">04</div>
+                <h2>Creative <span class="highlight">Direction</span></h2>
+                <p class="service-tagline">Making your brand impossible to ignore</p>
+                <p>Your brand needs a look that's instantly recognizable. We develop comprehensive visual identities and creative concepts that make your brand stand out in any feed.</p>
+                <ul class="service-features">
+                    <li>
+                        <div class="feature-icon">🎨</div>
+                        <div class="feature-text">
+                            <strong>Visual Identity</strong>
+                            <span>Colors, fonts, and style that's uniquely you</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">📚</div>
+                        <div class="feature-text">
+                            <strong>Brand Guidelines</strong>
+                            <span>Documentation for consistent content creation</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">💡</div>
+                        <div class="feature-text">
+                            <strong>Campaign Concepts</strong>
+                            <span>Big ideas for launches, seasons, and events</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="feature-icon">✨</div>
+                        <div class="feature-text">
+                            <strong>Trend Adaptation</strong>
+                            <span>Jumping on trends that fit your brand voice</span>
+                        </div>
+                    </li>
+                </ul>
+                <a href="contact.html" class="btn-primary">Get Direction →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Get -->
+    <section class="what-you-get">
+        <div class="section-header">
+            <span class="script">The Perks</span>
+            <h2>What Every Client Gets</h2>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🎙️</div>
+                <h3>Dedicated Account Manager</h3>
+                <p>One point of contact who actually knows your business and doesn't make you repeat yourself every call.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3>48-Hour Response Time</h3>
+                <p>We're fast. Questions, revisions, random ideas at midnight—we've got you covered.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📱</div>
+                <h3>Slack/WhatsApp Access</h3>
+                <p>No more email chains. Direct communication on the platform you actually use.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">📊</div>
+                <h3>Monthly Strategy Calls</h3>
+                <p>Regular check-ins to review performance and plan what's next. We're in this together.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🔄</div>
+                <h3>Unlimited Revisions</h3>
+                <p>Not happy? We'll fix it. We don't rest until you're obsessed with your content.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🎁</div>
+                <h3>Bonus Content</h3>
+                <p>Extra posts for holidays, trending moments, and opportunities we spot for you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini Process -->
+    <section class="process-mini">
+        <div class="section-header">
+            <span class="script">How It Works</span>
+            <h2>From Call to Content</h2>
+        </div>
+        <div class="process-steps">
+            <div class="process-step-card">
+                <div class="step-circle">
+                    📞
+                    <span class="step-number-badge">1</span>
+                </div>
+                <h3>Discovery Call</h3>
+                <p>We chat about your business, goals, and current struggles. Totally free, zero pressure.</p>
+            </div>
+            <div class="process-step-card">
+                <div class="step-circle">
+                    📋
+                    <span class="step-number-badge">2</span>
+                </div>
+                <h3>Custom Proposal</h3>
+                <p>We send a tailored plan with exactly what you need. No fluff, no upsells.</p>
+            </div>
+            <div class="process-step-card">
+                <div class="step-circle">
+                    🎨
+                    <span class="step-number-badge">3</span>
+                </div>
+                <h3>Onboarding</h3>
+                <p>Quick brand deep-dive, content preferences, and access setup. Takes about a week.</p>
+            </div>
+            <div class="process-step-card">
+                <div class="step-circle">
+                    🚀
+                    <span class="step-number-badge">4</span>
+                </div>
+                <h3>Launch & Grow</h3>
+                <p>We start creating, posting, and growing. You start getting results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <span class="script">Ready?</span>
+            <h2>Let's Make Your Social Media Not Suck</h2>
+            <p>Book a free audit call and we'll tell you exactly what's working, what's not, and how we can help. No strings attached.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn-primary">Book Free Audit ✨</a>
+                <a href="work.html" class="btn-secondary">See Our Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">Sunweek <span>Media</span></a>
+                    <p>Making your brand stand out with content that actually converts. Your cool, creative friend who just happens to be a social media genius.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="work.html">Our Work</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#management">Social Media Management</a></li>
+                        <li><a href="#content">Content Creation</a></li>
+                        <li><a href="#strategy">Strategy Development</a></li>
+                        <li><a href="#creative">Creative Direction</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">TikTok</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="mailto:hello@sunweekmedia.com">Email Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Sunweek Media. All rights reserved. Made with 💕 and a lot of coffee.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 1400);
+        });
+
+        // Custom Cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+                cursorDot.style.left = e.clientX + 'px';
+                cursorDot.style.top = e.clientY + 'px';
+            });
+
+            document.querySelectorAll('a, button, .service-visual-card, .benefit-card, .process-step-card').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+
+        function toggleMobileMenu() {
+            mobileNav.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            mobileMenuBtn.textContent = mobileNav.classList.contains('active') ? '✕' : '☰';
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+        mobileOverlay.addEventListener('click', toggleMobileMenu);
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
+        });
+
+        // Scroll Reveal
+        const revealElements = document.querySelectorAll('.service-detail, .benefit-card, .process-step-card');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const elementTop = el.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
+</body>
+
+</html>
