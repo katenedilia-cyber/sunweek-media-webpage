@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunweek Media | Social Media That Converts</title>
+    <meta name="description" content="We help small businesses and startups stand out on social media with content that brings clients.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --pink: #C24B7D;
+            --lime: #D4FF3D;
+            --lime-dark: #b8e035;
+            --dark: #0A0A0A;
+            --dark-lighter: #111111;
+            --dark-card: #161616;
+            --dark-border: rgba(255, 255, 255, 0.08);
+            --white: #FFFFFF;
+            --cream: #FAF9F7;
+            --gray: rgba(255, 255, 255, 0.5);
+            --gray-light: rgba(255, 255, 255, 0.7);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--white);
+            line-height: 1.6;
+            background: var(--dark);
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--lime);
+            color: var(--dark);
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.25rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .logo {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            color: var(--lime);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .nav-links a .num {
+            color: var(--lime);
+            font-size: 0.7rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--lime);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-nav {
+            background: var(--lime);
+            color: var(--dark);
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+        }
+
+        .cta-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 255, 61, 0.3);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--white);
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--dark);
+            padding: 6rem 2rem 2rem;
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+            z-index: 999;
+        }
+
+        .mobile-nav.active {
+            transform: translateX(0);
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--dark-border);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav a .num {
+            color: var(--lime);
+            font-size: 0.8rem;
+            font-weight: 400;
+        }
+
+        .mobile-nav a:hover {
+            padding-left: 1rem;
+            color: var(--lime);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 10rem 5% 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg-text {
+            position: absolute;
+            top: 50%;
+            right: -5%;
+            transform: translateY(-50%);
+            font-size: clamp(15rem, 25vw, 30rem);
+            font-weight: 800;
+            color: rgba(255,255,255,0.02);
+            letter-spacing: -0.05em;
+            line-height: 0.8;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(150px);
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero-glow-1 {
+            top: -20%;
+            right: -10%;
+            background: var(--pink);
+            opacity: 0.08;
+        }
+
+        .hero-glow-2 {
+            bottom: -30%;
+            left: -15%;
+            background: var(--lime);
+            opacity: 0.04;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--lime);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0;
+            animation: slideIn 0.6s ease forwards;
+        }
+
+        .hero-tag::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--lime);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 7rem);
+            font-weight: 800;
+            margin-bottom: 2rem;
+            line-height: 1;
+        }
+
+        .hero h1 .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero h1 .line-inner {
+            display: block;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: revealLine 0.8s ease forwards;
+        }
+
+        .hero h1 .line:nth-child(2) .line-inner { animation-delay: 0.1s; }
+        .hero h1 .line:nth-child(3) .line-inner { animation-delay: 0.2s; }
+
+        @keyframes revealLine {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero h1 .highlight {
+            color: var(--lime);
+        }
+
+        .hero h1 .outline {
+            -webkit-text-stroke: 2px var(--white);
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            max-width: 500px;
+            line-height: 1.8;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.4s forwards;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+            opacity: 0;
+            animation: fadeUp 0.6s ease 0.5s forwards;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn-primary {
+            background: var(--lime);
+            color: var(--dark);
+            padding: 1.1rem 2.25rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 255, 61, 0.3);
+        }
+
+        .btn-primary svg {
+            width: 18px;
+            height: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(4px);
+        }
+
+        .btn-secondary {
+            color: var(--gray-light);
+            padding: 1rem 0;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-secondary:hover {
+            color: var(--white);
+        }
+
+        .btn-secondary span {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-secondary:hover span {
+            transform: translateY(3px);
+        }
+
+        /* Marquee */
+        .marquee-section {
+            padding: 1.5rem 0;
+            background: var(--lime);
+            overflow: hidden;
+        }
+
+        .marquee {
+            display: flex;
+            animation: marquee 25s linear infinite;
+        }
+
+        .marquee-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            padding-right: 4rem;
+        }
+
+        .marquee-content span {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--dark);
+            white-space: nowrap;
+        }
+
+        .marquee-content .dot {
+            width: 5px;
+            height: 5px;
+            background: var(--dark);
+            border-radius: 50%;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Perks Section */
+        .perks {
+            padding: 7rem 5%;
+            background: var(--dark-lighter);
+            border-top: 1px solid var(--dark-border);
+            border-bottom: 1px solid var(--dark-border);
+        }
+
+        .perks-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .perks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .perks-header h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+        }
+
+        .perks-header p {
+            color: var(--gray);
+            max-width: 400px;
+            font-size: 0.95rem;
+        }
+
+        .perks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .perk-item {
+            padding: 2.5rem 2rem;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .perk-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--lime);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .perk-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .perk-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 255, 61, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .perk-number {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 1.5rem;
+        }
+
+        .perk-item h3 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .perk-item p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 5%;
+            background: var(--dark);
+            position: relative;
+        }
+
+        .about-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--lime);
+            margin-bottom: 2rem;
+        }
+
+        .section-tag::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--lime);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-left h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 2rem;
+            line-height: 1.15;
+        }
+
+        .about-left h2 .highlight {
+            color: var(--pink);
+        }
+
+        .about-right p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .about-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .about-feature:hover {
+            border-color: var(--lime);
+            transform: translateX(8px);
+        }
+
+        .about-feature-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--lime);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .about-feature-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--dark);
+        }
+
+        .about-feature span {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 5%;
+            background: var(--dark-lighter);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 4rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .section-header-left h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-header-left p {
+            color: var(--gray);
+            font-size: 1rem;
+            max-width: 500px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--lime);
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            border-color: var(--lime);
+        }
+
+        .service-card:hover * {
+            color: var(--dark);
+        }
+
+        .service-card > * {
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-number {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--lime);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .service-card:hover .service-number {
+            color: var(--dark);
+        }
+
+        .service-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(212, 255, 61, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .service-icon svg {
+            width: 26px;
+            height: 26px;
+            stroke: var(--lime);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--dark);
+        }
+
+        .service-card:hover .service-icon svg {
+            stroke: var(--lime);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            line-height: 1.7;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card:hover p {
+            color: rgba(0,0,0,0.6);
+        }
+
+        .service-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--lime);
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-arrow {
+            opacity: 1;
+            transform: translateY(0);
+            color: var(--dark);
+        }
+
+        /* Process Section */
+        .process {
+            padding: 8rem 5%;
+            background: var(--dark);
+        }
+
+        .process-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .process-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .process-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--dark-border);
+            z-index: 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .process-step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--dark-card);
+            border: 2px solid var(--dark-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--lime);
+            transition: all 0.4s ease;
+        }
+
+        .process-step:hover .process-step-number {
+            background: var(--lime);
+            color: var(--dark);
+            border-color: var(--lime);
+            transform: scale(1.1);
+        }
+
+        .process-step h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            font-weight: 700;
+        }
+
+        .process-step p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Form Section */
+        .form-section {
+            padding: 8rem 5%;
+            background: var(--cream);
+            color: var(--dark);
+        }
+
+        .form-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .form-left h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.15;
+            color: var(--dark);
+        }
+
+        .form-left > p {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: #F0F0F0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--dark);
+        }
+
+        .contact-item-text a,
+        .contact-item-text p {
+            font-weight: 600;
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .contact-item-text a:hover {
+            color: var(--pink);
+        }
+
+        /* Form Card */
+        .form-card {
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .form-header {
+            padding: 2.5rem 2.5rem 0;
+            text-align: center;
+        }
+
+        .form-header h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 800;
+        }
+
+        .form-header p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .form-progress {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.5rem 2.5rem;
+        }
+
+        .progress-dot {
+            width: 10px;
+            height: 10px;
+            background: #E5E5E5;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: var(--lime);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        .form-steps {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-step {
+            padding: 0 2.5rem 2.5rem;
+            display: none;
+        }
+
+        .form-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            background: #F8F8F8;
+            border: 2px solid #F0F0F0;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1rem;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #999;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--lime);
+            background: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2'%3E%3Cpolyline points='6,9 12,15 18,9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1.25rem center;
+        }
+
+        .form-nav {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-btn {
+            flex: 1;
+            background: var(--lime);
+            color: var(--dark);
+            padding: 1.1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .form-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 255, 61, 0.4);
+        }
+
+        .form-btn.back {
+            background: #F0F0F0;
+            color: var(--dark);
+            flex: 0.4;
+        }
+
+        .form-btn.back:hover {
+            background: #E5E5E5;
+            box-shadow: none;
+        }
+
+        .form-privacy {
+            text-align: center;
+            padding: 1.5rem 2.5rem;
+            font-size: 0.8rem;
+            color: #999;
+            border-top: 1px solid #F0F0F0;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 5rem 5% 2rem;
+            border-top: 1px solid var(--dark-border);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 3rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid var(--dark-border);
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo span {
+            color: var(--lime);
+        }
+
+        .footer-brand p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-socials-inline {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .footer-social-link {
+            width: 42px;
+            height: 42px;
+            background: var(--dark-card);
+            border: 1px solid var(--dark-border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .footer-social-link:hover {
+            border-color: var(--lime);
+            background: rgba(212, 255, 61, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 5rem;
+        }
+
+        .footer-column h4 {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            color: var(--lime);
+            font-weight: 700;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-copy {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--lime);
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Responsive */
+        @media (min-width: 769px) {
+            .mobile-menu-btn,
+            .mobile-nav {
+                display: none !important;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
+            }
+
+            .process-grid::before {
+                display: none;
+            }
+
+            .form-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .footer-links {
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+
+            .nav-links,
+            .cta-nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .hero {
+                padding: 8rem 5% 4rem;
+            }
+
+            .hero-bg-text {
+                display: none;
+            }
+
+            .perks-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                flex-direction: column;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-ctas {
+                flex-direction: column;
+                width: 100%;
+                align-items: flex-start;
+            }
+
+            .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .form-header, .form-step, .form-privacy {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .form-progress {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><span>Sunweek</span> Media</div>
+        <ul class="nav-links">
+            <li><a href="#about"><span class="num">01/</span> About</a></li>
+            <li><a href="#services"><span class="num">02/</span> Services</a></li>
+            <li><a href="#contact"><span class="num">03/</span> Contact</a></li>
+        </ul>
+        <a href="#contact" class="cta-nav">Let's Work</a>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#about"><span class="num">01/</span> About</a></li>
+            <li><a href="#services"><span class="num">02/</span> Services</a></li>
+            <li><a href="#contact"><span class="num">03/</span> Contact</a></li>
+            <li style="margin-top: 2rem; border: none;">
+                <a href="#contact" class="btn-primary" style="width: 100%; justify-content: center; font-size: 1rem;">Let's Work</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg-text">25</div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="hero-content">
+            <div class="hero-tag">Booking projects for Q1 2026</div>
+            <h1>
+                <span class="line"><span class="line-inner">We Make Brands</span></span>
+                <span class="line"><span class="line-inner highlight">Impossible</span></span>
+                <span class="line"><span class="line-inner outline">to Ignore</span></span>
+            </h1>
+            <p class="hero-description">Your social media shouldn't blend in. We create scroll-stopping content that turns followers into paying customers.</p>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-primary">
+                    Let's Work
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#services" class="btn-secondary">
+                    See What We Do <span>↓</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <section class="marquee-section">
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>Social Media Management</span>
+                <div class="dot"></div>
+                <span>Content Creation</span>
+                <div class="dot"></div>
+                <span>Strategy Development</span>
+                <div class="dot"></div>
+                <span>Creative Direction</span>
+                <div class="dot"></div>
+                <span>Brand Growth</span>
+                <div class="dot"></div>
+            </div>
+            <div class="marquee-content">
+                <span>Social Media Management</span>
+                <div class="dot"></div>
+                <span>Content Creation</span>
+                <div class="dot"></div>
+                <span>Strategy Development</span>
+                <div class="dot"></div>
+                <span>Creative Direction</span>
+                <div class="dot"></div>
+                <span>Brand Growth</span>
+                <div class="dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perks Section -->
+    <section class="perks">
+        <div class="perks-container">
+            <div class="perks-header reveal">
+                <h2>(Why Choose Us)</h2>
+                <p>We're not just another agency. Here's what sets us apart.</p>
+            </div>
+            <div class="perks-grid">
+                <div class="perk-item reveal">
+                    <div class="perk-number">01</div>
+                    <h3>Results Over Vanity</h3>
+                    <p>We don't chase likes — we chase conversions. Every post is engineered to drive real business results.</p>
+                </div>
+                <div class="perk-item reveal">
+                    <div class="perk-number">02</div>
+                    <h3>Free Social Media Audit</h3>
+                    <p>Get a comprehensive analysis of your Instagram profile with actionable insights to improve your presence.</p>
+                </div>
+                <div class="perk-item reveal">
+                    <div class="perk-number">03</div>
+                    <h3>Rapid Turnaround</h3>
+                    <p>No waiting weeks for content. We move fast and deliver high-quality work when you need it most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <span class="section-tag reveal">Who We Are</span>
+            <div class="about-content">
+                <div class="about-left reveal-left">
+                    <h2>Your <span class="highlight">Creative</span> Growth Partner</h2>
+                </div>
+                <div class="about-right reveal-right">
+                    <p>We're not your typical agency. We're a team of creators, strategists, and social media obsessives who genuinely care about making your brand shine.</p>
+                    <p>You focus on running your business. We'll handle the content, the strategy, and the growth — with full transparency every step of the way.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                </svg>
+                            </div>
+                            <span>Personalized strategy for your brand</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                    <polyline points="17 6 23 6 23 12"/>
+                                </svg>
+                            </div>
+                            <span>Content that actually converts</span>
+                        </div>
+                        <div class="about-feature">
+                            <div class="about-feature-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                </svg>
+                            </div>
+                            <span>Transparent communication</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-header-left">
+                    <span class="section-tag">What We Do</span>
+                    <h2>Our Services</h2>
+                    <p>Strategic social media solutions designed to elevate your brand and drive measurable growth.</p>
+                </div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="service-header">
+                        <div class="service-number">01</div>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                <line x1="12" y1="18" x2="12.01" y2="18"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Social Media Management</h3>
+                    <p>Full-service management from strategy to posting. We handle your accounts so you can handle your business.</p>
+                    <div class="service-arrow">Learn more →</div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-header">
+                        <div class="service-number">02</div>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                                <polyline points="2 17 12 22 22 17"/>
+                                <polyline points="2 12 12 17 22 12"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Content Creation</h3>
+                    <p>Scroll-stopping visuals and copy that makes people stop, engage, and remember your brand.</p>
+                    <div class="service-arrow">Learn more →</div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-header">
+                        <div class="service-number">03</div>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <line x1="2" y1="12" x2="22" y2="12"/>
+                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Strategy Development</h3>
+                    <p>Custom roadmaps built around your goals, audience, and industry. No generic templates here.</p>
+                    <div class="service-arrow">Learn more →</div>
+                </div>
+                <div class="service-card reveal">
+                    <div class="service-header">
+                        <div class="service-number">04</div>
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+                                <circle cx="12" cy="12" r="4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <h3>Creative Direction</h3>
+                    <p>Cohesive visual identity across all platforms. We make sure your brand stands out from the crowd.</p>
+                    <div class="service-arrow">Learn more →</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="process-container">
+            <div class="process-header reveal">
+                <span class="section-tag">How It Works</span>
+                <h2>Our Process</h2>
+                <p>From first contact to launch — here's how we bring your social media vision to life.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step reveal">
+                    <div class="process-step-number">01</div>
+                    <h3>Free Discovery Call</h3>
+                    <p>We start with a conversation to understand your brand, goals, and challenges. No strings attached.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-step-number">02</div>
+                    <h3>Custom Strategy</h3>
+                    <p>We develop a personalized action plan designed specifically around your business objectives.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-step-number">03</div>
+                    <h3>Content Creation</h3>
+                    <p>Our team produces high-quality, engaging content that resonates with your target audience.</p>
+                </div>
+                <div class="process-step reveal">
+                    <div class="process-step-number">04</div>
+                    <h3>Launch & Optimize</h3>
+                    <p>We go live, track performance, and continuously refine to maximize your results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="contact">
+        <div class="form-container">
+            <div class="form-left reveal-left">
+                <h2>Ready to Make Your Brand Stand Out?</h2>
+                <p>Fill out the form and we'll get back to you within 24 hours. No pushy sales calls, just a genuine conversation about how we can help your business grow.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <a href="mailto:hello@sunweekmedia.com">hello@sunweekmedia.com</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <p>Working with clients worldwide</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <p>Response within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-card reveal-right">
+                <div class="form-header">
+                    <h3>Let's Get Started</h3>
+                    <p>Tell us about yourself and your project</p>
+                </div>
+                
+                <div class="form-progress">
+                    <div class="progress-dot active" data-step="1"></div>
+                    <div class="progress-dot" data-step="2"></div>
+                </div>
+
+                <form id="multiStepForm" class="form-steps">
+                    <!-- Step 1: Basic Info -->
+                    <div class="form-step active" data-step="1">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" placeholder="Your last name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" placeholder="you@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="business">Business Name *</label>
+                            <input type="text" id="business" name="business" placeholder="Your business or brand name" required>
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="form-btn" onclick="nextStep(2)">Continue →</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Project Details -->
+                    <div class="form-step" data-step="2">
+                        <div class="form-group">
+                            <label for="service">What service are you interested in? *</label>
+                            <select id="service" name="service" required>
+                                <option value="">Select a service</option>
+                                <option value="social-media-management">Social Media Management</option>
+                                <option value="content-creation">Content Creation</option>
+                                <option value="strategy-development">Strategy Development</option>
+                                <option value="creative-direction">Creative Direction</option>
+                                <option value="full-package">Full Package</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="budget">What's your monthly budget? *</label>
+                            <select id="budget" name="budget" required>
+                                <option value="">Select your budget</option>
+                                <option value="under-1000">Under $1,000</option>
+                                <option value="1000-2500">$1,000 - $2,500</option>
+                                <option value="2500-5000">$2,500 - $5,000</option>
+                                <option value="5000+">$5,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="challenge">What's your biggest social media challenge?</label>
+                            <textarea id="challenge" name="challenge" placeholder="Tell us what's holding you back..."></textarea>
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="form-btn back" onclick="prevStep(1)">← Back</button>
+                            <button type="submit" class="form-btn">Get Your Free Audit →</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="form-privacy">
+                    Your information is secure and will never be shared
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo"><span>Sunweek</span> Media</div>
+                    <p>We help brands stand out on social media with content that actually converts.</p>
+                    <div class="footer-socials-inline">
+                        <a href="https://www.instagram.com/sunweek.media/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="Instagram">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.tiktok.com/@sunweek.media" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="TikTok">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/sunweek-media/" target="_blank" rel="noopener noreferrer" class="footer-social-link" title="LinkedIn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#services">Social Media Management</a></li>
+                            <li><a href="#services">Content Creation</a></li>
+                            <li><a href="#services">Strategy Development</a></li>
+                            <li><a href="#services">Creative Direction</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="mailto:hello@sunweekmedia.com">hello@sunweekmedia.com</a></li>
+                            <li><a href="https://www.instagram.com/sunweek.media/" target="_blank">Instagram</a></li>
+                            <li><a href="https://www.tiktok.com/@sunweek.media" target="_blank">TikTok</a></li>
+                            <li><a href="https://www.linkedin.com/company/sunweek-media/" target="_blank">LinkedIn</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">© 2025 Sunweek Media. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal with stagger
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        
+        const revealOnScroll = () => {
+            reveals.forEach((el) => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                const revealPoint = 100;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    el.classList.add('visible');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Nav background on scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 10, 0.9)';
+            }
+        });
+
+        // Multi-Step Form
+        let currentStep = 1;
+
+        function updateProgress() {
+            document.querySelectorAll('.progress-dot').forEach(dot => {
+                const step = parseInt(dot.dataset.step);
+                dot.classList.toggle('active', step <= currentStep);
+            });
+        }
+
+        function showStep(step) {
+            document.querySelectorAll('.form-step').forEach(s => {
+                s.classList.remove('active');
+            });
+            document.querySelector(`.form-step[data-step="${step}"]`).classList.add('active');
+            currentStep = step;
+            updateProgress();
+            
+            // Update header text based on step
+            const header = document.querySelector('.form-header');
+            const titles = {
+                1: { h3: "Let's Get Started", p: "Tell us about yourself" },
+                2: { h3: "Almost There", p: "Tell us about your project" }
+            };
+            header.querySelector('h3').textContent = titles[step].h3;
+            header.querySelector('p').textContent = titles[step].p;
+        }
+
+        function nextStep(step) {
+            const currentFormStep = document.querySelector(`.form-step[data-step="${currentStep}"]`);
+            const inputs = currentFormStep.querySelectorAll('input[required], select[required]');
+            let valid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.style.borderColor = '#C24B7D';
+                    valid = false;
+                    
+                    input.style.animation = 'shake 0.5s ease';
+                    setTimeout(() => input.style.animation = '', 500);
+                } else {
+                    input.style.borderColor = '#F0F0F0';
+                }
+            });
+
+            if (valid) {
+                showStep(step);
+            }
+        }
+
+        function prevStep(step) {
+            showStep(step);
+        }
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-5px); }
+                40%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Form Submission
+        const multiStepForm = document.getElementById('multiStepForm');
+        
+        multiStepForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitBtn = multiStepForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(multiStepForm);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                // Google Form submission
+                const googleFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd9M6ivTfKCUD0Wvk08Np201rfRSsDxPjBkyrITuKhqYSGyWw/formResponse';
+                
+                const googleFormData = new FormData();
+                // Note: You need to replace these entry IDs with your actual Google Form entry IDs
+                googleFormData.append('entry.XXXXXX', data.firstName);
+                googleFormData.append('entry.XXXXXX', data.lastName);
+                googleFormData.append('entry.XXXXXX', data.email);
+                googleFormData.append('entry.XXXXXX', data.business);
+                googleFormData.append('entry.XXXXXX', data.service);
+                googleFormData.append('entry.XXXXXX', data.budget);
+                googleFormData.append('entry.XXXXXX', data.challenge);
+                
+                await fetch(googleFormUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: googleFormData
+                });
+
+                submitBtn.textContent = 'Sent Successfully';
+                submitBtn.style.background = '#22c55e';
+                
+                setTimeout(() => {
+                    multiStepForm.reset();
+                    showStep(1);
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 3000);
+
+            } catch (error) {
+                const email = 'hello@sunweekmedia.com';
+                const subject = encodeURIComponent('New Inquiry from Website');
+                const body = encodeURIComponent(
+                    `Name: ${data.firstName} ${data.lastName}\n` +
+                    `Email: ${data.email}\n` +
+                    `Business: ${data.business}\n` +
+                    `Service: ${data.service}\n` +
+                    `Budget: ${data.budget}\n` +
+                    `Challenge: ${data.challenge}`
+                );
+                
+                window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+                
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        });
+
+        // Input focus effects
+        document.querySelectorAll('.form-group input, .form-group select, .form-group textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#D4FF3D';
+            });
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.style.borderColor = '#F0F0F0';
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
