@@ -4,14 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunweek Media | Social Media That Converts</title>
-    <meta name="description"
-        content="We help small businesses and startups stand out on social media with content that brings clients.">
+    <title>Sunweek Media | Social Media Agency</title>
+    <meta name="description" content="Sunweek Media | Social Media Agency - We help brands stand out on social media with content that converts.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -50,10 +47,7 @@
             color: var(--dark);
         }
 
-        h1,
-        h2,
-        h3,
-        h4 {
+        h1, h2, h3, h4 {
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -0.02em;
@@ -230,9 +224,6 @@
             padding: 0.6rem 1.25rem;
             background: var(--pink-light);
             border-radius: 50px;
-        }
-
-        .hero-tag {
             animation: tagGlow 2s ease-in-out infinite;
         }
 
@@ -246,41 +237,13 @@
         }
 
         @keyframes blink {
-
-            0%,
-            100% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.3;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         @keyframes tagGlow {
-
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(194, 75, 125, 0.3);
-            }
-
-            50% {
-                box-shadow: 0 0 20px 5px rgba(194, 75, 125, 0.2);
-            }
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            50% {
-                opacity: 0.7;
-                transform: scale(0.9);
-            }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(194, 75, 125, 0.3); }
+            50% { box-shadow: 0 0 20px 5px rgba(194, 75, 125, 0.2); }
         }
 
         .hero h1 {
@@ -304,10 +267,6 @@
 
         .hero h1 .line:nth-child(2) .line-inner {
             animation-delay: 0.1s;
-        }
-
-        .hero h1 .line:nth-child(3) .line-inner {
-            animation-delay: 0.2s;
         }
 
         @keyframes revealLine {
@@ -353,7 +312,6 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -382,6 +340,11 @@
             box-shadow: 0 15px 40px rgba(194, 75, 125, 0.25);
         }
 
+        .btn-large {
+            padding: 1.4rem 3.5rem;
+            font-size: 1.1rem;
+        }
+
         .btn-secondary {
             background: transparent;
             color: var(--dark);
@@ -399,21 +362,62 @@
             color: var(--white);
         }
 
-        .btn-large {
-            padding: 1.4rem 3.5rem;
-            font-size: 1.1rem;
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--pink), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { transform: scaleY(1); opacity: 1; }
+            50% { transform: scaleY(0.5); opacity: 0.5; }
         }
 
         /* Why Choose Us Section */
         .why-us {
             padding: 7rem 5%;
-            background: var(--pink);
+            background: var(--dark);
             color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-us::before {
+            content: 'WHY US';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 20vw;
+            font-weight: 900;
+            color: rgba(255,255,255,0.03);
+            pointer-events: none;
+            white-space: nowrap;
         }
 
         .why-us-container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         .section-header {
@@ -448,7 +452,7 @@
         }
 
         .section-header p {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 1.05rem;
             margin-top: 1rem;
             max-width: 500px;
@@ -459,30 +463,55 @@
         .why-us-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
         .why-us-card {
             padding: 2.5rem 2rem;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 20px;
-            transition: all 0.4s ease;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
         }
 
+        .why-us-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--lime);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
         .why-us-card:hover {
-            transform: translateY(-8px);
-            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--lime);
+        }
+
+        .why-us-card:hover::before {
+            transform: scaleX(1);
         }
 
         .why-us-card.highlighted {
             background: var(--lime);
             color: var(--dark);
+            border-color: var(--lime);
+        }
+
+        .why-us-card.highlighted::before {
+            background: var(--pink);
         }
 
         .why-us-card.highlighted:hover {
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(212, 255, 61, 0.3);
         }
 
         .why-us-card.highlighted .card-number {
@@ -494,11 +523,16 @@
         }
 
         .card-number {
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            margin-bottom: 1.5rem;
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
             color: var(--lime);
+            opacity: 0.5;
+            transition: all 0.3s ease;
+        }
+
+        .why-us-card:hover .card-number {
+            opacity: 1;
         }
 
         .why-us-card h3 {
@@ -509,7 +543,7 @@
         .why-us-card p {
             font-size: 0.95rem;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.6);
         }
 
         /* About Section */
@@ -544,7 +578,7 @@
             color: var(--pink);
         }
 
-        .about-left>p {
+        .about-left > p {
             color: var(--gray);
             font-size: 1.05rem;
             line-height: 1.8;
@@ -554,7 +588,6 @@
         .about-features {
             display: grid;
             gap: 1rem;
-            margin-top: 2rem;
         }
 
         .about-feature {
@@ -594,47 +627,6 @@
             font-size: 1rem;
         }
 
-        .about-right {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.25rem;
-        }
-
-        .stat-box {
-            background: var(--cream);
-            border-radius: 20px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .stat-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-        }
-
-        .stat-box:nth-child(2) {
-            margin-top: 2rem;
-        }
-
-        .stat-box:nth-child(3) {
-            margin-top: -2rem;
-        }
-
-        .stat-box h4 {
-            font-size: 3rem;
-            color: var(--pink);
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-box p {
-            font-size: 0.85rem;
-            color: var(--gray);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-        }
-
         /* Services Section */
         .services {
             padding: 8rem 5%;
@@ -671,12 +663,34 @@
             padding: 2.5rem;
             transition: all 0.4s ease;
             position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: var(--pink);
+            transition: height 0.4s ease;
+            z-index: 0;
         }
 
         .service-card:hover {
             border-color: var(--pink);
+            transform: translateY(-8px);
             box-shadow: 0 20px 50px rgba(194, 75, 125, 0.12);
-            transform: translateY(-5px);
+        }
+
+        .service-card:hover::after {
+            height: 5px;
+        }
+
+        .service-card > * {
+            position: relative;
+            z-index: 1;
         }
 
         .service-header {
@@ -687,17 +701,17 @@
         }
 
         .service-number {
-            font-size: 3.5rem;
-            font-weight: 800;
+            font-size: 4rem;
+            font-weight: 900;
             color: var(--pink);
             line-height: 1;
-            opacity: 0.25;
-            transition: all 0.3s ease;
+            opacity: 0.15;
+            transition: all 0.4s ease;
         }
 
         .service-card:hover .service-number {
             opacity: 1;
-            transform: scale(1.1);
+            transform: translateX(10px);
         }
 
         .service-icon {
@@ -794,23 +808,28 @@
             margin: 0 auto 1.5rem;
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--pink);
-            transition: all 0.4s ease;
+            color: var(--gray-light);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             z-index: 1;
         }
 
-        .process-step:hover .step-number {
+        .process-step.active .step-number {
             background: var(--pink);
             border-color: var(--pink);
             color: var(--white);
-            transform: scale(1.15);
-            box-shadow: 0 15px 40px rgba(194, 75, 125, 0.3);
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(194, 75, 125, 0.4);
         }
 
         .process-step h3 {
             font-size: 1.15rem;
             margin-bottom: 0.75rem;
+            transition: color 0.3s ease;
+        }
+
+        .process-step.active h3 {
+            color: var(--pink);
         }
 
         .process-step p {
@@ -827,33 +846,33 @@
 
         /* Marquee */
         .marquee {
-            padding: 2.5rem 0;
+            padding: 3rem 0;
             overflow: hidden;
+            background: var(--white);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
-            background: var(--white);
         }
 
         .marquee-track {
             display: flex;
-            animation: marquee 12s linear infinite;
+            animation: marquee 15s linear infinite;
         }
 
         .marquee-content {
             display: flex;
             align-items: center;
-            gap: 2rem;
-            padding-right: 2rem;
+            gap: 3rem;
+            padding-right: 3rem;
             white-space: nowrap;
         }
 
         .marquee-content span {
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 4vw, 3.5rem);
             font-weight: 800;
         }
 
         .marquee-content .outline {
-            -webkit-text-stroke: 2px var(--dark);
+            -webkit-text-stroke: 1.5px var(--dark);
             -webkit-text-fill-color: transparent;
         }
 
@@ -867,21 +886,16 @@
         }
 
         .marquee-content .dot {
-            width: 12px;
-            height: 12px;
-            background: var(--pink);
+            width: 10px;
+            height: 10px;
+            background: var(--lime);
             border-radius: 50%;
             flex-shrink: 0;
         }
 
         @keyframes marquee {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
         /* Form Container */
@@ -909,7 +923,7 @@
             color: var(--pink);
         }
 
-        .form-left>p {
+        .form-left > p {
             color: var(--gray);
             font-size: 1.1rem;
             margin-bottom: 3rem;
@@ -1017,15 +1031,8 @@
         }
 
         @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(20px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .form-row {
@@ -1140,13 +1147,8 @@
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .success-icon {
@@ -1295,8 +1297,8 @@
         /* Scroll Animations */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .reveal.visible {
@@ -1306,7 +1308,6 @@
 
         /* Responsive */
         @media (min-width: 769px) {
-
             .mobile-menu-btn,
             .mobile-nav {
                 display: none !important;
@@ -1314,15 +1315,18 @@
         }
 
         @media (max-width: 1024px) {
-
-            .about-grid,
-            .form-container {
+            .about-grid {
                 grid-template-columns: 1fr;
-                gap: 4rem;
+                gap: 3rem;
             }
 
             .about-right {
                 order: -1;
+            }
+
+            .form-container {
+                grid-template-columns: 1fr;
+                gap: 4rem;
             }
 
             .services-grid {
@@ -1366,17 +1370,12 @@
                 min-height: auto;
             }
 
+            .scroll-indicator {
+                display: none;
+            }
+
             .why-us-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .about-right {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .stat-box:nth-child(2),
-            .stat-box:nth-child(3) {
-                margin-top: 0;
             }
 
             .process-grid {
@@ -1417,8 +1416,9 @@
                 justify-content: center;
             }
 
-            .about-right {
-                grid-template-columns: 1fr;
+            .btn-large {
+                padding: 1.2rem 2.5rem;
+                font-size: 1rem;
             }
 
             .step-number {
@@ -1467,8 +1467,7 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact</a></li>
             <li style="border: none; margin-top: 2rem;">
-                <a href="#contact" class="btn-primary"
-                    style="display: block; text-align: center; font-size: 1rem;">Let's Talk</a>
+                <a href="#contact" class="btn-primary" style="display: block; text-align: center; font-size: 1rem;">Let's Talk</a>
             </li>
         </ul>
     </div>
@@ -1479,139 +1478,46 @@
             <div class="hero-tag">Booking projects for Q1 2026</div>
             <h1>
                 <span class="line"><span class="line-inner">We Make Brands</span></span>
-                <span class="line"><span class="line-inner"><span class="serif">Impossible</span> <span
-                            class="outline-text">to Ignore</span></span></span>
+                <span class="line"><span class="line-inner"><span class="serif">Impossible</span> <span class="outline-text">to Ignore</span></span></span>
             </h1>
-            <p class="hero-description">Strategic social media management that transforms your online presence into a
-                client-generating machine.</p>
+            <p class="hero-description">Strategic social media management that transforms your online presence into a client-generating machine.</p>
             <div class="hero-ctas">
                 <a href="#contact" class="btn-primary btn-large">Start a Project →</a>
             </div>
         </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
     </section>
 
-    /* Why Choose Us Section */
-    .why-us {
-    padding: 7rem 5%;
-    background: var(--dark);
-    color: var(--white);
-    position: relative;
-    overflow: hidden;
-    }
-
-    .why-us::before {
-    content: 'WHY US';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 20vw;
-    font-weight: 900;
-    color: rgba(255,255,255,0.03);
-    pointer-events: none;
-    white-space: nowrap;
-    }
-
-    .why-us-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-    }
-
-    .why-us .section-tag {
-    color: var(--lime);
-    }
-
-    .why-us .section-header p {
-    color: rgba(255, 255, 255, 0.6);
-    }
-
-    .why-us-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    }
-
-    .why-us-card {
-    padding: 2.5rem 2rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 20px;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    }
-
-    .why-us-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--lime);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
-    }
-
-    .why-us-card:hover {
-    transform: translateY(-10px);
-    background: rgba(255, 255, 255, 0.08);
-    border-color: var(--lime);
-    }
-
-    .why-us-card:hover::before {
-    transform: scaleX(1);
-    }
-
-    .why-us-card.highlighted {
-    background: var(--lime);
-    color: var(--dark);
-    border-color: var(--lime);
-    }
-
-    .why-us-card.highlighted::before {
-    background: var(--pink);
-    }
-
-    .why-us-card.highlighted:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 30px 60px rgba(212, 255, 61, 0.3);
-    }
-
-    .why-us-card.highlighted .card-number {
-    color: var(--pink);
-    }
-
-    .why-us-card.highlighted p {
-    color: rgba(0, 0, 0, 0.7);
-    }
-
-    .card-number {
-    font-size: 3rem;
-    font-weight: 900;
-    margin-bottom: 1rem;
-    color: var(--lime);
-    opacity: 0.5;
-    transition: all 0.3s ease;
-    }
-
-    .why-us-card:hover .card-number {
-    opacity: 1;
-    }
-
-    .why-us-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    }
-
-    .why-us-card p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.6);
-    }
+    <!-- Why Choose Us Section -->
+    <section class="why-us">
+        <div class="why-us-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Why Choose Us</span>
+                <h2>What Sets Us Apart</h2>
+                <p>We're not just another agency. Here's why brands trust us.</p>
+            </div>
+            <div class="why-us-grid">
+                <div class="why-us-card reveal">
+                    <div class="card-number">01</div>
+                    <h3>Results Over Vanity</h3>
+                    <p>We don't chase likes — we chase conversions. Every post is engineered to drive real business results.</p>
+                </div>
+                <div class="why-us-card highlighted reveal">
+                    <div class="card-number">02</div>
+                    <h3>Free Social Media Audit</h3>
+                    <p>Get a comprehensive analysis of your Instagram profile with actionable insights to improve your presence.</p>
+                </div>
+                <div class="why-us-card reveal">
+                    <div class="card-number">03</div>
+                    <h3>Rapid Turnaround</h3>
+                    <p>No waiting weeks for content. We move fast and deliver high-quality work when you need it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- About Section -->
     <section class="about" id="about">
@@ -1620,18 +1526,15 @@
                 <div class="about-left reveal">
                     <span class="section-tag">Who We Are</span>
                     <h2>Your Creative <span class="serif">Growth</span> Partner</h2>
-                    <p>We're not your typical agency. We're a team of creators, strategists, and social media obsessives
-                        who genuinely care about making your brand shine.</p>
-                    <p>You focus on running your business. We'll handle the content, the strategy, and the growth — with
-                        full transparency every step of the way.</p>
+                    <p>We're not your typical agency. We're a team of creators, strategists, and social media obsessives who genuinely care about making your brand shine.</p>
+                    <p>You focus on running your business. We'll handle the content, the strategy, and the growth — with full transparency every step of the way.</p>
                 </div>
                 <div class="about-right reveal">
                     <div class="about-features">
                         <div class="about-feature">
                             <div class="about-feature-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path
-                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                                 </svg>
                             </div>
                             <span>Personalized strategy for your brand</span>
@@ -1639,8 +1542,8 @@
                         <div class="about-feature">
                             <div class="about-feature-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                                    <polyline points="17 6 23 6 23 12" />
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                                    <polyline points="17 6 23 6 23 12"/>
                                 </svg>
                             </div>
                             <span>Content that actually converts</span>
@@ -1648,7 +1551,7 @@
                         <div class="about-feature">
                             <div class="about-feature-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                                 </svg>
                             </div>
                             <span>Transparent communication</span>
@@ -1672,23 +1575,22 @@
                     <div class="service-number">01</div>
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                            <line x1="12" y1="18" x2="12.01" y2="18" />
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <line x1="12" y1="18" x2="12.01" y2="18"/>
                         </svg>
                     </div>
                 </div>
                 <h3>Social Media Management</h3>
-                <p>Full-service management from strategy to posting. We handle your accounts so you can focus on your
-                    business.</p>
+                <p>Full-service management from strategy to posting. We handle your accounts so you can focus on your business.</p>
             </div>
             <div class="service-card reveal">
                 <div class="service-header">
                     <div class="service-number">02</div>
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                            <polyline points="2 17 12 22 22 17" />
-                            <polyline points="2 12 12 17 22 12" />
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                            <polyline points="2 17 12 22 22 17"/>
+                            <polyline points="2 12 12 17 22 12"/>
                         </svg>
                     </div>
                 </div>
@@ -1700,10 +1602,9 @@
                     <div class="service-number">03</div>
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10" />
-                            <line x1="2" y1="12" x2="22" y2="12" />
-                            <path
-                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="2" y1="12" x2="22" y2="12"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                         </svg>
                     </div>
                 </div>
@@ -1715,9 +1616,8 @@
                     <div class="service-number">04</div>
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
-                            <circle cx="12" cy="12" r="4" />
+                            <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+                            <circle cx="12" cy="12" r="4"/>
                         </svg>
                     </div>
                 </div>
@@ -1790,15 +1690,14 @@
             <div class="form-left reveal">
                 <span class="section-tag">Get In Touch</span>
                 <h2>Ready to Make Your Brand <span class="serif">Stand Out?</span></h2>
-                <p>Fill out the form and we'll get back to you within 24 hours. Let's explore how we can elevate your
-                    social media presence together.</p>
+                <p>Fill out the form and we'll get back to you within 24 hours. Let's explore how we can elevate your social media presence together.</p>
 
                 <div class="contact-items">
                     <div class="contact-item">
                         <div class="contact-item-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                <polyline points="22,6 12,13 2,6" />
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
                             </svg>
                         </div>
                         <div class="contact-item-text">
@@ -1808,8 +1707,8 @@
                     <div class="contact-item">
                         <div class="contact-item-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
                             </svg>
                         </div>
                         <div class="contact-item-text">
@@ -1819,8 +1718,8 @@
                     <div class="contact-item">
                         <div class="contact-item-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10" />
-                                <polyline points="12 6 12 12 16 14" />
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
                             </svg>
                         </div>
                         <div class="contact-item-text">
@@ -1847,8 +1746,7 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" placeholder="Your first name"
-                                    required>
+                                <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
                             </div>
                             <div class="form-group">
                                 <label for="lastName">Last Name *</label>
@@ -1861,8 +1759,7 @@
                         </div>
                         <div class="form-group">
                             <label for="business">Business Name *</label>
-                            <input type="text" id="business" name="business" placeholder="Your business or brand name"
-                                required>
+                            <input type="text" id="business" name="business" placeholder="Your business or brand name" required>
                         </div>
                         <div class="form-nav">
                             <button type="button" class="form-btn" onclick="nextStep(2)">Continue →</button>
@@ -1894,8 +1791,7 @@
                         </div>
                         <div class="form-group">
                             <label for="challenge">What's your biggest social media challenge?</label>
-                            <textarea id="challenge" name="challenge"
-                                placeholder="Tell us what's holding you back..."></textarea>
+                            <textarea id="challenge" name="challenge" placeholder="Tell us what's holding you back..."></textarea>
                         </div>
                         <div class="form-nav">
                             <button type="button" class="form-btn back" onclick="prevStep(1)">← Back</button>
@@ -1908,12 +1804,11 @@
                 <div class="form-success" id="formSuccess">
                     <div class="success-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <polyline points="20 6 9 17 4 12" />
+                            <polyline points="20 6 9 17 4 12"/>
                         </svg>
                     </div>
                     <h4>Thank You!</h4>
-                    <p>Your message has been sent successfully. We'll review your submission and get back to you within
-                        24 hours.</p>
+                    <p>Your message has been sent successfully. We'll review your submission and get back to you within 24 hours with your free social media audit.</p>
                 </div>
 
                 <div class="form-footer">
@@ -1929,26 +1824,25 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <div class="footer-logo"><span>Sunweek</span> Media</div>
-                    <p>We help brands stand out on social media with content that actually converts.</p>
+                    <p>Sunweek Media | Social Media Agency - We help brands stand out on social media with content that converts.</p>
                     <div class="footer-socials">
                         <a href="https://www.instagram.com/sunweek.media/" target="_blank" class="social-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                             </svg>
                         </a>
                         <a href="https://www.tiktok.com/@sunweek.media" target="_blank" class="social-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
                             </svg>
                         </a>
                         <a href="https://www.linkedin.com/company/sunweek-media/" target="_blank" class="social-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path
-                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                                <rect x="2" y="9" width="4" height="12" />
-                                <circle cx="4" cy="4" r="2" />
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                                <rect x="2" y="9" width="4" height="12"/>
+                                <circle cx="4" cy="4" r="2"/>
                             </svg>
                         </a>
                     </div>
@@ -1978,14 +1872,13 @@
                             <li><a href="mailto:hello@sunweekmedia.com">hello@sunweekmedia.com</a></li>
                             <li><a href="https://www.instagram.com/sunweek.media/" target="_blank">Instagram</a></li>
                             <li><a href="https://www.tiktok.com/@sunweek.media" target="_blank">TikTok</a></li>
-                            <li><a href="https://www.linkedin.com/company/sunweek-media/" target="_blank">LinkedIn</a>
-                            </li>
+                            <li><a href="https://www.linkedin.com/company/sunweek-media/" target="_blank">LinkedIn</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="footer-copy">© 2025 Sunweek Media. All rights reserved.</p>
+                <p class="footer-copy">© 2025 Sunweek Media | Social Media Agency. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -2019,13 +1912,33 @@
                 if (revealTop < windowHeight - revealPoint) {
                     setTimeout(() => {
                         el.classList.add('visible');
-                    }, i * 50);
+                    }, i * 30);
                 }
             });
         };
 
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
+
+        // Process Auto Animation
+        const processSteps = document.querySelectorAll('.process-step');
+        let processAnimated = false;
+
+        const animateProcess = () => {
+            const processSection = document.querySelector('.process');
+            const rect = processSection.getBoundingClientRect();
+
+            if (rect.top < window.innerHeight - 200 && !processAnimated) {
+                processAnimated = true;
+                processSteps.forEach((step, index) => {
+                    setTimeout(() => {
+                        step.classList.add('active');
+                    }, index * 400);
+                });
+            }
+        };
+
+        window.addEventListener('scroll', animateProcess);
 
         // Multi-Step Form
         let currentStep = 1;
@@ -2130,7 +2043,7 @@
             const ZAPIER_WEBHOOK_URL = 'YOUR_ZAPIER_WEBHOOK_URL';
 
             try {
-                if (ZAPIER_WEBHOOK_URL !== 'https://hooks.zapier.com/hooks/catch/25621114/uf4w5o0/') {
+                if (ZAPIER_WEBHOOK_URL !== 'YOUR_ZAPIER_WEBHOOK_URL') {
                     await fetch(ZAPIER_WEBHOOK_URL, {
                         method: 'POST',
                         mode: 'no-cors',
