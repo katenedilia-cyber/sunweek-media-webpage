@@ -5,10 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sunweek Media | Social Media That Converts</title>
-    <meta name="description" content="We help small businesses and startups stand out on social media with content that brings clients.">
+    <meta name="description"
+        content="We help small businesses and startups stand out on social media with content that brings clients.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -47,7 +50,10 @@
             color: var(--dark);
         }
 
-        h1, h2, h3, h4 {
+        h1,
+        h2,
+        h3,
+        h4 {
             font-weight: 700;
             line-height: 1.1;
             letter-spacing: -0.02em;
@@ -236,8 +242,17 @@
         }
 
         @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(0.9); }
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(0.9);
+            }
         }
 
         .hero h1 {
@@ -259,11 +274,19 @@
             animation: revealLine 0.8s ease forwards;
         }
 
-        .hero h1 .line:nth-child(2) .line-inner { animation-delay: 0.1s; }
-        .hero h1 .line:nth-child(3) .line-inner { animation-delay: 0.2s; }
+        .hero h1 .line:nth-child(2) .line-inner {
+            animation-delay: 0.1s;
+        }
+
+        .hero h1 .line:nth-child(3) .line-inner {
+            animation-delay: 0.2s;
+        }
 
         @keyframes revealLine {
-            to { opacity: 1; transform: translateY(0); }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 .highlight {
@@ -297,8 +320,15 @@
         }
 
         @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .btn-primary {
@@ -384,7 +414,7 @@
         }
 
         .section-header p {
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
             font-size: 1.05rem;
             margin-top: 1rem;
             max-width: 500px;
@@ -400,7 +430,7 @@
 
         .why-us-card {
             padding: 2.5rem 2rem;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             transition: all 0.4s ease;
             position: relative;
@@ -409,7 +439,7 @@
 
         .why-us-card:hover {
             transform: translateY(-8px);
-            background: rgba(255,255,255,0.15);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .why-us-card.highlighted {
@@ -418,7 +448,7 @@
         }
 
         .why-us-card.highlighted:hover {
-            box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
         }
 
         .why-us-card.highlighted .card-number {
@@ -426,7 +456,7 @@
         }
 
         .why-us-card.highlighted p {
-            color: rgba(0,0,0,0.7);
+            color: rgba(0, 0, 0, 0.7);
         }
 
         .card-number {
@@ -445,7 +475,7 @@
         .why-us-card p {
             font-size: 0.95rem;
             line-height: 1.7;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* About Section */
@@ -479,7 +509,7 @@
             color: var(--pink);
         }
 
-        .about-left > p {
+        .about-left>p {
             color: var(--gray);
             font-size: 1.05rem;
             line-height: 1.8;
@@ -545,7 +575,7 @@
 
         .stat-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
         }
 
         .stat-box:nth-child(2) {
@@ -810,8 +840,13 @@
         }
 
         @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         /* Form Container */
@@ -839,7 +874,7 @@
             color: var(--pink);
         }
 
-        .form-left > p {
+        .form-left>p {
             color: var(--gray);
             font-size: 1.1rem;
             margin-bottom: 3rem;
@@ -866,7 +901,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
         }
 
         .contact-item-icon svg {
@@ -893,7 +928,7 @@
             background: var(--white);
             border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
         }
 
         .form-header {
@@ -947,8 +982,15 @@
         }
 
         @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .form-row {
@@ -1063,8 +1105,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .success-icon {
@@ -1113,7 +1160,7 @@
             flex-wrap: wrap;
             gap: 3rem;
             padding-bottom: 4rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             margin-bottom: 2rem;
         }
 
@@ -1132,7 +1179,7 @@
         }
 
         .footer-brand p {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
@@ -1146,7 +1193,7 @@
         .social-link {
             width: 44px;
             height: 44px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -1189,7 +1236,7 @@
         }
 
         .footer-column a {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
             font-size: 0.95rem;
             transition: all 0.3s ease;
@@ -1206,7 +1253,7 @@
         }
 
         .footer-copy {
-            color: rgba(255,255,255,0.5);
+            color: rgba(255, 255, 255, 0.5);
             font-size: 0.85rem;
         }
 
@@ -1224,6 +1271,7 @@
 
         /* Responsive */
         @media (min-width: 769px) {
+
             .mobile-menu-btn,
             .mobile-nav {
                 display: none !important;
@@ -1231,6 +1279,7 @@
         }
 
         @media (max-width: 1024px) {
+
             .about-grid,
             .form-container {
                 grid-template-columns: 1fr;
@@ -1383,7 +1432,8 @@
             <li><a href="#services">Services</a></li>
             <li><a href="#contact">Contact</a></li>
             <li style="border: none; margin-top: 2rem;">
-                <a href="#contact" class="btn-primary" style="display: block; text-align: center; font-size: 1rem;">Let's Talk</a>
+                <a href="#contact" class="btn-primary"
+                    style="display: block; text-align: center; font-size: 1rem;">Let's Talk</a>
             </li>
         </ul>
     </div>
@@ -1394,9 +1444,11 @@
             <div class="hero-tag">Booking projects for Q1 2026</div>
             <h1>
                 <span class="line"><span class="line-inner">We Make Brands</span></span>
-                <span class="line"><span class="line-inner"><span class="serif">Impossible</span> <span class="outline-text">to Ignore</span></span></span>
+                <span class="line"><span class="line-inner"><span class="serif">Impossible</span> <span
+                            class="outline-text">to Ignore</span></span></span>
             </h1>
-            <p class="hero-description">Strategic social media management that transforms your online presence into a client-generating machine.</p>
+            <p class="hero-description">Strategic social media management that transforms your online presence into a
+                client-generating machine.</p>
             <div class="hero-ctas">
                 <a href="#contact" class="btn-primary">Start a Project →</a>
                 <a href="#services" class="btn-secondary">View Services</a>
@@ -1416,12 +1468,14 @@
                 <div class="why-us-card reveal">
                     <div class="card-number">[ 01 ]</div>
                     <h3>Results Over Vanity</h3>
-                    <p>We don't chase likes — we chase conversions. Every post is engineered to drive real business results.</p>
+                    <p>We don't chase likes — we chase conversions. Every post is engineered to drive real business
+                        results.</p>
                 </div>
                 <div class="why-us-card highlighted reveal">
                     <div class="card-number">[ 02 ]</div>
                     <h3>Free Social Media Audit</h3>
-                    <p>Get a comprehensive analysis of your Instagram profile with actionable insights to improve your presence.</p>
+                    <p>Get a comprehensive analysis of your Instagram profile with actionable insights to improve your
+                        presence.</p>
                 </div>
                 <div class="why-us-card reveal">
                     <div class="card-number">[ 03 ]</div>
@@ -1439,13 +1493,16 @@
                 <div class="about-left reveal">
                     <span class="section-tag">Who We Are</span>
                     <h2>Your Creative <span class="serif">Growth</span> Partner</h2>
-                    <p>We're not your typical agency. We're a team of creators, strategists, and social media obsessives who genuinely care about making your brand shine.</p>
-                    <p>You focus on running your business. We'll handle the content, the strategy, and the growth — with full transparency every step of the way.</p>
+                    <p>We're not your typical agency. We're a team of creators, strategists, and social media obsessives
+                        who genuinely care about making your brand shine.</p>
+                    <p>You focus on running your business. We'll handle the content, the strategy, and the growth — with
+                        full transparency every step of the way.</p>
                     <div class="about-features">
                         <div class="about-feature">
                             <div class="about-feature-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                                    <path
+                                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                                 </svg>
                             </div>
                             <span>Personalized strategy for your brand</span>
@@ -1453,8 +1510,8 @@
                         <div class="about-feature">
                             <div class="about-feature-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                                    <polyline points="17 6 23 6 23 12"/>
+                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                                    <polyline points="17 6 23 6 23 12" />
                                 </svg>
                             </div>
                             <span>Content that actually converts</span>
@@ -1462,29 +1519,11 @@
                         <div class="about-feature">
                             <div class="about-feature-icon">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                                 </svg>
                             </div>
                             <span>Transparent communication</span>
                         </div>
-                    </div>
-                </div>
-                <div class="about-right reveal">
-                    <div class="stat-box">
-                        <h4>50+</h4>
-                        <p>Clients</p>
-                    </div>
-                    <div class="stat-box">
-                        <h4>2M+</h4>
-                        <p>Impressions</p>
-                    </div>
-                    <div class="stat-box">
-                        <h4>300%</h4>
-                        <p>Avg Growth</p>
-                    </div>
-                    <div class="stat-box">
-                        <h4>24h</h4>
-                        <p>Response</p>
                     </div>
                 </div>
             </div>
@@ -1504,22 +1543,23 @@
                     <div class="service-number">01</div>
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                            <line x1="12" y1="18" x2="12.01" y2="18"/>
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                            <line x1="12" y1="18" x2="12.01" y2="18" />
                         </svg>
                     </div>
                 </div>
                 <h3>Social Media Management</h3>
-                <p>Full-service management from strategy to posting. We handle your accounts so you can focus on your business.</p>
+                <p>Full-service management from strategy to posting. We handle your accounts so you can focus on your
+                    business.</p>
             </div>
             <div class="service-card reveal">
                 <div class="service-header">
                     <div class="service-number">02</div>
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 17 12 22 22 17" />
+                            <polyline points="2 12 12 17 22 12" />
                         </svg>
                     </div>
                 </div>
@@ -1531,9 +1571,10 @@
                     <div class="service-number">03</div>
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <line x1="2" y1="12" x2="22" y2="12"/>
-                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                         </svg>
                     </div>
                 </div>
@@ -1545,8 +1586,9 @@
                     <div class="service-number">04</div>
                     <div class="service-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
-                            <circle cx="12" cy="12" r="4"/>
+                            <path
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
+                            <circle cx="12" cy="12" r="4" />
                         </svg>
                     </div>
                 </div>
@@ -1619,14 +1661,15 @@
             <div class="form-left reveal">
                 <span class="section-tag">Get In Touch</span>
                 <h2>Ready to Make Your Brand <span class="serif">Stand Out?</span></h2>
-                <p>Fill out the form and we'll get back to you within 24 hours. Let's explore how we can elevate your social media presence together.</p>
-                
+                <p>Fill out the form and we'll get back to you within 24 hours. Let's explore how we can elevate your
+                    social media presence together.</p>
+
                 <div class="contact-items">
                     <div class="contact-item">
                         <div class="contact-item-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                <polyline points="22,6 12,13 2,6" />
                             </svg>
                         </div>
                         <div class="contact-item-text">
@@ -1636,8 +1679,8 @@
                     <div class="contact-item">
                         <div class="contact-item-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                <circle cx="12" cy="10" r="3" />
                             </svg>
                         </div>
                         <div class="contact-item-text">
@@ -1647,8 +1690,8 @@
                     <div class="contact-item">
                         <div class="contact-item-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
                             </svg>
                         </div>
                         <div class="contact-item-text">
@@ -1663,7 +1706,7 @@
                     <h3>Let's Get Started</h3>
                     <p>Tell us about yourself and your project</p>
                 </div>
-                
+
                 <div class="form-progress">
                     <div class="progress-dot active" data-step="1"></div>
                     <div class="progress-dot" data-step="2"></div>
@@ -1675,7 +1718,8 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name *</label>
-                                <input type="text" id="firstName" name="firstName" placeholder="Your first name" required>
+                                <input type="text" id="firstName" name="firstName" placeholder="Your first name"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label for="lastName">Last Name *</label>
@@ -1688,7 +1732,8 @@
                         </div>
                         <div class="form-group">
                             <label for="business">Business Name *</label>
-                            <input type="text" id="business" name="business" placeholder="Your business or brand name" required>
+                            <input type="text" id="business" name="business" placeholder="Your business or brand name"
+                                required>
                         </div>
                         <div class="form-nav">
                             <button type="button" class="form-btn" onclick="nextStep(2)">Continue →</button>
@@ -1720,7 +1765,8 @@
                         </div>
                         <div class="form-group">
                             <label for="challenge">What's your biggest social media challenge?</label>
-                            <textarea id="challenge" name="challenge" placeholder="Tell us what's holding you back..."></textarea>
+                            <textarea id="challenge" name="challenge"
+                                placeholder="Tell us what's holding you back..."></textarea>
                         </div>
                         <div class="form-nav">
                             <button type="button" class="form-btn back" onclick="prevStep(1)">← Back</button>
@@ -1733,11 +1779,12 @@
                 <div class="form-success" id="formSuccess">
                     <div class="success-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                            <polyline points="20 6 9 17 4 12"/>
+                            <polyline points="20 6 9 17 4 12" />
                         </svg>
                     </div>
                     <h4>Thank You!</h4>
-                    <p>Your message has been sent successfully. We'll review your submission and get back to you within 24 hours with your free social media audit.</p>
+                    <p>Your message has been sent successfully. We'll review your submission and get back to you within
+                        24 hours with your free social media audit.</p>
                 </div>
 
                 <div class="form-footer">
@@ -1757,21 +1804,22 @@
                     <div class="footer-socials">
                         <a href="https://www.instagram.com/sunweek.media/" target="_blank" class="social-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
                             </svg>
                         </a>
                         <a href="https://www.tiktok.com/@sunweek.media" target="_blank" class="social-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
                             </svg>
                         </a>
                         <a href="https://www.linkedin.com/company/sunweek-media/" target="_blank" class="social-link">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                <rect x="2" y="9" width="4" height="12"/>
-                                <circle cx="4" cy="4" r="2"/>
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
                             </svg>
                         </a>
                     </div>
@@ -1801,7 +1849,8 @@
                             <li><a href="mailto:hello@sunweekmedia.com">hello@sunweekmedia.com</a></li>
                             <li><a href="https://www.instagram.com/sunweek.media/" target="_blank">Instagram</a></li>
                             <li><a href="https://www.tiktok.com/@sunweek.media" target="_blank">TikTok</a></li>
-                            <li><a href="https://www.linkedin.com/company/sunweek-media/" target="_blank">LinkedIn</a></li>
+                            <li><a href="https://www.linkedin.com/company/sunweek-media/" target="_blank">LinkedIn</a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -1831,7 +1880,7 @@
 
         // Scroll Reveal
         const reveals = document.querySelectorAll('.reveal');
-        
+
         const revealOnScroll = () => {
             reveals.forEach((el, i) => {
                 const windowHeight = window.innerHeight;
@@ -1869,7 +1918,7 @@
             }
             currentStep = step;
             updateProgress();
-            
+
             const header = document.querySelector('.form-header');
             const titles = {
                 1: { h3: "Let's Get Started", p: "Tell us about yourself" },
@@ -1908,10 +1957,10 @@
         // Form Submission
         const contactForm = document.getElementById('contactForm');
         const formSuccess = document.getElementById('formSuccess');
-        
+
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
@@ -1919,7 +1968,7 @@
 
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
-            
+
             /*
              * ============================================
              * ZAPIER WEBHOOK INTEGRATION GUIDE
@@ -1948,9 +1997,9 @@
              * - budget
              * - challenge
              */
-            
+
             const ZAPIER_WEBHOOK_URL = 'YOUR_ZAPIER_WEBHOOK_URL';
-            
+
             try {
                 if (ZAPIER_WEBHOOK_URL !== 'YOUR_ZAPIER_WEBHOOK_URL') {
                     await fetch(ZAPIER_WEBHOOK_URL, {
@@ -1981,7 +2030,7 @@
                     `Budget: ${data.budget}\n` +
                     `Challenge: ${data.challenge}`
                 );
-                
+
                 window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
             }
         });
