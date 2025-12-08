@@ -2067,76 +2067,28 @@
         const contactForm = document.getElementById('contactForm');
         const formSuccess = document.getElementById('formSuccess');
 
-        contactForm.addEventListener('submit', async (e) => {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
             const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
 
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
 
-            /*
-             * ============================================
-             * ZAPIER WEBHOOK INTEGRATION GUIDE
-             * ============================================
-             * 
-             * To set up automation with Zapier:
-             * 
-             * 1. Go to https://zapier.com and create an account
-             * 2. Create a new Zap
-             * 3. Choose "Webhooks by Zapier" as the trigger
-             * 4. Select "Catch Hook" as the trigger event
-             * 5. Copy the webhook URL provided by Zapier
-             * 6. Replace 'YOUR_ZAPIER_WEBHOOK_URL' below with your URL
-             * 7. Test the webhook by submitting the form
-             * 8. Set up your action (e.g., send to Google Sheets, email, Notion, etc.)
-             * 
-             * Example webhook URL format:
-             * https://hooks.zapier.com/hooks/catch/123456/abcdef/
-             * 
-             * The form sends these fields:
-             * - firstName
-             * - lastName  
-             * - email
-             * - business
-             * - service
-             * - budget
-             * - challenge
-             */
+            // Send to Zapier
+            const params = new URLSearchParams(data).toString();
+            const img = new Image();
+            img.src = 'https://hooks.zapier.com/hooks/catch/25621114/ufdrwmx/?' + params;
 
-            const ZAPIER_WEBHOOK_URL = 'https://hooks.zapier.com/hooks/catch/25621114/ufdrwmx/';
-
-            try {
-                if (ZAPIER_WEBHOOK_URL !== 'https://hooks.zapier.com/hooks/catch/25621114/ufdrwmx/') {
-                    const params = new URLSearchParams(data).toString();
-                    const img = new Image();
-                    img.src = ZAPIER_WEBHOOK_URL + '?' + params;
-                }
-
-                // Show success message
+            // Show success message after 1 second
+            setTimeout(function () {
                 document.querySelector('.form-steps').style.display = 'none';
                 document.querySelector('.form-progress').style.display = 'none';
                 document.querySelector('.form-header').style.display = 'none';
                 formSuccess.classList.add('show');
-
-            } catch (error) {
-                // Fallback to mailto
-                const email = 'hello@sunweekmedia.com';
-                const subject = encodeURIComponent('New Inquiry from Website');
-                const body = encodeURIComponent(
-                    `Name: ${data.firstName} ${data.lastName}\n` +
-                    `Email: ${data.email}\n` +
-                    `Business: ${data.business}\n` +
-                    `Service: ${data.service}\n` +
-                    `Budget: ${data.budget}\n` +
-                    `Challenge: ${data.challenge}`
-                );
-
-                window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-            }
+            }, 1000);
         });
 
         // Smooth scroll
