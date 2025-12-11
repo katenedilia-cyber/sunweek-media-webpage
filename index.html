@@ -7,22 +7,16 @@
     <title>Sunweek Media | Social Media Agency</title>
     <meta name="description"
         content="Sunweek Media | Social Media Agency - We help brands stand out on social media with content that converts.">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
-
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: none;
-            /* Hide default cursor for custom one */
         }
 
         :root {
@@ -38,20 +32,8 @@
             --border: #E8E8E8;
         }
 
-        html.lenis {
-            height: auto;
-        }
-
-        .lenis.lenis-smooth {
-            scroll-behavior: auto;
-        }
-
-        .lenis.lenis-smooth [data-lenis-prevent] {
-            overscroll-behavior: contain;
-        }
-
-        .lenis.lenis-stopped {
-            overflow: hidden;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -82,49 +64,6 @@
             font-weight: 400;
         }
 
-        /* --- CUSTOM CURSOR --- */
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--pink);
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s, background-color 0.3s;
-        }
-
-        .cursor-outline {
-            width: 40px;
-            height: 40px;
-            border: 1px solid rgba(194, 75, 125, 0.5);
-            border-radius: 50%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            transition: all 0.1s ease-out;
-        }
-
-        /* Cursor Hover State */
-        body.hovering .cursor-dot {
-            width: 12px;
-            height: 12px;
-            background: var(--lime);
-        }
-
-        body.hovering .cursor-outline {
-            width: 60px;
-            height: 60px;
-            border-color: var(--lime);
-            background: rgba(212, 255, 61, 0.1);
-        }
-
         /* Navigation */
         nav {
             position: fixed;
@@ -135,10 +74,9 @@
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.97);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
-            transition: all 0.3s ease;
         }
 
         .logo {
@@ -251,6 +189,11 @@
             transition: all 0.3s ease;
         }
 
+        .mobile-nav a:hover {
+            color: var(--pink);
+            padding-left: 1rem;
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -314,36 +257,38 @@
             }
         }
 
-        /* --- STAGGERED HERO ANIMATION --- */
         .hero h1 {
             font-size: clamp(2.75rem, 7vw, 5.5rem);
             font-weight: 800;
             margin-bottom: 1.5rem;
-            line-height: 1.15;
+            line-height: 1.05;
+        }
+
+        .hero h1 .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero h1 .line-inner {
+            display: block;
             opacity: 0;
-            transition: opacity 0.2s;
+            transform: translateY(100%);
+            animation: revealLine 0.8s ease forwards;
         }
 
-        .hero h1.loaded {
-            opacity: 1;
+        .hero h1 .line:nth-child(2) .line-inner {
+            animation-delay: 0.1s;
         }
 
-        .hero h1 .char {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(40px) rotate(5deg);
-            transition: opacity 0.6s cubic-bezier(0.215, 0.61, 0.355, 1),
-                transform 0.8s cubic-bezier(0.215, 0.61, 0.355, 1);
-        }
-
-        .hero h1 .char.visible {
-            opacity: 1;
-            transform: translateY(0) rotate(0deg);
+        @keyframes revealLine {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .hero h1 .highlight {
             color: var(--pink);
-            display: inline-block;
         }
 
         .hero-description {
@@ -482,6 +427,42 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* Typing Animation */
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--pink);
+            width: 0;
+            animation: typing 1.5s steps(10) 0.5s forwards, blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: var(--pink);
+            }
+        }
+
+        .typing-wrapper {
+            display: inline-block;
         }
 
         /* Why Choose Us Section */
@@ -705,44 +686,30 @@
             transform: translateX(10px);
         }
 
-        /* --- SELF-DRAWING ANIMATED ICONS --- */
         .service-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--dark);
-            /* Dark background for contrast */
-            border-radius: 12px;
+            width: 60px;
+            height: 60px;
+            background: var(--pink-light);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
 
         .service-icon svg {
-            width: 32px;
-            height: 32px;
-            fill: none;
-            stroke-width: 2.5;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-        }
-
-        /* SVG drawing paths */
-        .drawing-path {
-            stroke-dasharray: 150;
-            stroke-dashoffset: 150;
-            transition: stroke-dashoffset 1.5s ease-in-out;
-        }
-
-        /* Trigger drawing on card hover */
-        .service-card:hover .drawing-path {
-            stroke-dashoffset: 0;
+            width: 28px;
+            height: 28px;
+            stroke: var(--pink);
+            transition: all 0.3s ease;
         }
 
         .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-            background: #000;
+            background: var(--pink);
+        }
+
+        .service-card:hover .service-icon svg {
+            stroke: var(--white);
         }
 
         .service-card h3 {
@@ -1297,7 +1264,7 @@
             font-size: 0.85rem;
         }
 
-        /* Reveal Animations */
+        /* Scroll Animations */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -1447,9 +1414,7 @@
 </head>
 
 <body>
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-
+    <!-- Navigation -->
     <nav>
         <div class="logo"><span>Sunweek</span> Media</div>
         <ul class="nav-links">
@@ -1465,6 +1430,7 @@
         </button>
     </nav>
 
+    <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <ul>
             <li><a href="#about">About</a></li>
@@ -1477,12 +1443,14 @@
         </ul>
     </div>
 
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-tag">Booking projects for Q1 2026</div>
-            <h1 id="hero-title">
-                We Make Brands <br>
-                <span class="serif highlight">Impossible</span> to Ignore
+            <h1>
+                <span class="line"><span class="line-inner">We Make Brands</span></span>
+                <span class="line"><span class="line-inner"><span class="typing-wrapper"><span
+                                class="serif highlight typing-text">Impossible</span></span> to Ignore</span></span>
             </h1>
             <p class="hero-description">Strategic social media management that transforms your online presence into a
                 client-generating machine.</p>
@@ -1496,6 +1464,7 @@
         </div>
     </section>
 
+    <!-- Why Choose Us Section -->
     <section class="why-us">
         <div class="why-us-container">
             <div class="section-header reveal">
@@ -1525,6 +1494,7 @@
         </div>
     </section>
 
+    <!-- About Section -->
     <section class="about" id="about">
         <div class="about-container">
             <div class="about-grid">
@@ -1570,6 +1540,7 @@
         </div>
     </section>
 
+    <!-- Services Section -->
     <section class="services" id="services">
         <div class="section-header reveal">
             <span class="section-tag">What We Do</span>
@@ -1581,14 +1552,9 @@
                 <div class="service-header">
                     <div class="service-number">01</div>
                     <div class="service-icon">
-                        <svg viewBox="0 0 40 40">
-                            <defs>
-                                <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#D4FF3D;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#9EFF00;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <path class="drawing-path" d="M2 20 Q10 5 20 20 T38 20" stroke="url(#grad1)" />
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                            <line x1="12" y1="18" x2="12.01" y2="18" />
                         </svg>
                     </div>
                 </div>
@@ -1596,63 +1562,43 @@
                 <p>Full-service management from strategy to posting. We handle your accounts so you can focus on your
                     business.</p>
             </div>
-
             <div class="service-card reveal">
                 <div class="service-header">
                     <div class="service-number">02</div>
                     <div class="service-icon">
-                        <svg viewBox="0 0 40 40">
-                            <defs>
-                                <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#00F0FF;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#0088FF;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <path class="drawing-path"
-                                d="M10 20 C10 10 20 10 20 20 C20 30 30 30 30 20 C30 10 20 10 20 20 C20 30 10 30 10 20"
-                                stroke="url(#grad2)" />
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                            <polyline points="2 17 12 22 22 17" />
+                            <polyline points="2 12 12 17 22 12" />
                         </svg>
                     </div>
                 </div>
                 <h3>Content Creation</h3>
                 <p>Scroll-stopping visuals and copy that makes people stop, engage, and remember your brand.</p>
             </div>
-
             <div class="service-card reveal">
                 <div class="service-header">
                     <div class="service-number">03</div>
                     <div class="service-icon">
-                        <svg viewBox="0 0 40 40">
-                            <defs>
-                                <linearGradient id="grad3" x1="0%" y1="0%" x2="0%" y2="100%">
-                                    <stop offset="0%" style="stop-color:#C24B7D;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FF88CC;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <path class="drawing-path"
-                                d="M12 12 H28 M12 28 H28 M20 8 V32 M12 12 Q8 12 8 16 Q8 20 12 20 M28 12 Q32 12 32 16 Q32 20 28 20 M12 28 Q8 28 8 24 Q8 20 12 20 M28 28 Q32 28 32 24 Q32 20 28 20"
-                                stroke="url(#grad3)" />
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
                         </svg>
                     </div>
                 </div>
                 <h3>Strategy Development</h3>
                 <p>Custom roadmaps built around your goals, audience, and industry. No generic templates here.</p>
             </div>
-
             <div class="service-card reveal">
                 <div class="service-header">
                     <div class="service-number">04</div>
                     <div class="service-icon">
-                        <svg viewBox="0 0 40 40">
-                            <defs>
-                                <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="0%">
-                                    <stop offset="0%" style="stop-color:#FF9900;stop-opacity:1" />
-                                    <stop offset="100%" style="stop-color:#FFDD00;stop-opacity:1" />
-                                </linearGradient>
-                            </defs>
-                            <path class="drawing-path"
-                                d="M5 22 Q10 22 12 18 Q14 14 16 18 Q18 22 20 22 Q25 22 25 15 Q25 8 32 8 Q38 8 38 15"
-                                stroke="url(#grad4)" />
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
+                            <circle cx="12" cy="12" r="4" />
                         </svg>
                     </div>
                 </div>
@@ -1662,6 +1608,7 @@
         </div>
     </section>
 
+    <!-- Process Section -->
     <section class="process">
         <div class="section-header reveal">
             <span class="section-tag">How It Works</span>
@@ -1692,7 +1639,9 @@
         </div>
     </section>
 
+    <!-- Form Section -->
     <section class="form-section" id="contact">
+        <!-- Marquee -->
         <div class="marquee">
             <div class="marquee-track">
                 <div class="marquee-content">
@@ -1766,6 +1715,7 @@
                 </div>
 
                 <form id="contactForm" class="form-steps">
+                    <!-- Step 1 -->
                     <div class="form-step active" data-step="1">
                         <div class="form-row">
                             <div class="form-group">
@@ -1792,6 +1742,7 @@
                         </div>
                     </div>
 
+                    <!-- Step 2 -->
                     <div class="form-step" data-step="2">
                         <div class="form-group">
                             <label for="service">What service are you interested in? *</label>
@@ -1826,6 +1777,7 @@
                     </div>
                 </form>
 
+                <!-- Success Message -->
                 <div class="form-success" id="formSuccess">
                     <div class="success-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1844,6 +1796,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-top">
@@ -1912,44 +1865,6 @@
     </footer>
 
     <script>
-        // --- 1. SMOOTH SCROLL (LENIS) ---
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        // --- 2. CUSTOM CURSOR LOGIC ---
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            // Dot follows instantly
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-
-            // Outline follows with slight delay (animation in CSS)
-            cursorOutline.style.left = `${posX}px`;
-            cursorOutline.style.top = `${posY}px`;
-        });
-
-        // Hover Effect for interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .service-card, input, select, textarea');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-        });
-
-        // --- 3. EXISTING FUNCTIONALITY ---
-
         // Mobile Menu
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileNav = document.getElementById('mobileNav');
@@ -1968,6 +1883,7 @@
 
         // Scroll Reveal
         const reveals = document.querySelectorAll('.reveal');
+
         const revealOnScroll = () => {
             reveals.forEach((el, i) => {
                 const windowHeight = window.innerHeight;
@@ -1981,12 +1897,14 @@
                 }
             });
         };
+
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
         // Process Auto Animation
         const processSteps = document.querySelectorAll('.process-step');
         let processAnimated = false;
+
         const animateProcess = () => {
             const processSection = document.querySelector('.process');
             if (!processSection) return;
@@ -2003,17 +1921,20 @@
                 });
             }
         };
+
         window.addEventListener('scroll', animateProcess);
         window.addEventListener('load', animateProcess);
 
         // Multi-Step Form
         let currentStep = 1;
+
         function updateProgress() {
             document.querySelectorAll('.progress-dot').forEach(dot => {
                 const step = parseInt(dot.dataset.step);
                 dot.classList.toggle('active', step <= currentStep);
             });
         }
+
         function showStep(step) {
             document.querySelectorAll('.form-step').forEach(s => {
                 s.classList.remove('active');
@@ -2024,6 +1945,7 @@
             }
             currentStep = step;
             updateProgress();
+
             const header = document.querySelector('.form-header');
             const titles = {
                 1: { h3: "Let's Get Started", p: "Tell us about yourself" },
@@ -2034,10 +1956,12 @@
                 header.querySelector('p').textContent = titles[step].p;
             }
         }
+
         function nextStep(step) {
             const currentFormStep = document.querySelector(`.form-step[data-step="${currentStep}"]`);
             const inputs = currentFormStep.querySelectorAll('input[required], select[required]');
             let valid = true;
+
             inputs.forEach(input => {
                 if (!input.value.trim()) {
                     input.style.borderColor = '#C24B7D';
@@ -2047,10 +1971,12 @@
                     }, { once: true });
                 }
             });
+
             if (valid) {
                 showStep(step);
             }
         }
+
         function prevStep(step) {
             showStep(step);
         }
@@ -2058,16 +1984,23 @@
         // Form Submission
         const contactForm = document.getElementById('contactForm');
         const formSuccess = document.getElementById('formSuccess');
+
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
+
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
+
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
+
+            // Send to Zapier
             const params = new URLSearchParams(data).toString();
             const img = new Image();
             img.src = 'https://hooks.zapier.com/hooks/catch/25621114/ufdrwmx/?' + params;
+
+            // Show success message after 1 second
             setTimeout(function () {
                 document.querySelector('.form-steps').style.display = 'none';
                 document.querySelector('.form-progress').style.display = 'none';
@@ -2076,72 +2009,17 @@
             }, 1000);
         });
 
-        // Smooth scroll for anchors
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    lenis.scrollTo(target); // Use Lenis for smooth scroll
-                }
-            });
-        });
-
-        // --- 4. HERO TEXT ANIMATION & ICONS ---
-        document.addEventListener("DOMContentLoaded", () => {
-            const title = document.getElementById("hero-title");
-            if (title) {
-                const splitText = (element) => {
-                    const childNodes = [...element.childNodes];
-                    element.innerHTML = '';
-                    childNodes.forEach(child => {
-                        if (child.nodeType === 3) {
-                            const words = child.textContent.split(' ');
-                            words.forEach((word, wordIndex) => {
-                                const wordSpan = document.createElement('span');
-                                wordSpan.style.display = 'inline-block';
-                                wordSpan.style.whiteSpace = 'pre';
-                                word.split('').forEach(char => {
-                                    const span = document.createElement('span');
-                                    span.textContent = char;
-                                    span.className = 'char';
-                                    wordSpan.appendChild(span);
-                                });
-                                if (wordIndex < words.length - 1) {
-                                    const space = document.createElement('span');
-                                    space.innerHTML = '&nbsp;';
-                                    space.className = 'char';
-                                    wordSpan.appendChild(space);
-                                }
-                                element.appendChild(wordSpan);
-                            });
-                        } else if (child.nodeType === 1) {
-                            if (child.tagName === 'BR') {
-                                element.appendChild(child.cloneNode(true));
-                            } else {
-                                const clone = child.cloneNode(true);
-                                splitText(clone);
-                                element.appendChild(clone);
-                            }
-                        }
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
-                };
-                splitText(title);
-                title.classList.add('loaded');
-                const chars = title.querySelectorAll('.char');
-                chars.forEach((char, index) => {
-                    setTimeout(() => {
-                        char.classList.add('visible');
-                    }, 50 + (index * 25));
-                });
-            }
-
-            // Self-Drawing Icons Init
-            const paths = document.querySelectorAll('.drawing-path');
-            paths.forEach(path => {
-                const length = path.getTotalLength();
-                path.style.strokeDasharray = length;
-                path.style.strokeDashoffset = length;
+                }
             });
         });
     </script>
