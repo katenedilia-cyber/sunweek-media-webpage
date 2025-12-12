@@ -64,69 +64,6 @@
             font-weight: 400;
         }
 
-        /* --- ANIMATION STYLES (Text Reveals) --- */
-
-        /* The container that clips the text */
-        .mask-container {
-            display: block;
-            overflow: hidden;
-            margin-bottom: -0.1em;
-            /* Tighten gap slightly */
-        }
-
-        /* The text that slides up */
-        .mask-text {
-            display: block;
-            transform: translateY(110%);
-            opacity: 0;
-            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease;
-            will-change: transform, opacity;
-        }
-
-        /* The active state */
-        .mask-text.animated {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* Stagger Delays */
-        .delay-1 {
-            transition-delay: 0.1s;
-        }
-
-        .delay-2 {
-            transition-delay: 0.2s;
-        }
-
-        .delay-3 {
-            transition-delay: 0.3s;
-        }
-
-        /* General Reveal (Cards/Images) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px) scale(0.98);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        /* Fallback: If animations stick, this class forces them visible */
-        .force-visible .mask-text {
-            transform: translateY(0) !important;
-            opacity: 1 !important;
-        }
-
-        .force-visible .reveal {
-            transform: translateY(0) !important;
-            opacity: 1 !important;
-        }
-
-        /* --- END ANIMATIONS --- */
-
         /* Navigation */
         nav {
             position: fixed;
@@ -195,8 +132,7 @@
             border: none;
             cursor: pointer;
             padding: 0.5rem;
-            z-index: 1005;
-            /* Increased z-index */
+            z-index: 1001;
         }
 
         .mobile-menu-btn span {
@@ -231,8 +167,7 @@
             padding: 7rem 2rem 2rem;
             transform: translateX(-100%);
             transition: transform 0.4s ease;
-            z-index: 1002;
-            /* Increased z-index to be above header */
+            z-index: 999;
         }
 
         .mobile-nav.active {
@@ -329,6 +264,29 @@
             line-height: 1.05;
         }
 
+        .hero h1 .line {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero h1 .line-inner {
+            display: block;
+            opacity: 0;
+            transform: translateY(100%);
+            animation: revealLine 0.8s ease forwards;
+        }
+
+        .hero h1 .line:nth-child(2) .line-inner {
+            animation-delay: 0.1s;
+        }
+
+        @keyframes revealLine {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .hero h1 .highlight {
             color: var(--pink);
         }
@@ -342,12 +300,7 @@
             margin-right: auto;
             line-height: 1.8;
             opacity: 0;
-            /* Hidden by default for animation */
-        }
-
-        .hero-description.visible {
-            opacity: 1;
-            transform: translateY(0);
+            animation: fadeUp 0.6s ease 0.4s forwards;
         }
 
         .hero-ctas {
@@ -356,12 +309,19 @@
             justify-content: center;
             flex-wrap: wrap;
             opacity: 0;
-            /* Hidden by default for animation */
+            animation: fadeUp 0.6s ease 0.5s forwards;
         }
 
-        .hero-ctas.visible {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .btn-primary {
@@ -467,6 +427,42 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
+        }
+
+        /* Typing Animation */
+        .typing-text {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--pink);
+            width: 0;
+            animation: typing 1.5s steps(10) 0.5s forwards, blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: var(--pink);
+            }
+        }
+
+        .typing-wrapper {
+            display: inline-block;
         }
 
         /* Why Choose Us Section */
@@ -1268,6 +1264,18 @@
             font-size: 0.85rem;
         }
 
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Responsive */
         @media (min-width: 769px) {
 
@@ -1406,6 +1414,7 @@
 </head>
 
 <body>
+    <!-- Navigation -->
     <nav>
         <div class="logo"><span>Sunweek</span> Media</div>
         <ul class="nav-links">
@@ -1421,6 +1430,7 @@
         </button>
     </nav>
 
+    <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <ul>
             <li><a href="#about">About</a></li>
@@ -1433,20 +1443,18 @@
         </ul>
     </div>
 
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-tag reveal">Booking projects for Q1 2026</div>
+            <div class="hero-tag">Booking projects for Q1 2026</div>
             <h1>
-                <span class="mask-container">
-                    <span class="mask-text">We Make Brands</span>
-                </span>
-                <span class="mask-container">
-                    <span class="mask-text delay-1"><span class="serif highlight">Impossible</span> to Ignore</span>
-                </span>
+                <span class="line"><span class="line-inner">We Make Brands</span></span>
+                <span class="line"><span class="line-inner"><span class="typing-wrapper"><span
+                                class="serif highlight typing-text">Impossible</span></span> to Ignore</span></span>
             </h1>
-            <p class="hero-description reveal">Strategic social media management that transforms your online presence
-                into a client-generating machine.</p>
-            <div class="hero-ctas reveal">
+            <p class="hero-description">Strategic social media management that transforms your online presence into a
+                client-generating machine.</p>
+            <div class="hero-ctas">
                 <a href="#contact" class="btn-primary btn-large">Start a Project →</a>
             </div>
         </div>
@@ -1456,15 +1464,12 @@
         </div>
     </section>
 
+    <!-- Why Choose Us Section -->
     <section class="why-us">
         <div class="why-us-container">
             <div class="section-header reveal">
                 <span class="section-tag">Why Choose Us</span>
-                <h2>
-                    <span class="mask-container">
-                        <span class="mask-text">What Sets Us Apart</span>
-                    </span>
-                </h2>
+                <h2>What Sets Us Apart</h2>
                 <p>We're not just another agency. Here's why brands trust us.</p>
             </div>
             <div class="why-us-grid">
@@ -1489,19 +1494,13 @@
         </div>
     </section>
 
+    <!-- About Section -->
     <section class="about" id="about">
         <div class="about-container">
             <div class="about-grid">
                 <div class="about-left reveal">
                     <span class="section-tag">Who We Are</span>
-                    <h2>
-                        <span class="mask-container">
-                            <span class="mask-text">Your Creative</span>
-                        </span>
-                        <span class="mask-container">
-                            <span class="mask-text delay-1"><span class="serif">Growth</span> Partner</span>
-                        </span>
-                    </h2>
+                    <h2>Your Creative <span class="serif">Growth</span> Partner</h2>
                     <p>We're not your typical agency. We're a team of creators, strategists, and social media obsessives
                         who genuinely care about making your brand shine.</p>
                     <p>You focus on running your business. We'll handle the content, the strategy, and the growth — with
@@ -1541,14 +1540,11 @@
         </div>
     </section>
 
+    <!-- Services Section -->
     <section class="services" id="services">
         <div class="section-header reveal">
             <span class="section-tag">What We Do</span>
-            <h2>
-                <span class="mask-container">
-                    <span class="mask-text">Our Services</span>
-                </span>
-            </h2>
+            <h2>Our Services</h2>
             <p>Strategic social media solutions designed to elevate your brand and drive measurable growth.</p>
         </div>
         <div class="services-grid">
@@ -1612,14 +1608,11 @@
         </div>
     </section>
 
+    <!-- Process Section -->
     <section class="process">
         <div class="section-header reveal">
             <span class="section-tag">How It Works</span>
-            <h2>
-                <span class="mask-container">
-                    <span class="mask-text">Our Process</span>
-                </span>
-            </h2>
+            <h2>Our Process</h2>
             <p>From first contact to launch — here's how we bring your social media vision to life.</p>
         </div>
         <div class="process-grid">
@@ -1646,7 +1639,9 @@
         </div>
     </section>
 
+    <!-- Form Section -->
     <section class="form-section" id="contact">
+        <!-- Marquee -->
         <div class="marquee">
             <div class="marquee-track">
                 <div class="marquee-content">
@@ -1667,14 +1662,7 @@
         <div class="form-container">
             <div class="form-left reveal">
                 <span class="section-tag">Get In Touch</span>
-                <h2>
-                    <span class="mask-container">
-                        <span class="mask-text">Ready to Make Your</span>
-                    </span>
-                    <span class="mask-container">
-                        <span class="mask-text delay-1">Brand <span class="serif">Stand Out?</span></span>
-                    </span>
-                </h2>
+                <h2>Ready to Make Your Brand <span class="serif">Stand Out?</span></h2>
                 <p>Fill out the form and we'll get back to you within 24 hours. Let's explore how we can elevate your
                     social media presence together.</p>
 
@@ -1727,6 +1715,7 @@
                 </div>
 
                 <form id="contactForm" class="form-steps">
+                    <!-- Step 1 -->
                     <div class="form-step active" data-step="1">
                         <div class="form-row">
                             <div class="form-group">
@@ -1753,6 +1742,7 @@
                         </div>
                     </div>
 
+                    <!-- Step 2 -->
                     <div class="form-step" data-step="2">
                         <div class="form-group">
                             <label for="service">What service are you interested in? *</label>
@@ -1787,6 +1777,7 @@
                     </div>
                 </form>
 
+                <!-- Success Message -->
                 <div class="form-success" id="formSuccess">
                     <div class="success-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1805,6 +1796,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-top">
@@ -1873,92 +1865,67 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileNav = document.getElementById('mobileNav');
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
 
-            if (mobileMenuBtn) {
-                mobileMenuBtn.addEventListener('click', () => {
-                    mobileNav.classList.toggle('active');
-                    mobileMenuBtn.classList.toggle('active');
-                });
-            }
-
-            document.querySelectorAll('.mobile-nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileNav.classList.remove('active');
-                    mobileMenuBtn.classList.remove('active');
-                });
-            });
-
-            // ----------------------------------------------------
-            // FIXED ANIMATION SCRIPT
-            // ----------------------------------------------------
-
-            // 1. Safety Timer: If animations don't trigger in 500ms, force them visible
-            // This prevents "blank screen" issues if the observer fails
-            setTimeout(() => {
-                document.body.classList.add('force-visible');
-            }, 500);
-
-            // 2. Intersection Observer with lower threshold
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1 // Trigger earlier (10% visibility)
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Handle standard card reveals
-                        if (entry.target.classList.contains('reveal')) {
-                            entry.target.classList.add('visible');
-                        }
-
-                        // Handle text masking animations
-                        if (entry.target.classList.contains('mask-text')) {
-                            entry.target.classList.add('animated');
-                        }
-
-                        // Handle process steps
-                        if (entry.target.classList.contains('process-step')) {
-                            entry.target.classList.add('active');
-                        }
-
-                        // Stop observing once revealed
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all elements
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-            document.querySelectorAll('.mask-text').forEach(el => observer.observe(el));
-
-            // Staggered Process Steps Observer
-            const processSteps = document.querySelectorAll('.process-step');
-            if (processSteps.length > 0) {
-                const processObserver = new IntersectionObserver((entries) => {
-                    if (entries[0].isIntersecting) {
-                        processSteps.forEach((step, index) => {
-                            setTimeout(() => {
-                                step.classList.add('active');
-                            }, index * 300);
-                        });
-                        processObserver.disconnect();
-                    }
-                }, { threshold: 0.1 });
-
-                const processSection = document.querySelector('.process-grid');
-                if (processSection) processObserver.observe(processSection);
-            }
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
         });
 
-        // ----------------------------------------------------
-        // Multi-Step Form Logic
-        // ----------------------------------------------------
+        document.querySelectorAll('.mobile-nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal
+        const reveals = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            reveals.forEach((el, i) => {
+                const windowHeight = window.innerHeight;
+                const revealTop = el.getBoundingClientRect().top;
+                const revealPoint = 100;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    setTimeout(() => {
+                        el.classList.add('visible');
+                    }, i * 30);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        revealOnScroll();
+
+        // Process Auto Animation
+        const processSteps = document.querySelectorAll('.process-step');
+        let processAnimated = false;
+
+        const animateProcess = () => {
+            const processSection = document.querySelector('.process');
+            if (!processSection) return;
+
+            const rect = processSection.getBoundingClientRect();
+            const triggerPoint = window.innerHeight * 0.75;
+
+            if (rect.top < triggerPoint && !processAnimated) {
+                processAnimated = true;
+                processSteps.forEach((step, index) => {
+                    setTimeout(() => {
+                        step.classList.add('active');
+                    }, index * 500);
+                });
+            }
+        };
+
+        window.addEventListener('scroll', animateProcess);
+        window.addEventListener('load', animateProcess);
+
+        // Multi-Step Form
         let currentStep = 1;
 
         function updateProgress() {
@@ -1980,14 +1947,13 @@
             updateProgress();
 
             const header = document.querySelector('.form-header');
-            if (header) {
-                if (step === 1) {
-                    header.querySelector('h3').textContent = "Let's Get Started";
-                    header.querySelector('p').textContent = "Tell us about yourself and your project";
-                } else {
-                    header.querySelector('h3').textContent = "Almost There";
-                    header.querySelector('p').textContent = "Tell us about your project";
-                }
+            const titles = {
+                1: { h3: "Let's Get Started", p: "Tell us about yourself" },
+                2: { h3: "Almost There", p: "Tell us about your project" }
+            };
+            if (titles[step]) {
+                header.querySelector('h3').textContent = titles[step].h3;
+                header.querySelector('p').textContent = titles[step].p;
             }
         }
 
@@ -2019,31 +1985,29 @@
         const contactForm = document.getElementById('contactForm');
         const formSuccess = document.getElementById('formSuccess');
 
-        if (contactForm) {
-            contactForm.addEventListener('submit', function (e) {
-                e.preventDefault();
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
 
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                submitBtn.textContent = 'Sending...';
-                submitBtn.disabled = true;
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
 
-                const formData = new FormData(contactForm);
-                const data = Object.fromEntries(formData);
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
 
-                // Send to Zapier
-                const params = new URLSearchParams(data).toString();
-                const img = new Image();
-                img.src = 'https://hooks.zapier.com/hooks/catch/25621114/ufdrwmx/?' + params;
+            // Send to Zapier
+            const params = new URLSearchParams(data).toString();
+            const img = new Image();
+            img.src = 'https://hooks.zapier.com/hooks/catch/25621114/ufdrwmx/?' + params;
 
-                // Show success message after 1 second
-                setTimeout(function () {
-                    document.querySelector('.form-steps').style.display = 'none';
-                    document.querySelector('.form-progress').style.display = 'none';
-                    document.querySelector('.form-header').style.display = 'none';
-                    formSuccess.classList.add('show');
-                }, 1000);
-            });
-        }
+            // Show success message after 1 second
+            setTimeout(function () {
+                document.querySelector('.form-steps').style.display = 'none';
+                document.querySelector('.form-progress').style.display = 'none';
+                document.querySelector('.form-header').style.display = 'none';
+                formSuccess.classList.add('show');
+            }, 1000);
+        });
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
