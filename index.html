@@ -64,6 +64,58 @@
             font-weight: 400;
         }
 
+        /* --- NEW ANIMATION STYLES (Text Reveals) --- */
+
+        /* The container that clips the text */
+        .mask-container {
+            display: block;
+            overflow: hidden;
+            margin-bottom: -0.1em;
+            /* Tighten gap slightly */
+        }
+
+        /* The text that slides up */
+        .mask-text {
+            display: block;
+            transform: translateY(110%);
+            opacity: 0;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease;
+            will-change: transform, opacity;
+        }
+
+        /* The active state */
+        .mask-text.animated {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Stagger Delays */
+        .delay-1 {
+            transition-delay: 0.15s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.45s;
+        }
+
+        /* General Reveal (Cards/Images) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* --- END NEW ANIMATIONS --- */
+
         /* Navigation */
         nav {
             position: fixed;
@@ -264,29 +316,6 @@
             line-height: 1.05;
         }
 
-        .hero h1 .line {
-            display: block;
-            overflow: hidden;
-        }
-
-        .hero h1 .line-inner {
-            display: block;
-            opacity: 0;
-            transform: translateY(100%);
-            animation: revealLine 0.8s ease forwards;
-        }
-
-        .hero h1 .line:nth-child(2) .line-inner {
-            animation-delay: 0.1s;
-        }
-
-        @keyframes revealLine {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         .hero h1 .highlight {
             color: var(--pink);
         }
@@ -299,8 +328,13 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.8;
+            /* Updated to use new reveal */
             opacity: 0;
-            animation: fadeUp 0.6s ease 0.4s forwards;
+        }
+
+        .hero-description.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .hero-ctas {
@@ -308,20 +342,13 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            /* Updated to use new reveal */
             opacity: 0;
-            animation: fadeUp 0.6s ease 0.5s forwards;
         }
 
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-ctas.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .btn-primary {
@@ -427,42 +454,6 @@
             max-width: 500px;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        /* Typing Animation */
-        .typing-text {
-            display: inline-block;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 3px solid var(--pink);
-            width: 0;
-            animation: typing 1.5s steps(10) 0.5s forwards, blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
-
-        @keyframes blink-caret {
-
-            from,
-            to {
-                border-color: transparent;
-            }
-
-            50% {
-                border-color: var(--pink);
-            }
-        }
-
-        .typing-wrapper {
-            display: inline-block;
         }
 
         /* Why Choose Us Section */
@@ -1264,18 +1255,6 @@
             font-size: 0.85rem;
         }
 
-        /* Scroll Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Responsive */
         @media (min-width: 769px) {
 
@@ -1414,7 +1393,6 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <nav>
         <div class="logo"><span>Sunweek</span> Media</div>
         <ul class="nav-links">
@@ -1430,7 +1408,6 @@
         </button>
     </nav>
 
-    <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <ul>
             <li><a href="#about">About</a></li>
@@ -1443,18 +1420,20 @@
         </ul>
     </div>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <div class="hero-tag">Booking projects for Q1 2026</div>
+            <div class="hero-tag reveal">Booking projects for Q1 2026</div>
             <h1>
-                <span class="line"><span class="line-inner">We Make Brands</span></span>
-                <span class="line"><span class="line-inner"><span class="typing-wrapper"><span
-                                class="serif highlight typing-text">Impossible</span></span> to Ignore</span></span>
+                <span class="mask-container">
+                    <span class="mask-text">We Make Brands</span>
+                </span>
+                <span class="mask-container">
+                    <span class="mask-text delay-1"><span class="serif highlight">Impossible</span> to Ignore</span>
+                </span>
             </h1>
-            <p class="hero-description">Strategic social media management that transforms your online presence into a
-                client-generating machine.</p>
-            <div class="hero-ctas">
+            <p class="hero-description reveal">Strategic social media management that transforms your online presence
+                into a client-generating machine.</p>
+            <div class="hero-ctas reveal">
                 <a href="#contact" class="btn-primary btn-large">Start a Project →</a>
             </div>
         </div>
@@ -1464,12 +1443,15 @@
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
     <section class="why-us">
         <div class="why-us-container">
             <div class="section-header reveal">
                 <span class="section-tag">Why Choose Us</span>
-                <h2>What Sets Us Apart</h2>
+                <h2>
+                    <span class="mask-container">
+                        <span class="mask-text">What Sets Us Apart</span>
+                    </span>
+                </h2>
                 <p>We're not just another agency. Here's why brands trust us.</p>
             </div>
             <div class="why-us-grid">
@@ -1494,13 +1476,19 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about" id="about">
         <div class="about-container">
             <div class="about-grid">
                 <div class="about-left reveal">
                     <span class="section-tag">Who We Are</span>
-                    <h2>Your Creative <span class="serif">Growth</span> Partner</h2>
+                    <h2>
+                        <span class="mask-container">
+                            <span class="mask-text">Your Creative</span>
+                        </span>
+                        <span class="mask-container">
+                            <span class="mask-text delay-1"><span class="serif">Growth</span> Partner</span>
+                        </span>
+                    </h2>
                     <p>We're not your typical agency. We're a team of creators, strategists, and social media obsessives
                         who genuinely care about making your brand shine.</p>
                     <p>You focus on running your business. We'll handle the content, the strategy, and the growth — with
@@ -1540,11 +1528,14 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services" id="services">
         <div class="section-header reveal">
             <span class="section-tag">What We Do</span>
-            <h2>Our Services</h2>
+            <h2>
+                <span class="mask-container">
+                    <span class="mask-text">Our Services</span>
+                </span>
+            </h2>
             <p>Strategic social media solutions designed to elevate your brand and drive measurable growth.</p>
         </div>
         <div class="services-grid">
@@ -1608,11 +1599,14 @@
         </div>
     </section>
 
-    <!-- Process Section -->
     <section class="process">
         <div class="section-header reveal">
             <span class="section-tag">How It Works</span>
-            <h2>Our Process</h2>
+            <h2>
+                <span class="mask-container">
+                    <span class="mask-text">Our Process</span>
+                </span>
+            </h2>
             <p>From first contact to launch — here's how we bring your social media vision to life.</p>
         </div>
         <div class="process-grid">
@@ -1639,9 +1633,7 @@
         </div>
     </section>
 
-    <!-- Form Section -->
     <section class="form-section" id="contact">
-        <!-- Marquee -->
         <div class="marquee">
             <div class="marquee-track">
                 <div class="marquee-content">
@@ -1662,7 +1654,14 @@
         <div class="form-container">
             <div class="form-left reveal">
                 <span class="section-tag">Get In Touch</span>
-                <h2>Ready to Make Your Brand <span class="serif">Stand Out?</span></h2>
+                <h2>
+                    <span class="mask-container">
+                        <span class="mask-text">Ready to Make Your</span>
+                    </span>
+                    <span class="mask-container">
+                        <span class="mask-text delay-1">Brand <span class="serif">Stand Out?</span></span>
+                    </span>
+                </h2>
                 <p>Fill out the form and we'll get back to you within 24 hours. Let's explore how we can elevate your
                     social media presence together.</p>
 
@@ -1715,7 +1714,6 @@
                 </div>
 
                 <form id="contactForm" class="form-steps">
-                    <!-- Step 1 -->
                     <div class="form-step active" data-step="1">
                         <div class="form-row">
                             <div class="form-group">
@@ -1742,7 +1740,6 @@
                         </div>
                     </div>
 
-                    <!-- Step 2 -->
                     <div class="form-step" data-step="2">
                         <div class="form-group">
                             <label for="service">What service are you interested in? *</label>
@@ -1777,7 +1774,6 @@
                     </div>
                 </form>
 
-                <!-- Success Message -->
                 <div class="form-success" id="formSuccess">
                     <div class="success-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -1796,7 +1792,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-top">
@@ -1881,51 +1876,66 @@
             });
         });
 
-        // Scroll Reveal
-        const reveals = document.querySelectorAll('.reveal');
+        // ----------------------------------------------------
+        // Modern Scroll Reveal & Text Masking (IntersectionObserver)
+        // ----------------------------------------------------
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Trigger when 15% of element is visible
+        };
 
-        const revealOnScroll = () => {
-            reveals.forEach((el, i) => {
-                const windowHeight = window.innerHeight;
-                const revealTop = el.getBoundingClientRect().top;
-                const revealPoint = 100;
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Handle standard card reveals
+                    if (entry.target.classList.contains('reveal')) {
+                        entry.target.classList.add('visible');
+                    }
 
-                if (revealTop < windowHeight - revealPoint) {
-                    setTimeout(() => {
-                        el.classList.add('visible');
-                    }, i * 30);
+                    // Handle text masking animations
+                    if (entry.target.classList.contains('mask-text')) {
+                        entry.target.classList.add('animated');
+                    }
+
+                    // Handle process steps
+                    if (entry.target.classList.contains('process-step')) {
+                        entry.target.classList.add('active');
+                    }
+
+                    // Optional: Stop observing once revealed to save performance
+                    observer.unobserve(entry.target);
                 }
             });
-        };
+        }, observerOptions);
 
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll();
+        // Observe all elements that need animation
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.mask-text').forEach(el => observer.observe(el));
 
-        // Process Auto Animation
+        // Staggered Process Steps Observer
         const processSteps = document.querySelectorAll('.process-step');
-        let processAnimated = false;
+        // Simple manual observation for staggered effect on process steps
+        if (processSteps.length > 0) {
+            const processObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    processSteps.forEach((step, index) => {
+                        setTimeout(() => {
+                            step.classList.add('active');
+                        }, index * 300);
+                    });
+                    processObserver.disconnect();
+                }
+            }, { threshold: 0.2 });
 
-        const animateProcess = () => {
-            const processSection = document.querySelector('.process');
-            if (!processSection) return;
+            const processSection = document.querySelector('.process-grid');
+            if (processSection) processObserver.observe(processSection);
+        }
 
-            const rect = processSection.getBoundingClientRect();
-            const triggerPoint = window.innerHeight * 0.75;
 
-            if (rect.top < triggerPoint && !processAnimated) {
-                processAnimated = true;
-                processSteps.forEach((step, index) => {
-                    setTimeout(() => {
-                        step.classList.add('active');
-                    }, index * 500);
-                });
-            }
-        };
-
-        window.addEventListener('scroll', animateProcess);
-        window.addEventListener('load', animateProcess);
-
-        // Multi-Step Form
+        // ----------------------------------------------------
+        // Multi-Step Form Logic
+        // ----------------------------------------------------
         let currentStep = 1;
 
         function updateProgress() {
@@ -1948,13 +1958,10 @@
 
             const header = document.querySelector('.form-header');
             const titles = {
-                1: { h3: "Let's Get Started", p: "Tell us about yourself" },
+                1: { h3: "Let's Get Started", p: "Tell us about yourself and your project" }, // Merged title
                 2: { h3: "Almost There", p: "Tell us about your project" }
             };
-            if (titles[step]) {
-                header.querySelector('h3').textContent = titles[step].h3;
-                header.querySelector('p').textContent = titles[step].p;
-            }
+            // Optional: Update title if needed, currently kept static for simplicity or custom logic
         }
 
         function nextStep(step) {
