@@ -557,28 +557,20 @@
 
         /* Highlighted middle card */
         .why-us-card.highlighted {
-            background: rgba(212, 255, 61, 0.08);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            border: 1px solid rgba(212, 255, 61, 0.2);
+            background: transparent;
+            border-radius: 0;
+            padding: 2.5rem 0;
+            padding-left: 2rem;
+            border: none;
+            border-left: 3px solid var(--lime);
+        }
+
+        .why-us-card.highlighted::before {
+            display: none;
         }
 
         .why-us-card.highlighted::after {
             display: none;
-        }
-
-        .why-us-card.highlighted::before {
-            content: '★ POPULAR';
-            position: absolute;
-            top: -12px;
-            left: 2rem;
-            background: var(--lime);
-            color: var(--dark);
-            font-size: 0.7rem;
-            font-weight: 800;
-            padding: 0.4rem 0.8rem;
-            border-radius: 50px;
-            letter-spacing: 0.05em;
         }
 
         .card-number {
