@@ -539,17 +539,16 @@
         .why-us-card::after {
             content: '';
             position: absolute;
-            inset: 0;
-            border: 2px solid var(--lime);
-            border-radius: 16px;
-            opacity: 0;
-            transform: scale(0.95);
-            transition: all 0.4s ease;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--lime), var(--pink));
+            transition: width 0.5s ease;
         }
 
         .why-us-card:hover::after {
-            opacity: 1;
-            transform: scale(1);
+            width: 100%;
         }
 
         .why-us-card:hover {
@@ -559,9 +558,11 @@
         /* Highlighted middle card */
         .why-us-card.highlighted {
             background: transparent;
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            border: 2px solid var(--lime);
+            border-radius: 0;
+            padding: 2.5rem 0;
+            padding-left: 2rem;
+            border: none;
+            border-left: 3px solid var(--lime);
         }
 
         .why-us-card.highlighted::before {
