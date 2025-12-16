@@ -536,22 +536,21 @@
             position: relative;
         }
 
-        .why-us-card::after {
+        ..why-us-card::after {
             content: '';
             position: absolute;
             top: 0;
-            right: 0;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0 40px 40px 0;
-            border-color: transparent var(--lime) transparent transparent;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--lime);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
         .why-us-card:hover::after {
-            opacity: 1;
+            transform: scaleX(1);
         }
 
         .why-us-card:hover {
