@@ -539,16 +539,19 @@
         .why-us-card::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
+            top: 0;
+            right: 0;
             width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--lime), var(--pink));
-            transition: width 0.5s ease;
+            height: 0;
+            border-style: solid;
+            border-width: 0 40px 40px 0;
+            border-color: transparent var(--lime) transparent transparent;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .why-us-card:hover::after {
-            width: 100%;
+            opacity: 1;
         }
 
         .why-us-card:hover {
