@@ -526,55 +526,63 @@
         .why-us-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            overflow: hidden;
+            gap: 3rem;
         }
 
         .why-us-card {
-            padding: 3rem 2.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2.5rem 0;
+            background: transparent;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
         }
 
-        .why-us-card:last-child {
-            border-right: none;
-        }
-
-        .why-us-card::before {
+        .why-us-card::after {
             content: '';
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--pink) 0%, #8B2F52 100%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            z-index: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--lime), var(--pink));
+            transition: width 0.5s ease;
         }
 
-        .why-us-card:hover::before {
-            opacity: 1;
+        .why-us-card:hover::after {
+            width: 100%;
         }
 
         .why-us-card:hover {
-            transform: scale(1.02);
-            z-index: 2;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transform: translateY(-8px);
         }
 
-        .why-us-card>* {
-            position: relative;
-            z-index: 1;
+        /* Highlighted middle card */
+        .why-us-card.highlighted {
+            background: rgba(212, 255, 61, 0.08);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            border: 1px solid rgba(212, 255, 61, 0.2);
+        }
+
+        .why-us-card.highlighted::after {
+            display: none;
+        }
+
+        .why-us-card.highlighted::before {
+            content: '★ POPULAR';
+            position: absolute;
+            top: -12px;
+            left: 2rem;
+            background: var(--lime);
+            color: var(--dark);
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            letter-spacing: 0.05em;
         }
 
         .card-number {
-            font-size: 5rem;
+            font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--lime) 0%, #9FCC00 100%);
@@ -582,18 +590,15 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1;
-            transition: all 0.5s ease;
+            transition: all 0.4s ease;
         }
 
         .why-us-card:hover .card-number {
-            transform: translateX(10px);
-            background: linear-gradient(135deg, var(--white) 0%, rgba(255, 255, 255, 0.8) 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
+            transform: scale(1.1);
         }
 
         .why-us-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem;
             color: var(--white);
         }
@@ -601,28 +606,23 @@
         .why-us-card p {
             font-size: 1rem;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.6);
-            transition: color 0.5s ease;
+            color: rgba(255, 255, 255, 0.5);
+            transition: color 0.4s ease;
         }
 
         .why-us-card:hover p {
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Mobile responsive */
+        /* Mobile */
         @media (max-width: 1024px) {
             .why-us-grid {
                 grid-template-columns: 1fr;
-                border-radius: 20px;
+                gap: 2rem;
             }
 
-            .why-us-card {
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .why-us-card:last-child {
-                border-bottom: none;
+            .why-us-card.highlighted {
+                padding: 2rem 1.5rem;
             }
         }
 
@@ -1572,7 +1572,7 @@
                     <p>We don't chase likes — we chase conversions. Every post is engineered to drive real business
                         results.</p>
                 </div>
-                <div class="why-us-card reveal">
+                <div class="why-us-card highlighted reveal">
                     <div class="card-number">02</div>
                     <h3>Free Social Media Audit</h3>
                     <p>Get a comprehensive analysis of your Instagram profile with actionable insights to improve your
