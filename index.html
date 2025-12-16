@@ -537,20 +537,20 @@
         }
 
         .why-us-card::after {
-            content: '';
+            content: '→';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 8px;
-            height: 8px;
-            background: var(--lime);
-            border-radius: 50%;
+            bottom: 2rem;
+            right: 0;
+            font-size: 1.5rem;
+            color: var(--lime);
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transform: translateX(-20px);
+            transition: all 0.4s ease;
         }
 
         .why-us-card:hover::after {
             opacity: 1;
+            transform: translateX(0);
         }
 
         .why-us-card:hover {
