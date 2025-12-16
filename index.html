@@ -537,12 +537,24 @@
         }
 
         .why-us-card::after {
-            display: none;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            background: var(--lime);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .why-us-card:hover::after {
+            opacity: 1;
         }
 
         .why-us-card:hover {
             transform: translateY(-8px);
-            filter: drop-shadow(0 0 30px rgba(212, 255, 61, 0.15));
         }
 
         /* Highlighted middle card */
