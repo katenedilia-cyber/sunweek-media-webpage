@@ -20,16 +20,19 @@
         }
 
         :root {
+            --green: #D4FF3D;
+            --green-dark: #B8E035;
+            --green-light: rgba(212, 255, 61, 0.1);
+            --green-glow: rgba(212, 255, 61, 0.3);
             --pink: #C24B7D;
-            --pink-light: #FCF0F4;
-            --lime: #D4FF3D;
-            --lime-light: #F4FFDB;
-            --dark: #1A1A1A;
+            --pink-light: rgba(194, 75, 125, 0.15);
+            --dark: #0A0A0A;
+            --dark-lighter: #141414;
+            --dark-card: #1A1A1A;
             --white: #FFFFFF;
-            --cream: #FAFAF8;
-            --gray: #666666;
-            --gray-light: #999999;
-            --border: #E8E8E8;
+            --gray: #888888;
+            --gray-light: #666666;
+            --border: rgba(255, 255, 255, 0.08);
         }
 
         html {
@@ -38,14 +41,14 @@
 
         body {
             font-family: 'DM Sans', sans-serif;
-            color: var(--dark);
+            color: var(--white);
             line-height: 1.6;
-            background: var(--white);
+            background: var(--dark);
             overflow-x: hidden;
         }
 
         ::selection {
-            background: var(--lime);
+            background: var(--green);
             color: var(--dark);
         }
 
@@ -69,25 +72,41 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.25rem 5%;
+            padding: 1rem 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.97);
+            background: rgba(10, 10, 10, 0.9);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--border);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
         }
 
         .logo {
             font-size: 1.2rem;
             font-weight: 800;
-            color: var(--dark);
+            color: var(--white);
             letter-spacing: -0.02em;
         }
 
         .logo span {
-            color: var(--pink);
+            color: var(--green);
         }
 
         .nav-links {
@@ -103,26 +122,43 @@
             font-weight: 500;
             font-size: 0.9rem;
             transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--green);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: var(--dark);
+            color: var(--white);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         .cta-nav {
-            background: var(--dark);
-            color: var(--white);
+            background: var(--green);
+            color: var(--dark);
             padding: 0.85rem 1.75rem;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.9rem;
             transition: all 0.3s ease;
         }
 
         .cta-nav:hover {
-            background: var(--pink);
+            background: var(--white);
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--green-glow);
         }
 
         /* Mobile Menu */
@@ -139,7 +175,7 @@
             display: block;
             width: 24px;
             height: 2px;
-            background: var(--dark);
+            background: var(--white);
             margin: 6px 0;
             transition: all 0.3s ease;
         }
@@ -163,7 +199,7 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background: var(--white);
+            background: var(--dark);
             padding: 7rem 2rem 2rem;
             transform: translateX(-100%);
             transition: transform 0.4s ease;
@@ -180,7 +216,7 @@
 
         .mobile-nav a {
             text-decoration: none;
-            color: var(--dark);
+            color: var(--white);
             font-weight: 700;
             font-size: 1.75rem;
             display: block;
@@ -190,7 +226,7 @@
         }
 
         .mobile-nav a:hover {
-            color: var(--pink);
+            color: var(--green);
             padding-left: 1rem;
         }
 
@@ -202,12 +238,51 @@
             justify-content: center;
             padding: 10rem 5% 6rem;
             text-align: center;
-            background: var(--cream);
+            background: var(--dark);
             position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -25%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
+            opacity: 0.4;
+            animation: heroGlow 10s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--pink-light) 0%, transparent 70%);
+            opacity: 0.3;
+            animation: heroGlow 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes heroGlow {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(50px, 30px) scale(1.1);
+            }
         }
 
         .hero-content {
             max-width: 900px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-tag {
@@ -216,19 +291,20 @@
             gap: 0.5rem;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--pink);
+            color: var(--green);
             margin-bottom: 2rem;
             padding: 0.6rem 1.25rem;
-            background: var(--pink-light);
+            background: var(--green-light);
             border-radius: 50px;
-            animation: tagGlow 2s ease-in-out infinite;
+            border: 1px solid rgba(212, 255, 61, 0.2);
+            animation: tagPulse 2s ease-in-out infinite;
         }
 
         .hero-tag::before {
             content: '';
             width: 8px;
             height: 8px;
-            background: var(--pink);
+            background: var(--green);
             border-radius: 50%;
             animation: blink 1s infinite;
         }
@@ -238,22 +314,24 @@
             0%,
             100% {
                 opacity: 1;
+                box-shadow: 0 0 10px var(--green);
             }
 
             50% {
                 opacity: 0.3;
+                box-shadow: none;
             }
         }
 
-        @keyframes tagGlow {
+        @keyframes tagPulse {
 
             0%,
             100% {
-                box-shadow: 0 0 0 0 rgba(194, 75, 125, 0.3);
+                box-shadow: 0 0 0 0 var(--green-glow);
             }
 
             50% {
-                box-shadow: 0 0 20px 5px rgba(194, 75, 125, 0.2);
+                box-shadow: 0 0 30px 10px rgba(212, 255, 61, 0.15);
             }
         }
 
@@ -288,7 +366,8 @@
         }
 
         .hero h1 .highlight {
-            color: var(--pink);
+            color: var(--green);
+            text-shadow: 0 0 60px var(--green-glow);
         }
 
         .hero-description {
@@ -325,8 +404,8 @@
         }
 
         .btn-primary {
-            background: var(--dark);
-            color: var(--white);
+            background: var(--green);
+            color: var(--dark);
             padding: 1.1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
@@ -341,9 +420,9 @@
         }
 
         .btn-primary:hover {
-            background: var(--pink);
+            background: var(--white);
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(194, 75, 125, 0.25);
+            box-shadow: 0 15px 40px var(--green-glow);
         }
 
         .btn-large {
@@ -371,7 +450,7 @@
         .scroll-line {
             width: 1px;
             height: 60px;
-            background: linear-gradient(to bottom, var(--pink), transparent);
+            background: linear-gradient(to bottom, var(--green), transparent);
             animation: scrollPulse 2s ease-in-out infinite;
         }
 
@@ -405,7 +484,7 @@
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 1rem;
-            color: var(--pink);
+            color: var(--green);
         }
 
         .section-tag::before {
@@ -417,7 +496,7 @@
 
         .section-header h2 {
             font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--dark);
+            color: var(--white);
         }
 
         .section-header p {
@@ -434,7 +513,7 @@
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            border-right: 3px solid var(--pink);
+            border-right: 3px solid var(--green);
             width: 0;
             animation: typing 1.5s steps(10) 0.5s forwards, blink-caret 0.75s step-end infinite;
         }
@@ -457,7 +536,7 @@
             }
 
             50% {
-                border-color: var(--pink);
+                border-color: var(--green);
             }
         }
 
@@ -468,7 +547,7 @@
         /* Why Choose Us Section */
         .why-us {
             padding: 7rem 5%;
-            background: var(--dark);
+            background: var(--dark-lighter);
             position: relative;
             overflow: hidden;
         }
@@ -480,8 +559,8 @@
             right: -20%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, var(--pink) 0%, transparent 70%);
-            opacity: 0.15;
+            background: radial-gradient(circle, var(--green) 0%, transparent 70%);
+            opacity: 0.08;
             animation: floatBlob 8s ease-in-out infinite;
         }
 
@@ -510,7 +589,7 @@
         }
 
         .why-us .section-header .section-tag {
-            color: var(--lime);
+            color: var(--green);
         }
 
         .why-us .section-header h2 {
@@ -519,7 +598,7 @@
         }
 
         .why-us .section-header p {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--gray);
             margin-left: 0;
         }
 
@@ -543,7 +622,7 @@
             left: 0;
             width: 60px;
             height: 3px;
-            background: var(--lime);
+            background: var(--green);
             transform: scaleX(0);
             transform-origin: left;
             transition: transform 0.4s ease;
@@ -557,12 +636,12 @@
             transform: translateY(-8px);
         }
 
-        /* Highlighted middle card */
         .why-us-card.highlighted {
             background: transparent;
             border-radius: 20px;
             padding: 2.5rem 2rem;
-            border: 2px solid var(--lime);
+            border: 2px solid var(--green);
+            box-shadow: 0 0 40px rgba(212, 255, 61, 0.1);
         }
 
         .why-us-card.highlighted::before {
@@ -577,7 +656,7 @@
             font-size: 4.5rem;
             font-weight: 900;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--lime) 0%, #9FCC00 100%);
+            background: linear-gradient(135deg, var(--green) 0%, #9FCC00 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -598,7 +677,7 @@
         .why-us-card p {
             font-size: 1rem;
             line-height: 1.7;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--gray);
             transition: color 0.4s ease;
         }
 
@@ -606,22 +685,10 @@
             color: rgba(255, 255, 255, 0.8);
         }
 
-        /* Mobile */
-        @media (max-width: 1024px) {
-            .why-us-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .why-us-card.highlighted {
-                padding: 2rem 1.5rem;
-            }
-        }
-
         /* About Section */
         .about {
             padding: 8rem 5%;
-            background: var(--white);
+            background: var(--dark);
         }
 
         .about-container {
@@ -631,10 +698,9 @@
 
         .about-grid {
             display: grid;
-            grid-template-columns: 1fr 400px;
-            gap: 5rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
-            justify-content: space-between;
         }
 
         .about-left .section-tag {
@@ -647,7 +713,7 @@
         }
 
         .about-left h2 .serif {
-            color: var(--pink);
+            color: var(--green);
         }
 
         .about-left>p {
@@ -660,6 +726,7 @@
         .about-features {
             display: grid;
             gap: 1rem;
+            margin-top: 2rem;
         }
 
         .about-feature {
@@ -667,20 +734,22 @@
             align-items: center;
             gap: 1rem;
             padding: 1.25rem 1.5rem;
-            background: var(--cream);
+            background: var(--dark-card);
             border-radius: 16px;
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
 
         .about-feature:hover {
             transform: translateX(8px);
-            background: var(--lime-light);
+            background: var(--green-light);
+            border-color: var(--green);
         }
 
         .about-feature-icon {
             width: 48px;
             height: 48px;
-            background: var(--lime);
+            background: var(--green);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -697,12 +766,80 @@
         .about-feature span {
             font-weight: 600;
             font-size: 1rem;
+            color: var(--white);
+        }
+
+        /* About Image */
+        .about-right {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-image-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--green), var(--pink), var(--green));
+            border-radius: 26px;
+            z-index: -1;
+            animation: borderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+            border-radius: 24px;
+        }
+
+        .about-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
+        }
+
+        .about-image-text {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .about-image-text span {
+            color: var(--green);
         }
 
         /* Services Section */
         .services {
             padding: 8rem 5%;
-            background: var(--cream);
+            background: var(--dark-lighter);
         }
 
         .services-grid {
@@ -714,13 +851,25 @@
         }
 
         .service-card {
-            background: var(--white);
-            border: 2px solid var(--border);
+            background: var(--dark-card);
+            border: 1px solid var(--border);
             border-radius: 24px;
             padding: 2.5rem;
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--green-light) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .service-card::after {
@@ -730,19 +879,23 @@
             left: 0;
             width: 100%;
             height: 0;
-            background: var(--pink);
+            background: var(--green);
             transition: height 0.4s ease;
             z-index: 0;
         }
 
         .service-card:hover {
-            border-color: var(--pink);
+            border-color: var(--green);
             transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(194, 75, 125, 0.12);
+            box-shadow: 0 20px 50px rgba(212, 255, 61, 0.1);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
         }
 
         .service-card:hover::after {
-            height: 5px;
+            height: 4px;
         }
 
         .service-card>* {
@@ -760,47 +913,48 @@
         .service-number {
             font-size: 4rem;
             font-weight: 900;
-            color: var(--pink);
+            color: var(--green);
             line-height: 1;
-            opacity: 0.4;
+            opacity: 0.3;
             transition: all 0.4s ease;
         }
 
         .service-card:hover .service-number {
-            opacity: 1;
+            opacity: 0.8;
             transform: translateX(10px);
         }
 
         .service-icon {
             width: 60px;
             height: 60px;
-            background: var(--pink-light);
+            background: var(--green-light);
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
+            border: 1px solid rgba(212, 255, 61, 0.2);
         }
 
         .service-icon svg {
             width: 28px;
             height: 28px;
-            stroke: var(--pink);
+            stroke: var(--green);
             transition: all 0.3s ease;
         }
 
         .service-card:hover .service-icon {
-            background: var(--pink);
+            background: var(--green);
         }
 
         .service-card:hover .service-icon svg {
-            stroke: var(--white);
+            stroke: var(--dark);
         }
 
         .service-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--dark);
+            color: var(--white);
         }
 
         .service-card p {
@@ -812,7 +966,7 @@
         /* Process Section */
         .process {
             padding: 8rem 5%;
-            background: var(--white);
+            background: var(--dark);
         }
 
         .process-grid {
@@ -830,8 +984,9 @@
             top: 55px;
             left: 13%;
             right: 13%;
-            height: 3px;
-            background: var(--border);
+            height: 2px;
+            background: linear-gradient(to right, var(--green), var(--pink), var(--green));
+            opacity: 0.3;
         }
 
         .process-step {
@@ -842,8 +997,8 @@
         .step-number {
             width: 110px;
             height: 110px;
-            background: var(--cream);
-            border: 4px solid var(--border);
+            background: var(--dark-card);
+            border: 2px solid var(--border);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -858,22 +1013,22 @@
         }
 
         .process-step.active .step-number {
-            background: var(--pink);
-            border-color: var(--pink);
-            color: var(--white);
+            background: var(--green);
+            border-color: var(--green);
+            color: var(--dark);
             transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(194, 75, 125, 0.4);
+            box-shadow: 0 15px 40px var(--green-glow);
         }
 
         .process-step h3 {
             font-size: 1.15rem;
             margin-bottom: 0.75rem;
-            color: var(--dark);
+            color: var(--white);
             transition: color 0.3s ease;
         }
 
         .process-step.active h3 {
-            color: var(--pink);
+            color: var(--green);
         }
 
         .process-step p {
@@ -885,16 +1040,16 @@
         /* Form Section */
         .form-section {
             padding: 0;
-            background: var(--cream);
+            background: var(--dark-lighter);
         }
 
         /* Marquee */
         .marquee {
             padding: 2.5rem 0;
             overflow: hidden;
-            background: var(--cream);
-            border-top: 2px solid var(--border);
-            border-bottom: 2px solid var(--border);
+            background: var(--dark);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .marquee-track {
@@ -913,21 +1068,22 @@
         .marquee-content span {
             font-size: clamp(1.75rem, 4vw, 3rem);
             font-weight: 700;
-            color: var(--dark);
+            color: var(--white);
         }
 
         .marquee-content .serif {
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            color: var(--pink);
+            color: var(--green);
         }
 
         .marquee-content .dot {
             width: 8px;
             height: 8px;
-            background: var(--pink);
+            background: var(--green);
             border-radius: 50%;
             flex-shrink: 0;
+            box-shadow: 0 0 10px var(--green);
         }
 
         @keyframes marquee {
@@ -962,7 +1118,7 @@
         }
 
         .form-left h2 .serif {
-            color: var(--pink);
+            color: var(--green);
         }
 
         .form-left>p {
@@ -987,39 +1143,40 @@
         .contact-item-icon {
             width: 52px;
             height: 52px;
-            background: var(--white);
+            background: var(--dark-card);
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border);
         }
 
         .contact-item-icon svg {
             width: 24px;
             height: 24px;
-            stroke: var(--pink);
+            stroke: var(--green);
         }
 
         .contact-item-text a,
         .contact-item-text p {
             font-weight: 600;
-            color: var(--dark);
+            color: var(--white);
             text-decoration: none;
             font-size: 1rem;
             margin: 0;
         }
 
         .contact-item-text a:hover {
-            color: var(--pink);
+            color: var(--green);
         }
 
         /* Form Card */
         .form-card {
-            background: var(--white);
+            background: var(--dark-card);
             border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
         }
 
         .form-header {
@@ -1030,6 +1187,7 @@
         .form-header h3 {
             font-size: 1.75rem;
             margin-bottom: 0.5rem;
+            color: var(--white);
         }
 
         .form-header p {
@@ -1053,9 +1211,10 @@
         }
 
         .progress-dot.active {
-            background: var(--pink);
+            background: var(--green);
             width: 32px;
             border-radius: 5px;
+            box-shadow: 0 0 10px var(--green-glow);
         }
 
         .form-steps {
@@ -1099,7 +1258,7 @@
             font-weight: 700;
             margin-bottom: 0.6rem;
             font-size: 0.9rem;
-            color: var(--dark);
+            color: var(--white);
         }
 
         .form-group input,
@@ -1107,12 +1266,12 @@
         .form-group textarea {
             width: 100%;
             padding: 1rem 1.25rem;
-            background: var(--cream);
-            border: 2px solid transparent;
+            background: var(--dark);
+            border: 2px solid var(--border);
             border-radius: 14px;
             font-family: inherit;
             font-size: 1rem;
-            color: var(--dark);
+            color: var(--white);
             transition: all 0.3s ease;
         }
 
@@ -1125,8 +1284,9 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--pink);
-            background: var(--white);
+            border-color: var(--green);
+            background: var(--dark-lighter);
+            box-shadow: 0 0 20px rgba(212, 255, 61, 0.1);
         }
 
         .form-group textarea {
@@ -1137,7 +1297,7 @@
         .form-group select {
             cursor: pointer;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2.5'%3E%3Cpolyline points='6,9 12,15 18,9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2.5'%3E%3Cpolyline points='6,9 12,15 18,9'%3E%3C/polyline%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 1.25rem center;
         }
@@ -1149,8 +1309,8 @@
 
         .form-btn {
             flex: 1;
-            background: var(--dark);
-            color: var(--white);
+            background: var(--green);
+            color: var(--dark);
             padding: 1.15rem 2rem;
             border: none;
             border-radius: 50px;
@@ -1162,18 +1322,21 @@
         }
 
         .form-btn:hover {
-            background: var(--pink);
+            background: var(--white);
             transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--green-glow);
         }
 
         .form-btn.back {
-            background: var(--cream);
-            color: var(--dark);
+            background: var(--dark);
+            color: var(--white);
             flex: 0.4;
+            border: 1px solid var(--border);
         }
 
         .form-btn.back:hover {
-            background: var(--border);
+            background: var(--dark-lighter);
+            border-color: var(--green);
         }
 
         .form-footer {
@@ -1209,12 +1372,13 @@
         .success-icon {
             width: 90px;
             height: 90px;
-            background: var(--lime);
+            background: var(--green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
+            box-shadow: 0 0 40px var(--green-glow);
         }
 
         .success-icon svg {
@@ -1226,6 +1390,7 @@
         .form-success h4 {
             font-size: 1.75rem;
             margin-bottom: 0.75rem;
+            color: var(--white);
         }
 
         .form-success p {
@@ -1239,6 +1404,7 @@
             background: var(--dark);
             color: var(--white);
             padding: 5rem 5% 2rem;
+            border-top: 1px solid var(--border);
         }
 
         .footer-content {
@@ -1252,7 +1418,7 @@
             flex-wrap: wrap;
             gap: 3rem;
             padding-bottom: 4rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--border);
             margin-bottom: 2rem;
         }
 
@@ -1264,14 +1430,22 @@
             font-size: 1.25rem;
             font-weight: 800;
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .footer-logo span {
-            color: var(--pink);
+            color: var(--green);
+        }
+
+        .footer-logo-icon {
+            width: 32px;
+            height: 32px;
         }
 
         .footer-brand p {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--gray);
             font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 1.5rem;
@@ -1285,7 +1459,7 @@
         .social-link {
             width: 44px;
             height: 44px;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--dark-card);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -1293,6 +1467,7 @@
             text-decoration: none;
             color: var(--white);
             transition: all 0.3s ease;
+            border: 1px solid var(--border);
         }
 
         .social-link svg {
@@ -1301,8 +1476,13 @@
         }
 
         .social-link:hover {
-            background: var(--pink);
+            background: var(--green);
+            border-color: var(--green);
             transform: translateY(-3px);
+        }
+
+        .social-link:hover svg {
+            stroke: var(--dark);
         }
 
         .footer-links {
@@ -1315,7 +1495,7 @@
             text-transform: uppercase;
             letter-spacing: 0.15em;
             margin-bottom: 1.5rem;
-            color: var(--pink);
+            color: var(--green);
             font-weight: 700;
         }
 
@@ -1328,7 +1508,7 @@
         }
 
         .footer-column a {
-            color: rgba(255, 255, 255, 0.6);
+            color: var(--gray);
             text-decoration: none;
             font-size: 0.95rem;
             transition: all 0.3s ease;
@@ -1345,7 +1525,7 @@
         }
 
         .footer-copy {
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--gray-light);
             font-size: 0.85rem;
         }
 
@@ -1353,7 +1533,7 @@
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .reveal.visible {
@@ -1376,8 +1556,12 @@
                 gap: 3rem;
             }
 
-            .about-left {
+            .about-right {
                 order: -1;
+            }
+
+            .about-image {
+                height: 400px;
             }
 
             .form-container {
@@ -1457,6 +1641,10 @@
                 text-align: center;
                 gap: 1rem;
             }
+
+            .about-image {
+                height: 350px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1494,6 +1682,10 @@
                 padding-left: 1.5rem;
                 padding-right: 1.5rem;
             }
+
+            .about-image {
+                height: 300px;
+            }
         }
     </style>
 </head>
@@ -1501,7 +1693,15 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo"><span>Sunweek</span> Media</div>
+        <div class="logo-container">
+            <div class="logo-icon">
+                <svg viewBox="0 0 1379.61 1072.87" fill="none">
+                    <path fill="#D4FF3D"
+                        d="m1104.15,122.94c28.36,0,56.52,6.22,81.73,18.27,34.84,16.68,64.62,46.08,86.14,85.04,16.11,29.2,21.81,61.21,31.29,119.95.97,5.99,2.4,21.48-5.28,35.74-1.3,2.44-3.98,5.64-9.27,7.09-1.84.5-3.83.73-5.9.73s-4.08-.21-6.16-.6c-5.94-1.1-11.97-3.56-16.64-6.36-3.21-1.92-11.36-6.83-20.8-6.83-.54,0-1.09.02-1.64.05-6.41.4-11.11,3.17-13.93,4.82-10.28,6.01-14.96,15.27-18.36,22.03-.29.57-.57,1.14-.82,1.72-2.13,4.55-3.78,9.37-4.91,14.33-.15.68.07,1.36.6,1.81,2.38,2,5.17,4.36,8.28,6.95,5.81,4.82,9.95,8.19,12.7,10.43l2.53,2.07c7.99,6.56,12.41,11.31,17.06,16.33,3.08,3.3,6.25,6.71,10.89,11.16,17.32,16.62,25.24,24.21,36.01,25.79,1.42.2,2.87.31,4.33.31,3,0,6.07-.43,9.2-1.28-3.3-5.44-5.79-9.33-6.85-10.96-4.6-7.13-7.86-11.66-10.48-15.3-3.24-4.49-5.59-7.75-7.73-12.24-3.52-7.42-5.21-8.5-5.13-17.63.04-4.99,4.22-8.96,9.2-8.96h.04c3.83.02,7.77,4.51,9.16,9.05.66,2.14.29,2.82,1.32,5.55.64,1.67,1.3,2.86,2.03,4.09,2.86,4.8,5.46,8.6,6.03,9.38,2.6,3.61,6.18,8.54,11.03,16.07,1.65,2.55,6.65,10.32,12.72,20.93l1.39,2.46c1.83,3.21.64,7.29-2.66,8.98l-2.49,1.3c-8.96,4.63-17.89,6.97-26.66,6.97-2.37,0-4.74-.17-7.08-.52-16.62-2.4-27.11-12.46-46.13-30.72-5-4.8-8.5-8.58-11.6-11.89-4.6-4.95-8.23-8.87-15.27-14.64l-2.46-2c-2.79-2.27-7-5.68-12.87-10.58-3.15-2.62-5.99-5-8.39-7.04-5.72-4.84-8.36-12.44-6.71-19.74.93-4.2,2.16-8.3,3.68-12.28,1.06-2.8,2.27-5.53,3.61-8.19,3.94-7.81,10.52-20.88,25.49-29.64,1.12-.66,2.62-1.54,4.47-2.46,4.18-2.07,10.14-4.36,17.59-4.84.92-.06,1.83-.08,2.73-.08,14.56,0,26.29,7.03,30.31,9.45,5.21,3.12,10.61,4.36,13.21,4.38,3.98-8.83,3.04-18.38,2.42-22.25-9.9-61.29-15.3-88.76-29.25-114.02-19.63-35.59-46.59-62.31-77.95-77.32-22.74-10.88-48.15-16.48-73.76-16.48-10.42,0-20.88.93-31.2,2.8-7.17,1.3-14.19,3.06-21,5.28-.04,0-.09.02-.13.04-16.46,5.33-31.76,13.2-45.14,23.17-7.06,5.26-13.56,11.11-19.45,17.48-23.33,25.33-37.61,60.65-40.23,99.48-4.73,70.43,33.89,135.06,74.98,193.39,7.11,10.12,14.3,20.01,21.35,29.75l1.26,1.74c35.43,48.86,68.69,97.16,86.25,150.78,3.37,10.34-1.48,20.84-11.58,24.96-2.66,1.09-5.37,1.61-8,1.61-7.41,0-14.25-4.11-17.82-11.3-5.22-10.54-10.68-21.11-16.26-31.47-14.64-27.25-30.46-53.92-47.4-79.85-6.84-10.5-13.87-20.89-21.11-31.16-17.83-25.46-36.77-50.13-56.71-73.93-48.17-57.49-101.46-109.71-158.44-155.2-3.83-3.06-7.7-6.27-11.62-9.53-2.2-1.83-4.42-3.68-6.65-5.5-15.38-12.65-31.34-24.71-48.77-29.58-3.31-.93-6.41-1.39-9.33-1.39-4.62,0-8.79,1.17-12.59,3.5-9.09,5.59-16.15,18.16-19.41,34.51-9.38,47.27-8.38,96.06,2.53,141.87,5.1,2.51,9.95,5.06,14.55,7.55,19.74,10.7,39.02,22.34,56.93,33.67.02.02.05.04.09.05,10.7,6.78,20.93,13.45,30.48,19.74.44.29.9.59,1.34.9,3.37,2.22,6.74,4.47,10.08,6.74,24.12,16.38,47.36,33.7,69.63,51.94,31.71,25.93,61.45,53.65,88.96,82.93.64.66,1.25,1.32,1.87,1.98,12.79,13.71,24.34,27.22,34.71,40.72,12.5,16.24,23.31,32.44,32.68,48.9,9.93,17.41,19.17,34.58,23.24,53.1,2.46,11.18-1.32,16.75-4.93,19.45-2.77,2.08-5.92,2.92-9.25,2.92-8.19,0-17.45-5.06-24.79-9.07l-.51-.28c-38.93-21.24-75.77-46.26-109.84-71.88-3.87-2.9-7.7-5.81-11.49-8.74-22.62-17.37-43.93-34.86-63.74-51.48-47.03-39.48-105.13-93.84-137.26-164.45-6.29-13.84-11.6-28.15-15.93-42.8-.22-.71-.44-1.43-.64-2.13-.02-.07-.04-.13-.05-.18-.62-2.22-1.25-4.44-1.83-6.65-.48-.22-.95-.42-1.43-.64-18.29-8.21-39.07-15.03-60.59-15.58-.91-.02-1.81-.03-2.72-.03-1.11,0-2.22.01-3.33.04-27.2.82-52.56,12.81-67.85,32.11-12.41,15.67-20.11,37.28-22.84,64.2-5,49.01,4.45,106.56,27.31,166.45,24.17,63.36,61.93,121.42,109.34,168.14,1.01,1.04,2.03,2.03,3.06,3.02,33.34,32.27,71.94,59.27,113.74,79.78,19.68,9.66,40.08,17.89,60.96,24.54,45.68,14.54,93.53,21.85,142.89,21.85,22.11,0,44.51-1.47,67.17-4.4,63.87-8.25,129.78-20.82,172.45-74.52,50.9-64.04,37.52-148.27,30.33-193.52-8.87-55.9-31.21-105.82-53.52-144.77-11.86-20.69-23.7-38.29-33.52-52.05-5.81-8.12-10.91-14.92-14.88-20.22-23.4-31.16-36.05-49.21-54.01-75.58-3.63-5.37-7.51-11.09-11.75-17.32-24.16-35.57-43.16-66.14-49.92-108.1-4.84-30.09-1.25-52.62,11-68.86,5.26-7,11.95-12.92,19.89-17.61,9-5.33,21.76-10.15,33.69-10.15,4.7,0,9.26.75,13.41,2.51,4.16,1.78,9.24,5.15,12.72,11.55,1.23,2.24,2.25,4.84,2.97,7.88,2.16,9.09,1.92,18.25,1.7,27.12-.09,3.48-.18,6.78-.11,9.99.13,6.1.49,10.65.66,12.68,2.09,24.72,1.48,25.27,2.66,32.57,2.05,12.77,3.34,20.69,8.65,29.42,3.89,6.38,8.1,13.65,13.75,20.78,2.88,3.63,6.1,7.24,9.88,10.69,2.95,2.69,4.14,7,2.46,10.63-.49,1.06-1.14,1.98-1.87,2.75-1.8,1.86-4.2,2.8-6.61,2.8-2.21,0-4.42-.79-6.18-2.39-11.86-10.8-25.53-31.85-27.23-35.83-.66-1.52-1.36-3.19-2.07-5-2.62-6.69-5.55-15.38-7.9-25.81-.77-7.59-1.47-14.61-2.09-20.99-.24-2.4-.48-4.71-.68-6.93-.31-3.06-.59-5.94-.84-8.65-.37-3.83-.82-9.18-.97-16.33-.02-.62-.02-1.25-.02-1.87-.02-3.01.05-6.03.13-8.98.2-8.03.38-15.63-1.21-22.4-1.08-4.55-3.23-5.99-4.99-6.73-1.69-.72-3.76-1.04-6.08-1.04-7.42,0-17.26,3.32-24.46,7.57-5.85,3.46-10.74,7.79-14.55,12.85-.33.42-.64.86-.93,1.32-8.28,12.02-10.45,29.56-6.58,53.54,3.68,22.85,11.27,41.88,21.83,60.9,7.13,12.88,15.6,25.75,25.13,39.79,24.87,36.64,37.35,55.04,65.26,92.19,24.14,32.17,88.3,117.57,105.38,225.19,7.09,44.63,21.83,137.49-34.09,207.87-46.96,59.09-116.89,72.58-184.5,81.32-23.44,3.04-46.64,4.56-69.54,4.56-51.24,0-100.97-7.61-148.45-22.73-67.94-21.65-130.84-59.22-181.92-108.63-50.77-49.12-91.16-110.63-116.82-177.83-23.86-62.55-33.69-123.03-28.41-174.88,3.1-30.46,12.1-55.29,26.72-73.77,18.6-23.48,49.15-38.09,81.72-39.07,1.26-.04,2.52-.06,3.77-.06,21.23,0,41.49,5.32,59.73,12.48-8.69-44.39-8.74-90.96.24-136.21,2.49-12.54,9.42-35.3,27.84-46.59,6.7-4.12,14.24-6.19,22.29-6.19,4.59,0,9.35.68,14.22,2.03,23.73,6.65,44.19,23.64,62.22,38.65,3.83,3.19,7.61,6.32,11.33,9.29,57.95,46.26,112.13,99.34,161.06,157.76,31.56,37.68,60.68,77.56,87.06,119.15,14.26,22.49,27.69,45.47,40.28,68.89,5.64,10.54,11.22,21.3,16.51,32.02.23.44.54,1.07,1.38,1.07.27,0,.6-.07,1-.23,1.56-.64,1.26-1.56,1.04-2.2-14.39-43.99-40.38-84.91-69.37-125.82-4.69-6.62-9.46-13.25-14.28-19.89l-1.25-1.76c-49.59-68.38-105.82-145.89-99.81-235.18,2.9-43,18.9-82.31,45.07-110.7,24.38-26.47,58.47-44.81,95.95-51.61,11.4-2.07,22.95-3.1,34.46-3.1" />
+                </svg>
+            </div>
+            <div class="logo"><span>Sunweek</span> Media</div>
+        </div>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#services">Services</a></li>
@@ -1590,8 +1790,6 @@
                         who genuinely care about making your brand shine.</p>
                     <p>You focus on running your business. We'll handle the content, the strategy, and the growth — with
                         full transparency every step of the way.</p>
-                </div>
-                <div class="about-right reveal">
                     <div class="about-features">
                         <div class="about-feature">
                             <div class="about-feature-icon">
@@ -1618,6 +1816,16 @@
                                 </svg>
                             </div>
                             <span>Transparent communication</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-right reveal">
+                    <div class="about-image-wrapper">
+                        <img src="cameron-murray-dupe.jpeg" alt="Creative workspace" class="about-image">
+                        <div class="about-image-overlay">
+                            <div class="about-image-text">
+                                <span>✦</span> Where creativity meets strategy
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1886,7 +2094,15 @@
         <div class="footer-content">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <div class="footer-logo"><span>Sunweek</span> Media</div>
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <svg viewBox="0 0 1379.61 1072.87" fill="none">
+                                <path fill="#D4FF3D"
+                                    d="m1104.15,122.94c28.36,0,56.52,6.22,81.73,18.27,34.84,16.68,64.62,46.08,86.14,85.04,16.11,29.2,21.81,61.21,31.29,119.95.97,5.99,2.4,21.48-5.28,35.74-1.3,2.44-3.98,5.64-9.27,7.09-1.84.5-3.83.73-5.9.73s-4.08-.21-6.16-.6c-5.94-1.1-11.97-3.56-16.64-6.36-3.21-1.92-11.36-6.83-20.8-6.83-.54,0-1.09.02-1.64.05-6.41.4-11.11,3.17-13.93,4.82-10.28,6.01-14.96,15.27-18.36,22.03-.29.57-.57,1.14-.82,1.72-2.13,4.55-3.78,9.37-4.91,14.33-.15.68.07,1.36.6,1.81,2.38,2,5.17,4.36,8.28,6.95,5.81,4.82,9.95,8.19,12.7,10.43l2.53,2.07c7.99,6.56,12.41,11.31,17.06,16.33,3.08,3.3,6.25,6.71,10.89,11.16,17.32,16.62,25.24,24.21,36.01,25.79,1.42.2,2.87.31,4.33.31,3,0,6.07-.43,9.2-1.28-3.3-5.44-5.79-9.33-6.85-10.96-4.6-7.13-7.86-11.66-10.48-15.3-3.24-4.49-5.59-7.75-7.73-12.24-3.52-7.42-5.21-8.5-5.13-17.63.04-4.99,4.22-8.96,9.2-8.96h.04c3.83.02,7.77,4.51,9.16,9.05.66,2.14.29,2.82,1.32,5.55.64,1.67,1.3,2.86,2.03,4.09,2.86,4.8,5.46,8.6,6.03,9.38,2.6,3.61,6.18,8.54,11.03,16.07,1.65,2.55,6.65,10.32,12.72,20.93l1.39,2.46c1.83,3.21.64,7.29-2.66,8.98l-2.49,1.3c-8.96,4.63-17.89,6.97-26.66,6.97-2.37,0-4.74-.17-7.08-.52-16.62-2.4-27.11-12.46-46.13-30.72-5-4.8-8.5-8.58-11.6-11.89-4.6-4.95-8.23-8.87-15.27-14.64l-2.46-2c-2.79-2.27-7-5.68-12.87-10.58-3.15-2.62-5.99-5-8.39-7.04-5.72-4.84-8.36-12.44-6.71-19.74.93-4.2,2.16-8.3,3.68-12.28,1.06-2.8,2.27-5.53,3.61-8.19,3.94-7.81,10.52-20.88,25.49-29.64,1.12-.66,2.62-1.54,4.47-2.46,4.18-2.07,10.14-4.36,17.59-4.84.92-.06,1.83-.08,2.73-.08,14.56,0,26.29,7.03,30.31,9.45,5.21,3.12,10.61,4.36,13.21,4.38,3.98-8.83,3.04-18.38,2.42-22.25-9.9-61.29-15.3-88.76-29.25-114.02-19.63-35.59-46.59-62.31-77.95-77.32-22.74-10.88-48.15-16.48-73.76-16.48-10.42,0-20.88.93-31.2,2.8-7.17,1.3-14.19,3.06-21,5.28-.04,0-.09.02-.13.04-16.46,5.33-31.76,13.2-45.14,23.17-7.06,5.26-13.56,11.11-19.45,17.48-23.33,25.33-37.61,60.65-40.23,99.48-4.73,70.43,33.89,135.06,74.98,193.39,7.11,10.12,14.3,20.01,21.35,29.75l1.26,1.74c35.43,48.86,68.69,97.16,86.25,150.78,3.37,10.34-1.48,20.84-11.58,24.96-2.66,1.09-5.37,1.61-8,1.61-7.41,0-14.25-4.11-17.82-11.3-5.22-10.54-10.68-21.11-16.26-31.47-14.64-27.25-30.46-53.92-47.4-79.85-6.84-10.5-13.87-20.89-21.11-31.16-17.83-25.46-36.77-50.13-56.71-73.93-48.17-57.49-101.46-109.71-158.44-155.2-3.83-3.06-7.7-6.27-11.62-9.53-2.2-1.83-4.42-3.68-6.65-5.5-15.38-12.65-31.34-24.71-48.77-29.58-3.31-.93-6.41-1.39-9.33-1.39-4.62,0-8.79,1.17-12.59,3.5-9.09,5.59-16.15,18.16-19.41,34.51-9.38,47.27-8.38,96.06,2.53,141.87,5.1,2.51,9.95,5.06,14.55,7.55,19.74,10.7,39.02,22.34,56.93,33.67.02.02.05.04.09.05,10.7,6.78,20.93,13.45,30.48,19.74.44.29.9.59,1.34.9,3.37,2.22,6.74,4.47,10.08,6.74,24.12,16.38,47.36,33.7,69.63,51.94,31.71,25.93,61.45,53.65,88.96,82.93.64.66,1.25,1.32,1.87,1.98,12.79,13.71,24.34,27.22,34.71,40.72,12.5,16.24,23.31,32.44,32.68,48.9,9.93,17.41,19.17,34.58,23.24,53.1,2.46,11.18-1.32,16.75-4.93,19.45-2.77,2.08-5.92,2.92-9.25,2.92-8.19,0-17.45-5.06-24.79-9.07l-.51-.28c-38.93-21.24-75.77-46.26-109.84-71.88-3.87-2.9-7.7-5.81-11.49-8.74-22.62-17.37-43.93-34.86-63.74-51.48-47.03-39.48-105.13-93.84-137.26-164.45-6.29-13.84-11.6-28.15-15.93-42.8-.22-.71-.44-1.43-.64-2.13-.02-.07-.04-.13-.05-.18-.62-2.22-1.25-4.44-1.83-6.65-.48-.22-.95-.42-1.43-.64-18.29-8.21-39.07-15.03-60.59-15.58-.91-.02-1.81-.03-2.72-.03-1.11,0-2.22.01-3.33.04-27.2.82-52.56,12.81-67.85,32.11-12.41,15.67-20.11,37.28-22.84,64.2-5,49.01,4.45,106.56,27.31,166.45,24.17,63.36,61.93,121.42,109.34,168.14,1.01,1.04,2.03,2.03,3.06,3.02,33.34,32.27,71.94,59.27,113.74,79.78,19.68,9.66,40.08,17.89,60.96,24.54,45.68,14.54,93.53,21.85,142.89,21.85,22.11,0,44.51-1.47,67.17-4.4,63.87-8.25,129.78-20.82,172.45-74.52,50.9-64.04,37.52-148.27,30.33-193.52-8.87-55.9-31.21-105.82-53.52-144.77-11.86-20.69-23.7-38.29-33.52-52.05-5.81-8.12-10.91-14.92-14.88-20.22-23.4-31.16-36.05-49.21-54.01-75.58-3.63-5.37-7.51-11.09-11.75-17.32-24.16-35.57-43.16-66.14-49.92-108.1-4.84-30.09-1.25-52.62,11-68.86,5.26-7,11.95-12.92,19.89-17.61,9-5.33,21.76-10.15,33.69-10.15,4.7,0,9.26.75,13.41,2.51,4.16,1.78,9.24,5.15,12.72,11.55,1.23,2.24,2.25,4.84,2.97,7.88,2.16,9.09,1.92,18.25,1.7,27.12-.09,3.48-.18,6.78-.11,9.99.13,6.1.49,10.65.66,12.68,2.09,24.72,1.48,25.27,2.66,32.57,2.05,12.77,3.34,20.69,8.65,29.42,3.89,6.38,8.1,13.65,13.75,20.78,2.88,3.63,6.1,7.24,9.88,10.69,2.95,2.69,4.14,7,2.46,10.63-.49,1.06-1.14,1.98-1.87,2.75-1.8,1.86-4.2,2.8-6.61,2.8-2.21,0-4.42-.79-6.18-2.39-11.86-10.8-25.53-31.85-27.23-35.83-.66-1.52-1.36-3.19-2.07-5-2.62-6.69-5.55-15.38-7.9-25.81-.77-7.59-1.47-14.61-2.09-20.99-.24-2.4-.48-4.71-.68-6.93-.31-3.06-.59-5.94-.84-8.65-.37-3.83-.82-9.18-.97-16.33-.02-.62-.02-1.25-.02-1.87-.02-3.01.05-6.03.13-8.98.2-8.03.38-15.63-1.21-22.4-1.08-4.55-3.23-5.99-4.99-6.73-1.69-.72-3.76-1.04-6.08-1.04-7.42,0-17.26,3.32-24.46,7.57-5.85,3.46-10.74,7.79-14.55,12.85-.33.42-.64.86-.93,1.32-8.28,12.02-10.45,29.56-6.58,53.54,3.68,22.85,11.27,41.88,21.83,60.9,7.13,12.88,15.6,25.75,25.13,39.79,24.87,36.64,37.35,55.04,65.26,92.19,24.14,32.17,88.3,117.57,105.38,225.19,7.09,44.63,21.83,137.49-34.09,207.87-46.96,59.09-116.89,72.58-184.5,81.32-23.44,3.04-46.64,4.56-69.54,4.56-51.24,0-100.97-7.61-148.45-22.73-67.94-21.65-130.84-59.22-181.92-108.63-50.77-49.12-91.16-110.63-116.82-177.83-23.86-62.55-33.69-123.03-28.41-174.88,3.1-30.46,12.1-55.29,26.72-73.77,18.6-23.48,49.15-38.09,81.72-39.07,1.26-.04,2.52-.06,3.77-.06,21.23,0,41.49,5.32,59.73,12.48-8.69-44.39-8.74-90.96.24-136.21,2.49-12.54,9.42-35.3,27.84-46.59,6.7-4.12,14.24-6.19,22.29-6.19,4.59,0,9.35.68,14.22,2.03,23.73,6.65,44.19,23.64,62.22,38.65,3.83,3.19,7.61,6.32,11.33,9.29,57.95,46.26,112.13,99.34,161.06,157.76,31.56,37.68,60.68,77.56,87.06,119.15,14.26,22.49,27.69,45.47,40.28,68.89,5.64,10.54,11.22,21.3,16.51,32.02.23.44.54,1.07,1.38,1.07.27,0,.6-.07,1-.23,1.56-.64,1.26-1.56,1.04-2.2-14.39-43.99-40.38-84.91-69.37-125.82-4.69-6.62-9.46-13.25-14.28-19.89l-1.25-1.76c-49.59-68.38-105.82-145.89-99.81-235.18,2.9-43,18.9-82.31,45.07-110.7,24.38-26.47,58.47-44.81,95.95-51.61,11.4-2.07,22.95-3.1,34.46-3.1" />
+                            </svg>
+                        </div>
+                        <span>Sunweek</span> Media
+                    </div>
                     <p>Sunweek Media | Social Media Agency - We help brands stand out on social media with content that
                         converts.</p>
                     <div class="footer-socials">
@@ -1966,7 +2182,7 @@
             });
         });
 
-        // Scroll Reveal
+        // Scroll Reveal with stagger effect
         const reveals = document.querySelectorAll('.reveal');
 
         const revealOnScroll = () => {
@@ -1978,7 +2194,7 @@
                 if (revealTop < windowHeight - revealPoint) {
                     setTimeout(() => {
                         el.classList.add('visible');
-                    }, i * 30);
+                    }, i * 50);
                 }
             });
         };
@@ -2002,7 +2218,7 @@
                 processSteps.forEach((step, index) => {
                     setTimeout(() => {
                         step.classList.add('active');
-                    }, index * 500);
+                    }, index * 400);
                 });
             }
         };
@@ -2049,10 +2265,10 @@
 
             inputs.forEach(input => {
                 if (!input.value.trim()) {
-                    input.style.borderColor = '#C24B7D';
+                    input.style.borderColor = '#D4FF3D';
                     valid = false;
                     input.addEventListener('input', () => {
-                        input.style.borderColor = 'transparent';
+                        input.style.borderColor = 'rgba(255, 255, 255, 0.08)';
                     }, { once: true });
                 }
             });
@@ -2106,6 +2322,15 @@
                     });
                 }
             });
+        });
+
+        // Parallax effect on hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.setProperty('--scroll', scrolled * 0.3 + 'px');
+            }
         });
     </script>
 </body>
