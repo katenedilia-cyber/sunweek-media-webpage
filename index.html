@@ -1138,53 +1138,76 @@
             }
         }
 
-        /* Form Section */
+        /* Form Section - Pink Theme */
         .form-section {
             padding: 0;
             background: var(--dark-lighter);
         }
 
-        /* Marquee */
-        .marquee {
-            padding: 2.5rem 0;
-            overflow: hidden;
-            background: var(--dark);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+        .section-tag {
+            color: var(--pink);
         }
 
-        .marquee-track {
-            display: flex;
-            animation: marquee 20s linear infinite;
+        .form-left h2 .serif {
+            color: var(--pink);
         }
 
-        .marquee-content {
+        .contact-item-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--pink-light);
+            border-radius: 14px;
             display: flex;
             align-items: center;
-            gap: 2rem;
-            padding-right: 2rem;
-            white-space: nowrap;
+            justify-content: center;
+            border: 1px solid rgba(194, 75, 125, 0.2);
         }
 
-        .marquee-content span {
-            font-size: clamp(1.75rem, 4vw, 3rem);
-            font-weight: 700;
+        .contact-item-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--pink);
+        }
+
+        .progress-dot.active {
+            background: var(--pink);
+            width: 32px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(194, 75, 125, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--pink);
+            background: var(--dark-lighter);
+            box-shadow: 0 0 20px rgba(194, 75, 125, 0.1);
+        }
+
+        .form-btn {
+            background: var(--pink);
             color: var(--white);
         }
 
-        .marquee-content .serif {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            color: var(--green);
+        .form-btn:hover {
+            background: #D85A8E;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(194, 75, 125, 0.4);
+        }
+
+        .success-icon {
+            background: var(--pink);
+            box-shadow: 0 0 40px rgba(194, 75, 125, 0.5);
         }
 
         .marquee-content .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--green);
-            border-radius: 50%;
-            flex-shrink: 0;
-            box-shadow: 0 0 10px var(--green);
+            background: var(--pink);
+            box-shadow: 0 0 10px var(--pink);
+        }
+
+        .marquee-content .serif {
+            color: var(--pink);
         }
 
         @keyframes marquee {
