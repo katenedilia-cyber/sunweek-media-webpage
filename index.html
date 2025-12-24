@@ -965,7 +965,7 @@
             font-size: 1rem;
         }
 
-        /* Process Section - Zigzag Timeline */
+        /* Process Section - Scroll Animation */
         .process {
             padding: 8rem 5%;
             background: var(--dark);
@@ -977,7 +977,7 @@
             position: relative;
         }
 
-        /* Vertical line */
+        /* Background line (gray) */
         .process-timeline::before {
             content: '';
             position: absolute;
@@ -985,8 +985,21 @@
             top: 0;
             bottom: 0;
             width: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-50%);
+        }
+
+        /* Animated line (gradient) */
+        .process-timeline::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 2px;
+            height: 0%;
             background: linear-gradient(to bottom, var(--pink), var(--green));
             transform: translateX(-50%);
+            transition: height 0.1s ease-out;
         }
 
         .process-item {
@@ -995,6 +1008,12 @@
             gap: 4rem;
             margin-bottom: 4rem;
             position: relative;
+            opacity: 0.3;
+            transition: opacity 0.5s ease;
+        }
+
+        .process-item.active {
+            opacity: 1;
         }
 
         .process-item:nth-child(even) {
@@ -1013,14 +1032,19 @@
             top: 50%;
             width: 12px;
             height: 12px;
-            background: var(--green);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             transform: translate(-50%, -50%);
-            box-shadow: 0 0 20px var(--green-glow);
             z-index: 2;
+            transition: all 0.4s ease;
         }
 
-        .process-item:nth-child(even)::before {
+        .process-item.active::before {
+            background: var(--green);
+            box-shadow: 0 0 20px var(--green-glow);
+        }
+
+        .process-item:nth-child(even).active::before {
             background: var(--pink);
             box-shadow: 0 0 20px rgba(194, 75, 125, 0.5);
         }
@@ -1107,7 +1131,9 @@
         }
 
         @media (max-width: 768px) {
-            .process-timeline::before {
+
+            .process-timeline::before,
+            .process-timeline::after {
                 left: 20px;
             }
 
@@ -2386,6 +2412,51 @@
 
         window.addEventListener('scroll', animateProcess);
         window.addEventListener('load', animateProcess);
+
+        // Process Timeline Scroll Animation
+        const processTimeline = document.querySelector('.process-timeline');
+        const processItems = document.querySelectorAll('.process-item');
+
+        const animateTimeline = () => {
+            if (!processTimeline) return;
+
+            const timelineRect = processTimeline.getBoundingClientRect();
+            const timelineTop = timelineRect.top;
+            const timelineHeight = timelineRect.height;
+            const windowHeight = window.innerHeight;
+
+            // Calculate how much of the timeline is visible
+            const scrollProgress = Math.max(0, Math.min(1,
+                (windowHeight - timelineTop) / (timelineHeight + windowHeight * 0.5)
+            ));
+
+            // Update the animated line height
+            processTimeline.style.setProperty('--line-height', `${scrollProgress * 100}%`);
+
+            // Activate items as scroll progresses
+            processItems.forEach((item, index) => {
+                const itemRect = item.getBoundingClientRect();
+                const itemCenter = itemRect.top + itemRect.height / 2;
+
+                if (itemCenter < windowHeight * 0.75) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+        };
+
+        // Add CSS variable for line height
+        const style = document.createElement('style');
+        style.textContent = `
+    .process-timeline::after {
+        height: var(--line-height, 0%) !important;
+    }
+`;
+        document.head.appendChild(style);
+
+        window.addEventListener('scroll', animateTimeline);
+        window.addEventListener('load', animateTimeline);
 
         // Multi-Step Form
         let currentStep = 1;
