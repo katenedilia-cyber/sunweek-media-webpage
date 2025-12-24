@@ -24,8 +24,10 @@
             --green-dark: #B8E035;
             --green-light: rgba(212, 255, 61, 0.1);
             --green-glow: rgba(212, 255, 61, 0.3);
-            --pink: #C24B7D;
-            --pink-light: rgba(194, 75, 125, 0.15);
+            --pink: #FFB7D5;
+            --pink-dark: #C24B7D;
+            --pink-light: rgba(255, 183, 213, 0.15);
+            --pink-glow: rgba(255, 183, 213, 0.3);
             --dark: #0A0A0A;
             --dark-lighter: #141414;
             --dark-card: #1A1A1A;
@@ -286,18 +288,19 @@
             z-index: 1;
         }
 
+        /* Hero Tag - PINK */
         .hero-tag {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
             font-size: 0.85rem;
             font-weight: 600;
-            color: var(--green);
+            color: var(--pink);
             margin-bottom: 2rem;
             padding: 0.6rem 1.25rem;
-            background: var(--green-light);
+            background: var(--pink-light);
             border-radius: 50px;
-            border: 1px solid rgba(212, 255, 61, 0.2);
+            border: 1px solid rgba(255, 183, 213, 0.3);
             animation: tagPulse 2s ease-in-out infinite;
         }
 
@@ -305,7 +308,7 @@
             content: '';
             width: 8px;
             height: 8px;
-            background: var(--green);
+            background: var(--pink);
             border-radius: 50%;
             animation: blink 1s infinite;
         }
@@ -315,7 +318,7 @@
             0%,
             100% {
                 opacity: 1;
-                box-shadow: 0 0 10px var(--green);
+                box-shadow: 0 0 10px var(--pink);
             }
 
             50% {
@@ -328,11 +331,11 @@
 
             0%,
             100% {
-                box-shadow: 0 0 0 0 var(--green-glow);
+                box-shadow: 0 0 0 0 var(--pink-glow);
             }
 
             50% {
-                box-shadow: 0 0 30px 10px rgba(212, 255, 61, 0.15);
+                box-shadow: 0 0 30px 10px rgba(255, 183, 213, 0.15);
             }
         }
 
@@ -637,12 +640,13 @@
             transform: translateY(-8px);
         }
 
+        /* HIGHLIGHTED CARD - PINK */
         .why-us-card.highlighted {
             background: transparent;
             border-radius: 20px;
             padding: 2.5rem 2rem;
-            border: 2px solid var(--green);
-            box-shadow: 0 0 40px rgba(212, 255, 61, 0.1);
+            border: 2px solid var(--pink);
+            box-shadow: 0 0 40px rgba(255, 183, 213, 0.15);
         }
 
         .why-us-card.highlighted::before {
@@ -651,6 +655,13 @@
 
         .why-us-card.highlighted::after {
             display: none;
+        }
+
+        .why-us-card.highlighted .card-number {
+            background: linear-gradient(135deg, var(--pink) 0%, #FF8EC4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .card-number {
@@ -745,7 +756,7 @@
         .about-feature:hover {
             transform: translateX(8px);
             background: rgba(255, 183, 213, 0.25);
-            border-color: #FFB7D5;
+            border-color: var(--pink);
         }
 
         .about-feature-icon {
@@ -774,6 +785,9 @@
         /* About Image */
         .about-right {
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .about-image-wrapper {
@@ -781,6 +795,8 @@
             border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            max-width: 500px;
+            width: 100%;
         }
 
         .about-image-wrapper::before {
@@ -965,7 +981,7 @@
             font-size: 1rem;
         }
 
-        /* Process Section - Scroll Animation */
+        /* Process Section - SOLID LINE */
         .process {
             padding: 8rem 5%;
             background: var(--dark);
@@ -989,7 +1005,7 @@
             transform: translateX(-50%);
         }
 
-        /* Animated line (gradient) */
+        /* Animated line - SOLID PINK (no gradient) */
         .process-timeline::after {
             content: '';
             position: absolute;
@@ -997,7 +1013,7 @@
             top: 0;
             width: 2px;
             height: 0%;
-            background: linear-gradient(to bottom, var(--pink), var(--green));
+            background: var(--pink);
             transform: translateX(-50%);
             transition: height 0.1s ease-out;
         }
@@ -1040,13 +1056,8 @@
         }
 
         .process-item.active::before {
-            background: var(--green);
-            box-shadow: 0 0 20px var(--green-glow);
-        }
-
-        .process-item:nth-child(even).active::before {
             background: var(--pink);
-            box-shadow: 0 0 20px rgba(194, 75, 125, 0.5);
+            box-shadow: 0 0 20px var(--pink-glow);
         }
 
         .process-text {
@@ -1091,14 +1102,14 @@
         }
 
         .process-card {
-            background: linear-gradient(135deg, rgba(194, 75, 125, 0.2) 0%, rgba(194, 75, 125, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(255, 183, 213, 0.2) 0%, rgba(255, 183, 213, 0.05) 100%);
             border-radius: 20px;
             padding: 2.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
             min-height: 180px;
-            border: 1px solid rgba(194, 75, 125, 0.2);
+            border: 1px solid rgba(255, 183, 213, 0.2);
         }
 
         .process-item:nth-child(even) .process-card {
@@ -1109,7 +1120,7 @@
         .process-icon {
             width: 70px;
             height: 70px;
-            background: rgba(194, 75, 125, 0.3);
+            background: rgba(255, 183, 213, 0.3);
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -1167,73 +1178,47 @@
         /* Form Section - Pink Theme */
         .form-section {
             padding: 0;
-            background: var(--dark-lighter);
+            background: var(--pink);
         }
 
-        .section-tag {
-            color: var(--pink);
+        /* Marquee - FIXED */
+        .marquee {
+            background: var(--pink);
+            padding: 1.5rem 0;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
         }
 
-        .form-left h2 .serif {
-            color: var(--pink);
+        .marquee-track {
+            display: flex;
+            animation: marquee 20s linear infinite;
         }
 
-        .contact-item-icon {
-            width: 52px;
-            height: 52px;
-            background: var(--pink-light);
-            border-radius: 14px;
+        .marquee-content {
             display: flex;
             align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(194, 75, 125, 0.2);
+            gap: 2rem;
+            padding-right: 2rem;
+            flex-shrink: 0;
         }
 
-        .contact-item-icon svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--pink);
-        }
-
-        .progress-dot.active {
-            background: var(--pink);
-            width: 32px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(194, 75, 125, 0.5);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--pink);
-            background: var(--dark-lighter);
-            box-shadow: 0 0 20px rgba(194, 75, 125, 0.1);
-        }
-
-        .form-btn {
-            background: var(--pink);
-            color: var(--white);
-        }
-
-        .form-btn:hover {
-            background: #D85A8E;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(194, 75, 125, 0.4);
-        }
-
-        .success-icon {
-            background: var(--pink);
-            box-shadow: 0 0 40px rgba(194, 75, 125, 0.5);
-        }
-
-        .marquee-content .dot {
-            background: var(--pink);
-            box-shadow: 0 0 10px var(--pink);
+        .marquee-content span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
         }
 
         .marquee-content .serif {
-            color: var(--pink);
+            color: var(--pink-dark);
+        }
+
+        .marquee-content .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--dark);
+            border-radius: 50%;
+            flex-shrink: 0;
         }
 
         @keyframes marquee {
@@ -1244,12 +1229,6 @@
             100% {
                 transform: translateX(-50%);
             }
-        }
-
-        /* Form Section - Pink Theme */
-        .form-section {
-            padding: 0;
-            background: #FFB7D5;
         }
 
         .form-container {
@@ -1279,7 +1258,7 @@
         }
 
         .form-left h2 .serif {
-            color: var(--pink);
+            color: var(--pink-dark);
         }
 
         .form-left>p {
@@ -1287,6 +1266,18 @@
             font-size: 1.1rem;
             margin-bottom: 3rem;
             line-height: 1.8;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .contact-item-icon {
@@ -1316,40 +1307,10 @@
         }
 
         .contact-item-text a:hover {
-            color: var(--pink);
+            color: var(--pink-dark);
         }
 
         /* Form Card stays dark */
-        .form-card {
-            background: var(--dark-card);
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            border: 1px solid var(--border);
-        }
-
-        /* Marquee on pink */
-        .marquee {
-            background: #FFB7D5;
-            padding: 1.5rem 0;
-            overflow: hidden;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        .marquee-content span {
-            color: var(--dark);
-        }
-
-        .marquee-content .serif {
-            color: var(--pink);
-        }
-
-        .marquee-content .dot {
-            background: var(--dark);
-            box-shadow: none;
-        }
-
-        /* Form Card */
         .form-card {
             background: var(--dark-card);
             border-radius: 28px;
@@ -1390,10 +1351,10 @@
         }
 
         .progress-dot.active {
-            background: var(--green);
+            background: var(--pink);
             width: 32px;
             border-radius: 5px;
-            box-shadow: 0 0 10px var(--green-glow);
+            box-shadow: 0 0 10px rgba(255, 183, 213, 0.5);
         }
 
         .form-steps {
@@ -1463,9 +1424,9 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--green);
+            border-color: var(--pink);
             background: var(--dark-lighter);
-            box-shadow: 0 0 20px rgba(212, 255, 61, 0.1);
+            box-shadow: 0 0 20px rgba(255, 183, 213, 0.1);
         }
 
         .form-group textarea {
@@ -1488,7 +1449,7 @@
 
         .form-btn {
             flex: 1;
-            background: var(--green);
+            background: var(--pink);
             color: var(--dark);
             padding: 1.15rem 2rem;
             border: none;
@@ -1503,7 +1464,7 @@
         .form-btn:hover {
             background: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px var(--green-glow);
+            box-shadow: 0 10px 30px rgba(255, 183, 213, 0.4);
         }
 
         .form-btn.back {
@@ -1515,7 +1476,7 @@
 
         .form-btn.back:hover {
             background: var(--dark-lighter);
-            border-color: var(--green);
+            border-color: var(--pink);
         }
 
         .form-footer {
@@ -1551,13 +1512,13 @@
         .success-icon {
             width: 90px;
             height: 90px;
-            background: var(--green);
+            background: var(--pink);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            box-shadow: 0 0 40px var(--green-glow);
+            box-shadow: 0 0 40px rgba(255, 183, 213, 0.5);
         }
 
         .success-icon svg {
@@ -2158,8 +2119,16 @@
                     <div class="dot"></div>
                     <span class="serif">Let's work together</span>
                     <div class="dot"></div>
+                    <span>Let's work together</span>
+                    <div class="dot"></div>
+                    <span class="serif">Let's work together</span>
+                    <div class="dot"></div>
                 </div>
                 <div class="marquee-content">
+                    <span>Let's work together</span>
+                    <div class="dot"></div>
+                    <span class="serif">Let's work together</span>
+                    <div class="dot"></div>
                     <span>Let's work together</span>
                     <div class="dot"></div>
                     <span class="serif">Let's work together</span>
@@ -2418,30 +2387,6 @@
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
 
-        // Process Auto Animation
-        const processSteps = document.querySelectorAll('.process-step');
-        let processAnimated = false;
-
-        const animateProcess = () => {
-            const processSection = document.querySelector('.process');
-            if (!processSection) return;
-
-            const rect = processSection.getBoundingClientRect();
-            const triggerPoint = window.innerHeight * 0.75;
-
-            if (rect.top < triggerPoint && !processAnimated) {
-                processAnimated = true;
-                processSteps.forEach((step, index) => {
-                    setTimeout(() => {
-                        step.classList.add('active');
-                    }, index * 400);
-                });
-            }
-        };
-
-        window.addEventListener('scroll', animateProcess);
-        window.addEventListener('load', animateProcess);
-
         // Process Timeline Scroll Animation
         const processTimeline = document.querySelector('.process-timeline');
         const processItems = document.querySelectorAll('.process-item');
@@ -2478,10 +2423,10 @@
         // Add CSS variable for line height
         const style = document.createElement('style');
         style.textContent = `
-    .process-timeline::after {
-        height: var(--line-height, 0%) !important;
-    }
-`;
+            .process-timeline::after {
+                height: var(--line-height, 0%) !important;
+            }
+        `;
         document.head.appendChild(style);
 
         window.addEventListener('scroll', animateTimeline);
@@ -2526,7 +2471,7 @@
 
             inputs.forEach(input => {
                 if (!input.value.trim()) {
-                    input.style.borderColor = '#D4FF3D';
+                    input.style.borderColor = '#FFB7D5';
                     valid = false;
                     input.addEventListener('input', () => {
                         input.style.borderColor = 'rgba(255, 255, 255, 0.08)';
