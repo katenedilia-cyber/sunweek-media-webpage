@@ -1246,7 +1246,12 @@
             }
         }
 
-        /* Form Container */
+        /* Form Section - Pink Theme */
+        .form-section {
+            padding: 0;
+            background: #FFB7D5;
+        }
+
         .form-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -1259,65 +1264,89 @@
 
         .form-left .section-tag {
             justify-content: flex-start;
+            color: var(--dark);
+        }
+
+        .form-left .section-tag::before {
+            background: var(--dark);
         }
 
         .form-left h2 {
             font-size: clamp(2.25rem, 4vw, 3rem);
             margin-bottom: 1.5rem;
             line-height: 1.15;
+            color: var(--dark);
         }
 
         .form-left h2 .serif {
-            color: var(--green);
+            color: var(--pink);
         }
 
         .form-left>p {
-            color: var(--gray);
+            color: rgba(0, 0, 0, 0.7);
             font-size: 1.1rem;
             margin-bottom: 3rem;
             line-height: 1.8;
         }
 
-        .contact-items {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
         .contact-item-icon {
             width: 52px;
             height: 52px;
-            background: var(--dark-card);
+            background: rgba(255, 255, 255, 0.5);
             border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .contact-item-icon svg {
             width: 24px;
             height: 24px;
-            stroke: var(--green);
+            stroke: var(--dark);
         }
 
         .contact-item-text a,
         .contact-item-text p {
             font-weight: 600;
-            color: var(--white);
+            color: var(--dark);
             text-decoration: none;
             font-size: 1rem;
             margin: 0;
         }
 
         .contact-item-text a:hover {
-            color: var(--green);
+            color: var(--pink);
+        }
+
+        /* Form Card stays dark */
+        .form-card {
+            background: var(--dark-card);
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+        }
+
+        /* Marquee on pink */
+        .marquee {
+            background: #FFB7D5;
+            padding: 1.5rem 0;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .marquee-content span {
+            color: var(--dark);
+        }
+
+        .marquee-content .serif {
+            color: var(--pink);
+        }
+
+        .marquee-content .dot {
+            background: var(--dark);
+            box-shadow: none;
         }
 
         /* Form Card */
