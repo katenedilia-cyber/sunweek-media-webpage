@@ -405,11 +405,11 @@
         }
 
         .problem-card {
-            border-radius: 24px;
-            padding: 2.5rem 3rem;
+            border-radius: 32px;
+            padding: 3rem 3.5rem;
             position: sticky;
             transition: all 0.3s ease;
-            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.1);
+            min-height: 200px;
         }
 
         .problem-card:nth-child(1) {
@@ -420,57 +420,32 @@
         }
 
         .problem-card:nth-child(2) {
-            background: var(--white);
+            background: var(--cream);
             color: var(--dark);
-            top: 130px;
+            top: 100px;
             z-index: 2;
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            outline: 1px solid rgba(0, 0, 0, 0.05);
+            outline-offset: 8px;
         }
 
         .problem-card:nth-child(3) {
             background: var(--green);
             color: var(--dark);
-            top: 160px;
+            top: 100px;
             z-index: 3;
         }
 
-        .problem-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-            border-bottom: 1px solid currentColor;
-            padding-bottom: 1rem;
-            opacity: 0.4;
-        }
-
-        .problem-card:nth-child(1) .problem-card-header {
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .problem-card:nth-child(2) .problem-card-header {
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-
-        .problem-card:nth-child(3) .problem-card-header {
-            border-color: rgba(0, 0, 0, 0.2);
-        }
-
         .problem-card h3 {
-            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: -0.01em;
-        }
-
-        .problem-card .number {
-            font-size: 1.75rem;
-            font-weight: 300;
-            opacity: 0.5;
+            letter-spacing: -0.02em;
+            font-style: italic;
         }
 
         .problem-card p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.6;
         }
 
