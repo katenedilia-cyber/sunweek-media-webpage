@@ -1618,6 +1618,20 @@
             tagIndex = (tagIndex + 1) % teamTags.length;
         }
 
+        // Fill Out Form Button Animation
+        const formBtn = document.querySelector('.btn-pink');
+        let btnLit = false;
+
+        function toggleFormBtn() {
+            if (btnLit) {
+                formBtn.classList.remove('lit');
+            } else {
+                formBtn.classList.add('lit');
+            }
+            btnLit = !btnLit;
+        }
+
+        setInterval(toggleFormBtn, 1500);
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.2,
