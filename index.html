@@ -416,7 +416,7 @@
             max-width: 1100px;
             margin: 0 auto;
             position: relative;
-            height: 280vh;
+            height: 200vh;
         }
 
         .problem-card {
@@ -505,17 +505,17 @@
             line-height: 1.6;
         }
 
-        /* CTA Button - Centered, Dark Pink */
+        /* CTA Button - Centered, animated */
         .problems-cta {
             text-align: center;
-            padding: 0;
+            padding: 4rem 0;
             margin-top: 0;
             margin-bottom: 0;
         }
 
         .btn-pink {
-            background: var(--pink-dark);
-            color: var(--white);
+            background: var(--white);
+            color: var(--dark);
             padding: 1.5rem 3rem;
             border-radius: 50px;
             text-decoration: none;
@@ -525,13 +525,18 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            border: none;
+            border: 2px solid var(--dark);
             cursor: pointer;
         }
 
         .btn-pink:hover {
-            background: #a33d66;
-            transform: translateY(-2px);
+            background: var(--green);
+            border-color: var(--green);
+        }
+
+        .btn-pink.lit {
+            background: var(--green);
+            border-color: var(--green);
         }
 
         /* About Section */
