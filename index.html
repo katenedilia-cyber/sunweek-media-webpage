@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap"
         rel="stylesheet">
     <style>
         * {
@@ -55,6 +55,7 @@
         h2,
         h3,
         h4 {
+            font-family: 'DM Sans', sans-serif;
             font-weight: 800;
             line-height: 1.1;
             letter-spacing: -0.02em;
@@ -282,7 +283,6 @@
             line-height: 0.9;
             text-transform: uppercase;
             letter-spacing: -0.04em;
-            font-style: normal;
         }
 
         .hero h1 .hashtag {
@@ -374,7 +374,7 @@
         }
 
         .partner-tag {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.15em;
@@ -386,10 +386,8 @@
         }
 
         .partner-tag::before {
-            content: '';
-            width: 30px;
-            height: 2px;
-            background: var(--pink-dark);
+            content: '—';
+            color: var(--pink-dark);
         }
 
         .partner h2 {
@@ -406,24 +404,24 @@
         }
 
         .partner p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--gray-light);
             line-height: 1.8;
             margin-bottom: 1.25rem;
         }
 
-        /* Problems Section - STACKING, BIGGER CARDS */
+        /* Problems Section - BIGGER CARDS */
         .problems-container {
             max-width: 1100px;
             margin: 0 auto;
             position: relative;
-            height: 220vh;
+            height: 280vh;
         }
 
         .problem-card {
             border-radius: 32px;
-            padding: 4rem 4.5rem;
-            min-height: 320px;
+            padding: 5rem 5.5rem;
+            min-height: 420px;
             position: sticky;
             transition: all 0.3s ease;
         }
@@ -442,23 +440,23 @@
             outline: 1px solid rgba(0, 0, 0, 0.05);
             outline-offset: 8px;
             z-index: 2;
-            top: 160px;
+            top: 180px;
         }
 
         .problem-card:nth-child(3) {
             background: var(--green);
             color: var(--dark);
             z-index: 3;
-            top: 220px;
+            top: 260px;
         }
 
         .problem-card-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             border-bottom: 1px solid currentColor;
-            padding-bottom: 2rem;
+            padding-bottom: 2.5rem;
             opacity: 0.3;
         }
 
@@ -475,7 +473,7 @@
         }
 
         .problem-card h3 {
-            font-size: clamp(1.5rem, 4vw, 2.75rem);
+            font-size: clamp(1.8rem, 4vw, 3rem);
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: -0.01em;
@@ -496,20 +494,22 @@
         }
 
         .problem-card .number {
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 300;
             opacity: 0.4;
         }
 
         .problem-card p {
-            font-size: 1.35rem;
+            font-size: 1.5rem;
             line-height: 1.6;
         }
 
         /* CTA Button - Centered, Dark Pink */
         .problems-cta {
             text-align: center;
-            padding: 4rem 0;
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 0;
         }
 
         .btn-pink {
@@ -624,7 +624,7 @@
             grid-template-columns: 50px 1fr;
             gap: 1.5rem;
             align-items: start;
-            transition: all 0.3s ease;
+            transition: all 0.5s ease;
             opacity: 0;
             transform: translateX(-30px);
         }
@@ -666,7 +666,7 @@
         }
 
         .service-content h3 {
-            font-size: clamp(1.3rem, 3vw, 1.75rem);
+            font-size: clamp(1.5rem, 3vw, 2rem);
             font-weight: 800;
             text-transform: uppercase;
             color: var(--white);
@@ -676,7 +676,7 @@
 
         .service-content p {
             color: var(--gray);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.7;
         }
 
@@ -733,15 +733,15 @@
         }
 
         .process-dot {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: var(--dark-card);
             border: 2px solid rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: var(--gray);
             transition: all 0.4s ease;
@@ -760,7 +760,7 @@
         }
 
         .process-step h3 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--white);
             margin-bottom: 0.75rem;
             text-transform: uppercase;
@@ -774,7 +774,7 @@
 
         .process-step p {
             color: var(--gray);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             line-height: 1.5;
             opacity: 0.6;
             transition: opacity 0.3s ease;
@@ -922,14 +922,19 @@
             text-decoration: none;
             font-size: 0.95rem;
             transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .footer-column a:hover {
             color: var(--white);
         }
 
-        .footer-column a.external::after {
-            content: ' ↗';
+        .footer-column a.external svg {
+            width: 14px;
+            height: 14px;
+            stroke: currentColor;
         }
 
         .scroll-top {
@@ -1011,13 +1016,17 @@
 
         @media (max-width: 768px) {
 
-            /* Navigation - Smaller on mobile */
+            /* Navigation - SMALLER on mobile */
             nav {
                 width: auto;
-                min-width: 120px;
-                padding: 0.6rem 1rem;
-                gap: 0;
-                justify-content: space-between;
+                min-width: auto;
+                padding: 0.5rem 0.75rem;
+                gap: 0.5rem;
+            }
+
+            .logo-icon {
+                width: 30px;
+                height: 30px;
             }
 
             .nav-links {
@@ -1030,6 +1039,12 @@
 
             .mobile-menu-btn {
                 display: block;
+                padding: 0.25rem;
+            }
+
+            .mobile-menu-btn span {
+                width: 20px;
+                margin: 5px 0;
             }
 
             .mobile-nav {
@@ -1045,7 +1060,7 @@
                 text-align: left;
             }
 
-            /* Agency text - Pink, smaller on mobile */
+            /* Agency text - Pink, SMALLER on mobile */
             .hero-agency-text {
                 position: relative;
                 top: auto;
@@ -1056,16 +1071,16 @@
             }
 
             .hero-agency-text .brand-name {
-                font-size: 1.1rem;
+                font-size: 0.9rem;
             }
 
             .hero-agency-text .tagline {
-                font-size: 0.85rem;
+                font-size: 0.75rem;
             }
 
-            /* WE KNOW HOW TO - Bigger on mobile */
+            /* WE KNOW HOW TO - BIGGER on mobile */
             .hero h1 {
-                font-size: clamp(3rem, 14vw, 5rem);
+                font-size: clamp(3.5rem, 16vw, 5.5rem);
                 margin-bottom: 1.5rem;
             }
 
@@ -1094,7 +1109,7 @@
                 border-radius: 24px;
             }
 
-            /* Cards - no sticky on mobile */
+            /* Cards - no sticky on mobile, no gap */
             .problems-container {
                 height: auto;
             }
@@ -1102,7 +1117,7 @@
             .problem-card {
                 position: relative;
                 top: auto !important;
-                margin-bottom: 1.5rem;
+                margin-bottom: 1rem;
                 padding: 2rem 1.5rem;
                 min-height: auto;
             }
@@ -1120,11 +1135,11 @@
             }
 
             .problems-cta {
-                padding: 2rem 0 3rem;
+                padding: 1.5rem 0 2rem;
             }
 
             .partner {
-                margin-bottom: 3rem;
+                margin-bottom: 2rem;
                 padding-bottom: 2rem;
             }
 
@@ -1158,7 +1173,7 @@
             }
 
             .service-content p {
-                font-size: 0.9rem;
+                font-size: 0.95rem;
             }
 
             .process {
@@ -1209,7 +1224,7 @@
                 justify-content: center;
             }
 
-            /* Footer - no emojis, arrow to right */
+            /* Footer - arrows to right */
             .footer-links-row {
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -1222,6 +1237,10 @@
 
             .footer-brand-text {
                 font-size: clamp(2rem, 10vw, 4rem);
+            }
+
+            .about {
+                padding: 2rem 0 4rem;
             }
 
             .about h2 {
@@ -1240,7 +1259,7 @@
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
             .typing-box .typing-text {
@@ -1365,7 +1384,7 @@
         <div class="services-container">
             <div class="section-header">
                 <span class="section-tag">— What We Do</span>
-                <h2>Our Services</h2>
+                <h2>OUR SERVICES</h2>
             </div>
             <div class="service-item">
                 <div class="service-arrow">
@@ -1420,7 +1439,7 @@
         <div class="process-container">
             <div class="section-header">
                 <span class="section-tag">— How It Works</span>
-                <h2>Our Process</h2>
+                <h2>OUR PROCESS</h2>
             </div>
             <div class="process-track">
                 <div class="process-line-bg"></div>
@@ -1496,11 +1515,19 @@
                 <div class="footer-column">
                     <ul>
                         <li><a href="https://www.instagram.com/sunweek.media/" target="_blank"
-                                class="external">Instagram</a></li>
-                        <li><a href="https://www.tiktok.com/@sunweek.media" target="_blank" class="external">TikTok</a>
-                        </li>
+                                class="external">Instagram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                                </svg></a></li>
+                        <li><a href="https://www.tiktok.com/@sunweek.media" target="_blank" class="external">TikTok <svg
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                                </svg></a></li>
                         <li><a href="https://www.linkedin.com/company/sunweek-media/" target="_blank"
-                                class="external">LinkedIn</a></li>
+                                class="external">LinkedIn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                                </svg></a></li>
                     </ul>
                 </div>
                 <div class="scroll-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
@@ -1585,13 +1612,13 @@
             tagIndex = (tagIndex + 1) % teamTags.length;
         }
 
-        // Intersection Observer
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.2,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        // Service Items
+        // Service Items Animation
         const serviceItems = document.querySelectorAll('.service-item');
         const serviceObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
@@ -1607,7 +1634,7 @@
             serviceObserver.observe(item);
         });
 
-        // Process Steps
+        // Process Steps Animation
         const processSteps = document.querySelectorAll('.process-step');
         const processObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry, index) => {
@@ -1624,7 +1651,7 @@
             processObserver.observe(step);
         });
 
-        // About section
+        // About section animation
         const aboutSection = document.querySelector('.about');
         let tagAnimationStarted = false;
 
