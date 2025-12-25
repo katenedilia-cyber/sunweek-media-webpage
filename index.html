@@ -411,11 +411,12 @@
             margin-bottom: 1.25rem;
         }
 
-        /* Problems Section - STACKING CARDS */
+        /* Problems Section - BIGGER CARDS */
         .problems-container {
             max-width: 1100px;
             margin: 0 auto;
             position: relative;
+            height: 180vh;
             padding-bottom: 2rem;
         }
 
@@ -425,11 +426,6 @@
             min-height: 420px;
             position: sticky;
             transition: all 0.3s ease;
-            margin-bottom: 80vh;
-        }
-
-        .problem-card:last-child {
-            margin-bottom: 2rem;
         }
 
         .problem-card:nth-child(1) {
@@ -446,14 +442,14 @@
             outline: 1px solid rgba(0, 0, 0, 0.05);
             outline-offset: 8px;
             z-index: 2;
-            top: 140px;
+            top: 160px;
         }
 
         .problem-card:nth-child(3) {
             background: var(--green);
             color: var(--dark);
             z-index: 3;
-            top: 160px;
+            top: 200px;
         }
 
         .problem-card-header {
@@ -486,6 +482,7 @@
             font-style: italic;
         }
 
+        /* Card header colors */
         .problem-card:nth-child(1) h3 {
             color: var(--white);
         }
