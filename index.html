@@ -238,32 +238,37 @@
             width: 100%;
             position: relative;
             z-index: 2;
+        }
+
+        .hero-top {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            gap: 4rem;
+            align-items: flex-start;
+            margin-bottom: 2rem;
         }
 
-        .hero-left {
-            flex: 1;
+        .hero-agency {
+            text-align: right;
         }
 
-        .hero-right .white-text {
+        .hero-agency .brand {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--green);
+            margin-bottom: 0.25rem;
+        }
+
+        .hero-agency .tagline {
+            font-size: 1.5rem;
+            font-weight: 500;
             color: var(--white);
         }
 
-        .hero-right .agency-text {
-            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-            font-weight: 500;
-            color: var(--green);
-            line-height: 1.4;
-        }
-
         .hero h1 {
-            font-size: clamp(3.5rem, 9vw, 8rem);
+            font-size: clamp(4rem, 12vw, 10rem);
             font-weight: 800;
-            margin-bottom: 1.5rem;
-            line-height: 0.95;
+            margin-bottom: 2rem;
+            line-height: 0.9;
             text-transform: uppercase;
             letter-spacing: -0.04em;
         }
@@ -277,13 +282,13 @@
             display: inline-block;
             border: 2px solid var(--green);
             border-radius: 50px;
-            padding: 0.75rem 2rem;
+            padding: 1rem 2.5rem;
             margin-top: 0.5rem;
         }
 
         .typing-box .typing-text {
             color: var(--green);
-            font-size: clamp(1rem, 2.5vw, 1.75rem);
+            font-size: clamp(1.25rem, 3vw, 2rem);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: -0.01em;
@@ -291,7 +296,7 @@
 
         .typing-box .cursor {
             display: inline-block;
-            width: 2px;
+            width: 3px;
             height: 1em;
             background: var(--green);
             margin-left: 4px;
@@ -322,11 +327,11 @@
         .btn-primary {
             background: var(--green);
             color: var(--dark);
-            padding: 1.5rem 3.5rem;
+            padding: 1.5rem 4rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
@@ -340,7 +345,7 @@
             transform: translateY(-2px);
         }
 
-        /* Main Cream Section - Contains Partner + Problems + About */
+        /* Main Cream Section */
         .main-section {
             background: var(--cream);
             border-radius: 40px;
@@ -395,10 +400,11 @@
             margin-bottom: 1.25rem;
         }
 
-        /* Problems Section - Stacking Cards with BIG spacing */
+        /* Problems Section - Stacking Cards */
         .problems-container {
             max-width: 900px;
             margin: 0 auto;
+            height: 600px;
             position: relative;
         }
 
@@ -406,20 +412,20 @@
             border-radius: 32px;
             padding: 3rem 3.5rem;
             position: sticky;
-            top: 100px;
-            margin-bottom: 40vh;
             min-height: 200px;
         }
 
         .problem-card:nth-child(1) {
             background: var(--dark);
             color: var(--white);
+            top: 100px;
             z-index: 1;
         }
 
         .problem-card:nth-child(2) {
             background: var(--cream);
             color: var(--dark);
+            top: 130px;
             z-index: 2;
             border: 1px solid rgba(0, 0, 0, 0.1);
             outline: 1px solid rgba(0, 0, 0, 0.05);
@@ -429,8 +435,8 @@
         .problem-card:nth-child(3) {
             background: var(--green);
             color: var(--dark);
+            top: 160px;
             z-index: 3;
-            margin-bottom: 2rem;
         }
 
         .problem-card-header {
@@ -476,9 +482,7 @@
 
         .problems-cta {
             text-align: center;
-            padding: 3rem 0 5rem;
-            position: relative;
-            z-index: 10;
+            padding: 3rem 0 4rem;
         }
 
         .btn-dark {
@@ -502,37 +506,38 @@
             transform: translateY(-2px);
         }
 
-        /* About Section - Team Tags */
+        /* About Section - Team Tags - BIGGER */
         .about {
             padding: 4rem 0 6rem;
         }
 
         .about-container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             text-align: center;
         }
 
         .about h2 {
-            font-size: clamp(1.75rem, 4vw, 3rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             color: var(--dark);
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem;
             text-transform: uppercase;
+            line-height: 1.1;
         }
 
         .team-tags {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 1.25rem;
+            margin-bottom: 2.5rem;
         }
 
         .team-tag {
-            padding: 1rem 2rem;
+            padding: 1.25rem 2.5rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.15rem;
             background: transparent;
             border: 2px solid var(--dark);
             color: var(--dark);
@@ -547,14 +552,14 @@
         }
 
         .about-note {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--gray);
         }
 
         /* Services Section */
         .services {
             background: var(--dark);
-            padding: 6rem 5%;
+            padding: 5rem 5%;
             position: relative;
         }
 
@@ -649,7 +654,7 @@
         /* Process Section - Horizontal with STRAIGHT line */
         .process {
             background: var(--dark);
-            padding: 6rem 5% 8rem;
+            padding: 5rem 5% 6rem;
             position: relative;
         }
 
@@ -667,20 +672,24 @@
             padding-top: 60px;
         }
 
-        .process-line-wrapper {
+        .process-line-bg {
             position: absolute;
             top: 25px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: rgba(255, 255, 255, 0.1);
+            left: 25px;
+            right: 25px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .process-line-fill {
-            height: 3px;
-            width: 0%;
-            background: #D4FF3D;
-            box-shadow: 0 0 10px #D4FF3D;
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            height: 2px;
+            width: 0px;
+            background: var(--green);
+            box-shadow: 0 0 10px var(--green), 0 0 20px var(--green);
+            transition: width 0.1s linear;
         }
 
         .process-step {
@@ -694,7 +703,7 @@
             width: 50px;
             height: 50px;
             background: var(--dark-card);
-            border: 3px solid rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -742,41 +751,60 @@
             opacity: 1;
         }
 
-        /* Form Section */
+        /* Form Section - ENVIE Style */
         .form-section {
             background: var(--dark);
-            padding: 6rem 5%;
+            padding: 3rem 5%;
             position: relative;
         }
 
         .form-wrapper {
-            max-width: 1000px;
+            max-width: 1300px;
             margin: 0 auto;
-            background: var(--pink);
+            background: var(--cream);
             border-radius: 40px;
-            padding: 5rem 5rem;
-            position: relative;
-            z-index: 1;
+            padding: 5rem 6rem;
         }
 
-        .form-content h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 4rem;
+            gap: 2rem;
+        }
+
+        .form-header h2 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             color: var(--dark);
-            margin-bottom: 1rem;
             text-transform: uppercase;
-            line-height: 1.2;
+            line-height: 1;
+            flex: 1;
         }
 
-        .form-subtitle {
+        .form-header h2 .star {
+            color: var(--dark);
+        }
+
+        .form-header .form-subtitle {
             font-size: 1.1rem;
-            color: rgba(0, 0, 0, 0.6);
-            margin-bottom: 3rem;
+            color: var(--gray-light);
+            text-align: right;
+            max-width: 250px;
         }
 
         .contact-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 2rem 4rem;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group.full-width {
+            grid-column: 1;
         }
 
         .form-group input {
@@ -789,6 +817,15 @@
             font-size: 1.1rem;
             color: var(--dark);
             transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(0, 0, 0, 0.4);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--dark);
         }
 
         .form-submit {
@@ -910,13 +947,13 @@
 
         /* Responsive */
         @media (max-width: 1024px) {
-            .hero-content {
+            .hero-top {
                 flex-direction: column;
-                text-align: center;
+                gap: 1rem;
             }
 
-            .hero-right {
-                text-align: center;
+            .hero-agency {
+                text-align: left;
             }
 
             .process-track {
@@ -925,7 +962,8 @@
                 padding-top: 0;
             }
 
-            .process-line-wrapper {
+            .process-line-bg,
+            .process-line-fill {
                 display: none;
             }
 
@@ -948,6 +986,15 @@
 
             .process-step.active .process-dot {
                 transform: scale(1.1);
+            }
+
+            .form-header {
+                flex-direction: column;
+            }
+
+            .form-header .form-subtitle {
+                text-align: left;
+                max-width: 100%;
             }
 
             .contact-form {
@@ -979,17 +1026,17 @@
             }
 
             .main-section {
+                margin: 0 1%;
                 padding: 4rem 5% 0;
-                border-radius: 24px 24px 24px 24px;
+                border-radius: 24px;
+            }
+
+            .problems-container {
+                height: 500px;
             }
 
             .problem-card {
                 padding: 2rem;
-                margin-bottom: 50vh;
-            }
-
-            .problem-card:nth-child(3) {
-                margin-bottom: 2rem;
             }
 
             .service-item {
@@ -1002,7 +1049,7 @@
             }
 
             .form-wrapper {
-                padding: 2rem;
+                padding: 3rem 2rem;
                 border-radius: 24px;
             }
 
@@ -1050,25 +1097,26 @@
     <!-- Hero Section -->
     <section class="hero grid-bg" id="home">
         <div class="hero-content">
-            <div class="hero-left">
-                <h1>
-                    <span class="hashtag">#</span>WE KNOW<br>HOW TO
-                </h1>
-                <div class="typing-box">
-                    <span class="typing-text" id="typingText">MAKE YOUR BRAND STAND OUT</span><span
-                        class="cursor"></span>
-                </div>
-                <div class="hero-cta">
-                    <a href="#contact" class="btn-primary">Get Started →</a>
+            <div class="hero-top">
+                <div></div>
+                <div class="hero-agency">
+                    <div class="brand">✦ Sunweek Media</div>
+                    <div class="tagline">Social Media Agency</div>
                 </div>
             </div>
-            <div class="hero-right">
-                <p class="agency-text">✦ Sunweek Media — <span class="white-text">Social Media Agency</span></p>
+            <h1>
+                <span class="hashtag">#</span>WE KNOW<br>HOW TO
+            </h1>
+            <div class="typing-box">
+                <span class="typing-text" id="typingText">MAKE YOUR BRAND STAND OUT</span><span class="cursor"></span>
+            </div>
+            <div class="hero-cta">
+                <a href="#contact" class="btn-primary">Get Started →</a>
             </div>
         </div>
     </section>
 
-    <!-- Main Cream Section - Partner + Problems + About all together -->
+    <!-- Main Cream Section -->
     <section class="main-section">
         <!-- Creative Partner -->
         <div class="partner">
@@ -1182,7 +1230,7 @@
         </div>
     </section>
 
-    <!-- Process Section - Horizontal -->
+    <!-- Process Section -->
     <section class="process grid-bg" id="process">
         <div class="process-container">
             <div class="section-header">
@@ -1190,9 +1238,8 @@
                 <h2>Our Process</h2>
             </div>
             <div class="process-track">
-                <div class="process-line-wrapper">
-                    <div class="process-line-fill" id="processLineFill"></div>
-                </div>
+                <div class="process-line-bg"></div>
+                <div class="process-line-fill" id="processLineFill"></div>
                 <div class="process-step" data-step="1">
                     <div class="process-dot">01</div>
                     <div>
@@ -1225,28 +1272,28 @@
         </div>
     </section>
 
-    <!-- Form Section -->
+    <!-- Form Section - ENVIE Style -->
     <section class="form-section grid-bg" id="contact">
         <div class="form-wrapper">
-            <div class="form-content">
-                <h2>Ready to Make Your Brand<br>Stand Out?</h2>
+            <div class="form-header">
+                <h2>READY TO MAKE<br><span class="star">✦</span> YOUR BRAND<br>STAND OUT?</h2>
                 <p class="form-subtitle">Fill out the form and we'll get back to you within 24 hours.</p>
-
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group full-width">
-                        <input type="text" name="business" placeholder="Social media link / business name" required>
-                    </div>
-                    <div class="form-submit">
-                        <button type="submit" class="btn-outline-dark">Get Started →</button>
-                    </div>
-                </form>
             </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group full-width">
+                    <input type="text" name="business" placeholder="Social media link / business name" required>
+                </div>
+                <div class="form-submit">
+                    <button type="submit" class="btn-outline-dark">Get Started →</button>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -1355,7 +1402,6 @@
             tagIndex = (tagIndex + 1) % teamTags.length;
         }
 
-        // Check if about section is in view
         const aboutSection = document.querySelector('.about');
         let tagAnimationStarted = false;
 
@@ -1371,19 +1417,25 @@
 
         aboutObserver.observe(aboutSection);
 
-        // Process line fill on scroll
+        // Process line fill on scroll - PIXEL BASED for straight line
         const processSection = document.querySelector('.process');
         const processLineFill = document.getElementById('processLineFill');
         const processSteps = document.querySelectorAll('.process-step');
+        const processTrack = document.querySelector('.process-track');
 
         function updateProcessLine() {
+            if (window.innerWidth <= 1024) return;
+
             const rect = processSection.getBoundingClientRect();
             const windowHeight = window.innerHeight;
+            const trackWidth = processTrack.offsetWidth - 50; // subtract padding
 
             const sectionStart = rect.top;
-            const progress = Math.max(0, Math.min(1, 1 - (sectionStart / (windowHeight * 0.6))));
+            const progress = Math.max(0, Math.min(1, 1 - (sectionStart / (windowHeight * 0.5))));
 
-            processLineFill.style.width = (progress * 100) + '%';
+            // Set width in pixels for straight line
+            const fillWidth = progress * trackWidth;
+            processLineFill.style.width = fillWidth + 'px';
 
             processSteps.forEach((step, index) => {
                 const stepThreshold = (index + 0.5) / processSteps.length;
