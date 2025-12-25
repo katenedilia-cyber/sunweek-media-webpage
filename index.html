@@ -451,6 +451,60 @@
             top: 180px;
         }
 
+        .problem-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 2.5rem;
+            opacity: 0.3;
+        }
+
+        .problem-card:nth-child(1) .problem-card-header {
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .problem-card:nth-child(2) .problem-card-header {
+            border-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .problem-card:nth-child(3) .problem-card-header {
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .problem-card h3 {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            font-style: italic;
+        }
+
+        /* Card header colors */
+        .problem-card:nth-child(1) h3 {
+            color: var(--white);
+        }
+
+        .problem-card:nth-child(2) h3 {
+            color: var(--dark);
+        }
+
+        .problem-card:nth-child(3) h3 {
+            color: var(--dark);
+        }
+
+        .problem-card .number {
+            font-size: 4rem;
+            font-weight: 300;
+            opacity: 0.4;
+        }
+
+        .problem-card p {
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
         /* CTA Button - RIGHT AFTER CARDS */
         .problems-cta {
             text-align: center;
