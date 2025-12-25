@@ -55,9 +55,10 @@
         h2,
         h3,
         h4 {
-            font-weight: 700;
+            font-weight: 800;
             line-height: 1.1;
             letter-spacing: -0.02em;
+            text-transform: uppercase;
         }
 
         /* Grid Pattern Background */
@@ -202,6 +203,22 @@
             border-bottom: 1px solid var(--border);
         }
 
+        .mobile-nav-cta {
+            margin-top: 2rem;
+        }
+
+        .mobile-nav-cta a {
+            background: var(--green);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            border: none;
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -235,7 +252,7 @@
             z-index: 2;
         }
 
-        /* Agency Text - No Box, positioned in gradient area */
+        /* Agency Text - Pink color */
         .hero-agency-text {
             position: absolute;
             top: 50%;
@@ -244,16 +261,9 @@
             text-align: center;
         }
 
-        .hero-agency-text .star {
-            color: var(--green);
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
         .hero-agency-text .brand-name {
-            color: var(--green);
-            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            color: var(--pink);
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
             font-weight: 700;
             display: block;
             margin-bottom: 0.25rem;
@@ -261,11 +271,10 @@
 
         .hero-agency-text .tagline {
             color: var(--white);
-            font-size: clamp(1rem, 1.5vw, 1.25rem);
+            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
             font-weight: 400;
         }
 
-        /* Normal font - NOT italic */
         .hero h1 {
             font-size: clamp(3.5rem, 12vw, 10rem);
             font-weight: 800;
@@ -280,7 +289,7 @@
             color: var(--white);
         }
 
-        /* Typing animation box */
+        /* Typing animation box - Pink */
         .typing-box {
             display: inline-block;
             border: 2px solid var(--pink);
@@ -347,7 +356,7 @@
             transform: translateY(-2px);
         }
 
-        /* Main Cream Section - Closer to button */
+        /* Main Cream Section - Rounded top AND bottom */
         .main-section {
             background: var(--cream);
             border-radius: 40px;
@@ -403,20 +412,19 @@
             margin-bottom: 1.25rem;
         }
 
-        /* Problems Section - STACKING & OVERLAPPING */
-        problems-container {
-            max-width: 900px;
+        /* Problems Section - STACKING, BIGGER CARDS */
+        .problems-container {
+            max-width: 1100px;
             margin: 0 auto;
             position: relative;
-            height: 180vh;
+            height: 220vh;
         }
 
         .problem-card {
             border-radius: 32px;
-            padding: 3rem 3.5rem;
-            min-height: 220px;
+            padding: 4rem 4.5rem;
+            min-height: 320px;
             position: sticky;
-            top: 120px;
             transition: all 0.3s ease;
         }
 
@@ -448,9 +456,9 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             border-bottom: 1px solid currentColor;
-            padding-bottom: 1.5rem;
+            padding-bottom: 2rem;
             opacity: 0.3;
         }
 
@@ -467,31 +475,45 @@
         }
 
         .problem-card h3 {
-            font-size: clamp(1.3rem, 3vw, 2.25rem);
+            font-size: clamp(1.5rem, 4vw, 2.75rem);
             font-weight: 400;
             text-transform: uppercase;
             letter-spacing: -0.01em;
             font-style: italic;
         }
 
+        /* Card header colors */
+        .problem-card:nth-child(1) h3 {
+            color: var(--white);
+        }
+
+        .problem-card:nth-child(2) h3 {
+            color: var(--dark);
+        }
+
+        .problem-card:nth-child(3) h3 {
+            color: var(--dark);
+        }
+
         .problem-card .number {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 300;
             opacity: 0.4;
         }
 
         .problem-card p {
-            font-size: 1.15rem;
+            font-size: 1.35rem;
             line-height: 1.6;
         }
 
+        /* CTA Button - Centered, Dark Pink */
         .problems-cta {
             text-align: center;
-            padding: 3rem 0 4rem;
+            padding: 4rem 0;
         }
 
-        .btn-dark {
-            background: var(--dark);
+        .btn-pink {
+            background: var(--pink-dark);
             color: var(--white);
             padding: 1.5rem 3rem;
             border-radius: 50px;
@@ -506,8 +528,8 @@
             cursor: pointer;
         }
 
-        .btn-dark:hover {
-            background: var(--dark-lighter);
+        .btn-pink:hover {
+            background: #a33d66;
             transform: translateY(-2px);
         }
 
@@ -528,6 +550,7 @@
             margin-bottom: 3rem;
             text-transform: uppercase;
             line-height: 1.1;
+            font-weight: 800;
         }
 
         .team-tags {
@@ -564,7 +587,7 @@
         /* Services Section */
         .services {
             background: var(--dark);
-            padding: 5rem 5%;
+            padding: 6rem 5%;
         }
 
         .services-container {
@@ -578,23 +601,25 @@
         }
 
         .section-tag {
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            color: var(--green);
+            color: var(--pink);
             margin-bottom: 1rem;
             display: block;
         }
 
         .section-header h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2.5rem, 5vw, 4rem);
             color: var(--white);
+            text-transform: uppercase;
+            font-weight: 800;
         }
 
         .service-item {
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem 0;
+            padding: 2.5rem 0;
             display: grid;
             grid-template-columns: 50px 1fr;
             gap: 1.5rem;
@@ -641,24 +666,24 @@
         }
 
         .service-content h3 {
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-            font-weight: 700;
+            font-size: clamp(1.3rem, 3vw, 1.75rem);
+            font-weight: 800;
             text-transform: uppercase;
             color: var(--white);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             transition: color 0.3s ease;
         }
 
         .service-content p {
             color: var(--gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
 
-        /* Process Section */
+        /* Process Section - BIGGER */
         .process {
             background: var(--dark);
-            padding: 5rem 5% 6rem;
+            padding: 6rem 5% 8rem;
         }
 
         .process-container {
@@ -669,13 +694,13 @@
         .process-track {
             display: flex;
             position: relative;
-            margin-top: 4rem;
-            padding-top: 80px;
+            margin-top: 5rem;
+            padding-top: 100px;
         }
 
         .process-line-bg {
             position: absolute;
-            top: 25px;
+            top: 30px;
             left: 25px;
             right: 25px;
             height: 3px;
@@ -684,7 +709,7 @@
 
         .process-line-fill {
             position: absolute;
-            top: 25px;
+            top: 30px;
             left: 25px;
             height: 3px;
             width: 0;
@@ -695,7 +720,7 @@
         .process-step {
             flex: 1;
             text-align: center;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
             position: relative;
             opacity: 0;
             transform: translateY(20px);
@@ -708,20 +733,20 @@
         }
 
         .process-dot {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             background: var(--dark-card);
             border: 2px solid rgba(255, 255, 255, 0.15);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--gray);
             transition: all 0.4s ease;
             position: absolute;
-            top: -80px;
+            top: -100px;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -735,10 +760,11 @@
         }
 
         .process-step h3 {
-            font-size: 1rem;
+            font-size: 1.2rem;
             color: var(--white);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             text-transform: uppercase;
+            font-weight: 800;
             transition: color 0.3s ease;
         }
 
@@ -748,8 +774,8 @@
 
         .process-step p {
             color: var(--gray);
-            font-size: 0.8rem;
-            line-height: 1.4;
+            font-size: 0.95rem;
+            line-height: 1.5;
             opacity: 0.6;
             transition: opacity 0.3s ease;
         }
@@ -916,6 +942,7 @@
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
+            margin-left: auto;
         }
 
         .scroll-top:hover {
@@ -945,7 +972,7 @@
         @media (max-width: 1024px) {
             .process-track {
                 flex-direction: column;
-                gap: 2rem;
+                gap: 2.5rem;
                 padding-top: 0;
             }
 
@@ -969,8 +996,8 @@
                 transform: none;
                 margin: 0;
                 flex-shrink: 0;
-                width: 45px;
-                height: 45px;
+                width: 50px;
+                height: 50px;
             }
 
             .process-step.active .process-dot {
@@ -983,9 +1010,12 @@
         }
 
         @media (max-width: 768px) {
+
+            /* Navigation - Smaller on mobile */
             nav {
-                width: calc(100% - 2rem);
-                padding: 0.75rem 1rem;
+                width: auto;
+                min-width: 120px;
+                padding: 0.6rem 1rem;
                 gap: 0;
                 justify-content: space-between;
             }
@@ -1015,18 +1045,27 @@
                 text-align: left;
             }
 
-            /* Agency text on mobile - below headline */
+            /* Agency text - Pink, smaller on mobile */
             .hero-agency-text {
                 position: relative;
                 top: auto;
                 right: auto;
                 transform: none;
                 text-align: left;
-                margin-bottom: 2rem;
+                margin-bottom: 1.5rem;
             }
 
+            .hero-agency-text .brand-name {
+                font-size: 1.1rem;
+            }
+
+            .hero-agency-text .tagline {
+                font-size: 0.85rem;
+            }
+
+            /* WE KNOW HOW TO - Bigger on mobile */
             .hero h1 {
-                font-size: clamp(2.5rem, 12vw, 5rem);
+                font-size: clamp(3rem, 14vw, 5rem);
                 margin-bottom: 1.5rem;
             }
 
@@ -1055,7 +1094,7 @@
                 border-radius: 24px;
             }
 
-            /* Cards - less height on mobile */
+            /* Cards - no sticky on mobile */
             .problems-container {
                 height: auto;
             }
@@ -1064,22 +1103,6 @@
                 position: relative;
                 top: auto !important;
                 margin-bottom: 1.5rem;
-            }
-
-            .partner {
-                margin-bottom: 3rem;
-                padding-bottom: 2rem;
-            }
-
-            .partner h2 {
-                font-size: clamp(2rem, 8vw, 3rem);
-            }
-
-            .partner p {
-                font-size: 1rem;
-            }
-
-            .problem-card {
                 padding: 2rem 1.5rem;
                 min-height: auto;
             }
@@ -1096,18 +1119,38 @@
                 font-size: 1rem;
             }
 
+            .problems-cta {
+                padding: 2rem 0 3rem;
+            }
+
+            .partner {
+                margin-bottom: 3rem;
+                padding-bottom: 2rem;
+            }
+
+            .partner h2 {
+                font-size: clamp(2rem, 8vw, 3rem);
+            }
+
+            .partner p {
+                font-size: 1rem;
+            }
+
             .services {
                 padding: 3rem 5%;
             }
 
+            /* Services - Show arrows on mobile */
             .service-item {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
+                grid-template-columns: 40px 1fr;
+                gap: 1rem;
                 padding: 1.5rem 0;
             }
 
             .service-arrow {
-                display: none;
+                display: flex;
+                width: 35px;
+                height: 35px;
             }
 
             .service-content h3 {
@@ -1127,17 +1170,17 @@
             }
 
             .process-dot {
-                width: 40px;
-                height: 40px;
-                font-size: 0.85rem;
+                width: 45px;
+                height: 45px;
+                font-size: 0.9rem;
             }
 
             .process-step h3 {
-                font-size: 0.95rem;
+                font-size: 1rem;
             }
 
             .process-step p {
-                font-size: 0.8rem;
+                font-size: 0.85rem;
             }
 
             .form-wrapper {
@@ -1166,9 +1209,15 @@
                 justify-content: center;
             }
 
+            /* Footer - no emojis, arrow to right */
             .footer-links-row {
-                flex-direction: column;
+                flex-direction: row;
+                flex-wrap: wrap;
                 gap: 1.5rem;
+            }
+
+            .scroll-top {
+                margin-left: auto;
             }
 
             .footer-brand-text {
@@ -1191,7 +1240,7 @@
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
 
             .typing-box .typing-text {
@@ -1234,11 +1283,13 @@
             <li><a href="#process">Process</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
+        <div class="mobile-nav-cta">
+            <a href="#contact">Get Started →</a>
+        </div>
     </div>
 
     <section class="hero grid-bg" id="home">
         <div class="hero-content">
-            <!-- Agency Text - No box, in gradient area -->
             <div class="hero-agency-text">
                 <span class="brand-name">✦ Sunweek Media</span>
                 <span class="tagline">Social Media Agency</span>
@@ -1292,7 +1343,7 @@
         </div>
 
         <div class="problems-cta">
-            <a href="#contact" class="btn-dark">Fill Out The Form →</a>
+            <a href="#contact" class="btn-pink">Fill Out The Form →</a>
         </div>
 
         <div class="about" id="about">
@@ -1313,7 +1364,7 @@
     <section class="services grid-bg" id="services">
         <div class="services-container">
             <div class="section-header">
-                <span class="section-tag">What We Do</span>
+                <span class="section-tag">— What We Do</span>
                 <h2>Our Services</h2>
             </div>
             <div class="service-item">
@@ -1368,7 +1419,7 @@
     <section class="process grid-bg" id="process">
         <div class="process-container">
             <div class="section-header">
-                <span class="section-tag">How It Works</span>
+                <span class="section-tag">— How It Works</span>
                 <h2>Our Process</h2>
             </div>
             <div class="process-track">
@@ -1620,7 +1671,6 @@
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
 
-            // Get form data
             const formData = new FormData(contactForm);
             const data = {
                 name: formData.get('name'),
@@ -1628,7 +1678,6 @@
                 business: formData.get('business')
             };
 
-            // Send to Zapier webhook
             fetch('https://hooks.zapier.com/hooks/catch/25621114/ufdrwmx/', {
                 method: 'POST',
                 mode: 'no-cors',
