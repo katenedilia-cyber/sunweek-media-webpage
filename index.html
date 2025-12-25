@@ -750,51 +750,28 @@
         }
 
         .form-wrapper {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             background: var(--pink);
             border-radius: 40px;
-            padding: 5rem 5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .form-content h2 {
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: var(--dark);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            line-height: 1.2;
-        }
-
-        .form-subtitle {
-            font-size: 1.1rem;
-            color: rgba(0, 0, 0, 0.6);
-            margin-bottom: 3rem;
+            padding: 4rem 6rem;
         }
 
         .contact-form {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 2rem;
+            align-items: end;
         }
 
-        .form-group input {
-            width: 100%;
-            padding: 1.25rem 0;
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-            font-family: inherit;
-            font-size: 1.1rem;
-            color: var(--dark);
-            transition: all 0.3s ease;
+        .form-group.full-width {
+            grid-column: auto;
         }
 
         .form-submit {
-            grid-column: 1 / -1;
-            text-align: center;
-            margin-top: 2rem;
+            grid-column: auto;
+            text-align: right;
+            margin-top: 0;
         }
 
         .btn-outline-dark {
