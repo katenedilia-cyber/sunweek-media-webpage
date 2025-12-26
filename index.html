@@ -1116,25 +1116,21 @@
 
             /* Cards - STACKING on mobile */
             .cards-wrapper {
-                min-height: 90vh;
+                min-height: auto;
             }
 
             .problem-card {
+                position: relative !important;
+                top: auto !important;
                 margin-bottom: 1rem;
                 padding: 2rem 1.5rem;
-                min-height: 280px;
+                min-height: auto;
             }
 
-            .problem-card:nth-child(1) {
-                top: 80px;
-            }
-
-            .problem-card:nth-child(2) {
-                top: 110px;
-            }
-
+            .problem-card:nth-child(1),
+            .problem-card:nth-child(2),
             .problem-card:nth-child(3) {
-                top: 140px;
+                top: auto !important;
             }
 
             .problem-card h3 {
@@ -1150,7 +1146,7 @@
             }
 
             .problems-cta {
-                padding: 1rem 0;
+                padding: 0.5rem 0;
             }
 
             .btn-pink {
@@ -1281,11 +1277,11 @@
 
             .problem-card {
                 padding: 1.5rem 1.25rem;
-                min-height: 250px;
+                min-height: auto;
             }
 
             .cards-wrapper {
-                min-height: 70vh;
+                min-height: auto;
             }
         }
     </style>
