@@ -1088,17 +1088,27 @@
                 color: var(--white);
             }
 
+            .hero {
+                min-height: 90vh;
+                min-height: 90dvh;
+                padding-bottom: 5rem;
+            }
+
             .hero h1 {
-                font-size: clamp(4rem, 18vw, 6rem);
+                font-size: clamp(5rem, 22vw, 8rem);
                 margin-bottom: 1.5rem;
             }
 
             .typing-box {
-                padding: 1rem 2.5rem;
+                padding: 1.2rem 2.5rem;
             }
 
             .typing-box .typing-text {
-                font-size: 1.1rem;
+                font-size: 1.4rem;
+            }
+
+            .hero::after {
+                display: none;
             }
 
             .hero-cta {
@@ -1288,11 +1298,11 @@
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 3.5rem;
+                font-size: 4.2rem;
             }
 
             .typing-box .typing-text {
-                font-size: 0.95rem;
+                font-size: 1.2rem;
             }
 
             .problem-card {
