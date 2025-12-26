@@ -761,7 +761,7 @@
         }
 
         .process-step h3 {
-            font-size: 1.3rem;
+            font-size: clamp(1.5rem, 3vw, 2rem);
             color: var(--white);
             margin-bottom: 0.75rem;
             text-transform: uppercase;
@@ -770,13 +770,13 @@
         }
 
         .process-step.active h3 {
-            color: var(--green);
+            color: var(--white);
         }
 
         .process-step p {
             color: var(--gray);
-            font-size: 1.05rem;
-            line-height: 1.5;
+            font-size: 1.2rem;
+            line-height: 1.7;
             opacity: 0.6;
             transition: opacity 0.3s ease;
         }
@@ -1205,11 +1205,11 @@
             }
 
             .process-step h3 {
-                font-size: 1.3rem;
+                font-size: 1.1rem;
             }
 
             .process-step p {
-                font-size: 1.05rem;
+                font-size: 0.95rem;
             }
 
             .form-wrapper {
