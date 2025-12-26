@@ -1021,6 +1021,9 @@
                 min-width: auto;
                 padding: 0.5rem 0.75rem;
                 gap: 0.5rem;
+                left: auto;
+                right: 1.5rem;
+                transform: none;
             }
 
             .logo-icon {
@@ -1077,7 +1080,7 @@
             }
 
             .hero h1 {
-                font-size: clamp(3.5rem, 16vw, 5.5rem);
+                font-size: clamp(4rem, 18vw, 6rem);
                 margin-bottom: 1.5rem;
             }
 
@@ -1106,17 +1109,27 @@
                 border-radius: 24px;
             }
 
-            /* Cards - NO STICKY on mobile */
+            /* Cards - STACKING on mobile */
             .cards-wrapper {
-                min-height: auto;
+                min-height: 160vh;
             }
 
             .problem-card {
-                position: relative !important;
-                top: auto !important;
                 margin-bottom: 1rem;
                 padding: 2rem 1.5rem;
-                min-height: auto;
+                min-height: 280px;
+            }
+
+            .problem-card:nth-child(1) {
+                top: 80px;
+            }
+
+            .problem-card:nth-child(2) {
+                top: 110px;
+            }
+
+            .problem-card:nth-child(3) {
+                top: 140px;
             }
 
             .problem-card h3 {
@@ -1133,6 +1146,11 @@
 
             .problems-cta {
                 padding: 2rem 0;
+            }
+
+            .btn-pink {
+                padding: 1rem 2rem;
+                font-size: 0.95rem;
             }
 
             .partner {
@@ -1181,17 +1199,17 @@
             }
 
             .process-dot {
-                width: 45px;
-                height: 45px;
-                font-size: 0.9rem;
-            }
-
-            .process-step h3 {
+                width: 50px;
+                height: 50px;
                 font-size: 1rem;
             }
 
+            .process-step h3 {
+                font-size: 1.3rem;
+            }
+
             .process-step p {
-                font-size: 0.85rem;
+                font-size: 1.05rem;
             }
 
             .form-wrapper {
@@ -1254,7 +1272,7 @@
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 3rem;
+                font-size: 3.5rem;
             }
 
             .typing-box .typing-text {
@@ -1263,6 +1281,11 @@
 
             .problem-card {
                 padding: 1.5rem 1.25rem;
+                min-height: 250px;
+            }
+
+            .cards-wrapper {
+                min-height: 140vh;
             }
 
             .form-header h2 {
