@@ -1114,7 +1114,7 @@
                 border-radius: 24px;
             }
 
-            /* Cards - STACKING on mobile */
+            /* Cards - NO STACKING on mobile */
             .cards-wrapper {
                 min-height: auto;
             }
@@ -1125,11 +1125,13 @@
                 margin-bottom: 1rem;
                 padding: 2rem 1.5rem;
                 min-height: auto;
+                z-index: 1 !important;
             }
 
             .problem-card:nth-child(1),
             .problem-card:nth-child(2),
             .problem-card:nth-child(3) {
+                position: relative !important;
                 top: auto !important;
             }
 
@@ -1341,10 +1343,10 @@
         <div class="partner">
             <div class="partner-tag">WHO WE ARE</div>
             <h2>YOUR CREATIVE <span class="highlight">GROWTH</span> PARTNER</h2>
-            <p>We're not your typical agency. We're a team of creators, strategists, and social media obsessives who
-                genuinely care about making your brand shine.</p>
-            <p>You focus on running your business. We'll handle the content, the strategy, and the growth — with full
-                transparency every step of the way.</p>
+            <p>We're a team of strategists, creators, and social media specialists who create content that actually
+                brings clients.</p>
+            <p>We take social media off your plate completely. Strategy, content, posting, engagement — handled. You
+                focus on your business, we focus on your growth.</p>
         </div>
 
         <div class="problems-container">
@@ -1354,7 +1356,7 @@
                         <h3>YOU WANT TO</h3>
                         <span class="number">01</span>
                     </div>
-                    <p>scale your business but don't know where to start in the online space</p>
+                    <p>scale your business but don't know where to start</p>
                 </div>
                 <div class="problem-card">
                     <div class="problem-card-header">
@@ -1379,12 +1381,12 @@
 
         <div class="about" id="about">
             <div class="about-container">
-                <h2>A TEAM OF EXPERIENCED<br>SPECIALISTS WORKS ON<br>YOUR PROJECT</h2>
+                <h2>A DEDICATED TEAM OF SPECIALISTS,<br>WORKING TOGETHER ON YOUR BRAND</h2>
                 <div class="team-tags">
-                    <span class="team-tag" data-index="0">SMM Manager</span>
-                    <span class="team-tag" data-index="1">Designer</span>
-                    <span class="team-tag" data-index="2">Content Creator</span>
-                    <span class="team-tag" data-index="3">Video Editor</span>
+                    <span class="team-tag" data-index="0">Strategist</span>
+                    <span class="team-tag" data-index="1">Content Creator</span>
+                    <span class="team-tag" data-index="2">Designer</span>
+                    <span class="team-tag" data-index="3">Project Manager</span>
                 </div>
                 <p class="about-note">* This system is designed so that our collaboration delivers the results you want!
                 </p>
@@ -1406,8 +1408,8 @@
                 </div>
                 <div class="service-content">
                     <h3>Social Media Management</h3>
-                    <p>Full-service management from strategy to posting. We handle your accounts so you can focus on
-                        your business.</p>
+                    <p>End-to-end management designed around your goals. We handle everything so you never have to think
+                        about social media again.</p>
                 </div>
             </div>
             <div class="service-item">
@@ -1429,7 +1431,8 @@
                 </div>
                 <div class="service-content">
                     <h3>Strategy Development</h3>
-                    <p>Custom roadmaps built around your goals, audience, and industry. No generic templates here.</p>
+                    <p>A custom roadmap built around your goals, your audience, and what actually works in your
+                        industry.</p>
                 </div>
             </div>
             <div class="service-item">
@@ -1491,7 +1494,7 @@
     <section class="form-section grid-bg" id="contact">
         <div class="form-wrapper">
             <div class="form-header">
-                <h2>READY TO MAKE YOUR BRAND<br>STAND OUT? ✦</h2>
+                <h2>LET'S GET YOU NOTICED ✦</h2>
                 <p class="form-subtitle">Fill out the form and we'll get back to you within 24 hours.</p>
             </div>
 
@@ -1574,10 +1577,10 @@
 
         // Typing Animation
         const phrases = [
-            'MAKE YOUR BRAND STAND OUT',
-            'INCREASE ACCOUNT CONVERSION',
-            'BUILD SYSTEMATIC MARKETING',
-            'TURN FOLLOWERS INTO LEADS'
+            'BUILD BRANDS PEOPLE REMEMBER',
+            'CREATE CONTENT THAT CONVERTS',
+            'GROW YOUR BUSINESS ONLINE',
+            'TURN FOLLOWERS INTO CUSTOMERS'
         ];
 
         let phraseIndex = 0;
