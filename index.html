@@ -1726,7 +1726,7 @@
         window.addEventListener('resize', updateProcessLine);
         updateProcessLine();
 
-        // Form Submission with Zapier
+        // Form Submission with Make
         const contactForm = document.getElementById('contactForm');
 
         contactForm.addEventListener('submit', function (e) {
@@ -1744,22 +1744,25 @@
                 business: formData.get('business')
             };
 
-            fetch('https://hooks.zapier.com/hooks/catch/25621114/ufdrwmx/', {
+            fetch('https://hook.eu1.make.com/413u0cwcukolzyqmk1vp80orspux4o40', {
                 method: 'POST',
-                mode: 'no-cors',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data)
             })
-                .then(() => {
-                    submitBtn.textContent = 'Thank You! ✓';
-                    contactForm.reset();
+                .then(response => {
+                    if (response.ok) {
+                        submitBtn.textContent = 'Thank You! ✓';
+                        contactForm.reset();
 
-                    setTimeout(() => {
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                    }, 3000);
+                        setTimeout(() => {
+                            submitBtn.textContent = originalText;
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    } else {
+                        throw new Error('Network response was not ok');
+                    }
                 })
                 .catch((error) => {
                     console.error('Error:', error);
