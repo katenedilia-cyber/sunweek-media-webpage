@@ -253,7 +253,6 @@
             z-index: 2;
         }
 
-        /* Agency Text - Pink color */
         .hero-agency-text {
             position: absolute;
             top: 50%;
@@ -289,7 +288,6 @@
             color: var(--white);
         }
 
-        /* Typing animation box - Pink */
         .typing-box {
             display: inline-block;
             border: 2px solid var(--pink);
@@ -356,14 +354,14 @@
             transform: translateY(-2px);
         }
 
-        /* Main Cream Section - Rounded top AND bottom */
+        /* Main Cream Section - NO OVERFLOW HIDDEN! */
         .main-section {
             background: var(--cream);
-            border-radius: 40px 40px 40px 40px;
+            border-radius: 40px;
             padding: 6rem 5% 0;
             margin: 0 2%;
             margin-top: 2rem;
-            overflow: hidden;
+            /* NO overflow: hidden - it breaks sticky! */
         }
 
         /* Creative Partner Section */
@@ -411,13 +409,17 @@
             margin-bottom: 1.25rem;
         }
 
-        /* Problems Section - STACKING CARDS */
+        /* ============================================
+           STACKING CARDS - WORKING VERSION
+           ============================================ */
         .problems-container {
             max-width: 1100px;
             margin: 0 auto;
+        }
+
+        .cards-wrapper {
             position: relative;
-            height: 250vh;
-            /* Enough for 3 cards to stack */
+            min-height: 180vh;
         }
 
         .problem-card {
@@ -425,7 +427,7 @@
             padding: 5rem 5.5rem;
             min-height: 420px;
             position: sticky;
-            transition: all 0.3s ease;
+            margin-bottom: 2rem;
         }
 
         .problem-card:nth-child(1) {
@@ -442,14 +444,14 @@
             outline: 1px solid rgba(0, 0, 0, 0.05);
             outline-offset: 8px;
             z-index: 2;
-            top: 140px;
+            top: 130px;
         }
 
         .problem-card:nth-child(3) {
             background: var(--green);
             color: var(--dark);
             z-index: 3;
-            top: 180px;
+            top: 160px;
         }
 
         .problem-card-header {
@@ -482,7 +484,6 @@
             font-style: italic;
         }
 
-        /* Card header colors */
         .problem-card:nth-child(1) h3 {
             color: var(--white);
         }
@@ -506,13 +507,10 @@
             line-height: 1.6;
         }
 
-        /* CTA Button - INSIDE container, sticky at bottom */
+        /* CTA Button - STROKE ONLY */
         .problems-cta {
-            position: sticky;
-            top: 220px;
-            z-index: 4;
             text-align: center;
-            padding: 3rem 0;
+            padding: 3rem 0 4rem;
         }
 
         .btn-pink {
@@ -531,10 +529,9 @@
             cursor: pointer;
         }
 
-        .btn-pink:hover,
-        .btn-pink.lit {
-            background: var(--green);
-            border-color: var(--green);
+        .btn-pink:hover {
+            background: var(--dark);
+            color: var(--white);
         }
 
         /* About Section */
@@ -684,7 +681,7 @@
             line-height: 1.7;
         }
 
-        /* Process Section - BIGGER */
+        /* Process Section */
         .process {
             background: var(--dark);
             padding: 6rem 5% 8rem;
@@ -811,7 +808,7 @@
             font-size: clamp(1.8rem, 5vw, 4rem);
             color: var(--dark);
             text-transform: uppercase;
-            line-height: 1;
+            line-height: 1.1;
             margin-bottom: 1rem;
             font-weight: 800;
         }
@@ -1019,8 +1016,6 @@
         }
 
         @media (max-width: 768px) {
-
-            /* Navigation - SMALLER on mobile */
             nav {
                 width: auto;
                 min-width: auto;
@@ -1064,7 +1059,6 @@
                 text-align: left;
             }
 
-            /* Agency text - Pink, SMALLER on mobile */
             .hero-agency-text {
                 position: relative;
                 top: auto;
@@ -1082,7 +1076,6 @@
                 font-size: 0.75rem;
             }
 
-            /* WE KNOW HOW TO - BIGGER on mobile */
             .hero h1 {
                 font-size: clamp(3.5rem, 16vw, 5.5rem);
                 margin-bottom: 1.5rem;
@@ -1113,13 +1106,13 @@
                 border-radius: 24px;
             }
 
-            /* Cards - no sticky on mobile, no gap */
-            .problems-container {
-                height: auto;
+            /* Cards - NO STICKY on mobile */
+            .cards-wrapper {
+                min-height: auto;
             }
 
             .problem-card {
-                position: relative;
+                position: relative !important;
                 top: auto !important;
                 margin-bottom: 1rem;
                 padding: 2rem 1.5rem;
@@ -1139,7 +1132,7 @@
             }
 
             .problems-cta {
-                padding: 1.5rem 0 2rem;
+                padding: 2rem 0;
             }
 
             .partner {
@@ -1159,7 +1152,6 @@
                 padding: 3rem 5%;
             }
 
-            /* Services - Show arrows on mobile */
             .service-item {
                 grid-template-columns: 40px 1fr;
                 gap: 1rem;
@@ -1228,7 +1220,6 @@
                 justify-content: center;
             }
 
-            /* Footer - arrows to right */
             .footer-links-row {
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -1342,31 +1333,33 @@
         </div>
 
         <div class="problems-container">
-            <div class="problem-card">
-                <div class="problem-card-header">
-                    <h3>YOU WANT TO</h3>
-                    <span class="number">01</span>
+            <div class="cards-wrapper">
+                <div class="problem-card">
+                    <div class="problem-card-header">
+                        <h3>YOU WANT TO</h3>
+                        <span class="number">01</span>
+                    </div>
+                    <p>scale your business but don't know where to start in the online space</p>
                 </div>
-                <p>scale your business but don't know where to start in the online space</p>
-            </div>
-            <div class="problem-card">
-                <div class="problem-card-header">
-                    <h3>SOCIAL MEDIA</h3>
-                    <span class="number">02</span>
+                <div class="problem-card">
+                    <div class="problem-card-header">
+                        <h3>SOCIAL MEDIA</h3>
+                        <span class="number">02</span>
+                    </div>
+                    <p>takes too much time but doesn't deliver results</p>
                 </div>
-                <p>takes too much time but doesn't deliver results</p>
-            </div>
-            <div class="problem-card">
-                <div class="problem-card-header">
-                    <h3>YOU DON'T UNDERSTAND</h3>
-                    <span class="number">03</span>
+                <div class="problem-card">
+                    <div class="problem-card-header">
+                        <h3>YOU DON'T UNDERSTAND</h3>
+                        <span class="number">03</span>
+                    </div>
+                    <p>how to manage social media systematically and effectively</p>
                 </div>
-                <p>how to manage social media systematically and effectively</p>
             </div>
-        </div>
 
-        <div class="problems-cta">
-            <a href="#contact" class="btn-pink">Fill Out The Form →</a>
+            <div class="problems-cta">
+                <a href="#contact" class="btn-pink">Fill Out The Form →</a>
+            </div>
         </div>
 
         <div class="about" id="about">
@@ -1483,7 +1476,7 @@
     <section class="form-section grid-bg" id="contact">
         <div class="form-wrapper">
             <div class="form-header">
-                <h2>READY TO MAKE YOUR BRAND<br><span class="standout">STAND OUT?</span> ✦</h2>
+                <h2>READY TO MAKE YOUR BRAND<br>STAND OUT? ✦</h2>
                 <p class="form-subtitle">Fill out the form and we'll get back to you within 24 hours.</p>
             </div>
 
@@ -1616,20 +1609,6 @@
             tagIndex = (tagIndex + 1) % teamTags.length;
         }
 
-        // Fill Out Form Button Animation
-        const formBtn = document.querySelector('.btn-pink');
-        let btnLit = false;
-
-        function toggleFormBtn() {
-            if (btnLit) {
-                formBtn.classList.remove('lit');
-            } else {
-                formBtn.classList.add('lit');
-            }
-            btnLit = !btnLit;
-        }
-
-        setInterval(toggleFormBtn, 1500);
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.2,
