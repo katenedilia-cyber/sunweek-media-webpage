@@ -411,13 +411,13 @@
             margin-bottom: 1.25rem;
         }
 
-        /* Problems Section - BIGGER CARDS */
+        /* Problems Section - STACKING CARDS */
         .problems-container {
             max-width: 1100px;
             margin: 0 auto;
             position: relative;
-            height: 180vh;
-            padding-bottom: 2rem;
+            height: 250vh;
+            /* Enough for 3 cards to stack */
         }
 
         .problem-card {
@@ -432,7 +432,7 @@
             background: var(--dark);
             color: var(--white);
             z-index: 1;
-            top: 120px;
+            top: 100px;
         }
 
         .problem-card:nth-child(2) {
@@ -442,14 +442,14 @@
             outline: 1px solid rgba(0, 0, 0, 0.05);
             outline-offset: 8px;
             z-index: 2;
-            top: 160px;
+            top: 140px;
         }
 
         .problem-card:nth-child(3) {
             background: var(--green);
             color: var(--dark);
             z-index: 3;
-            top: 200px;
+            top: 180px;
         }
 
         .problem-card-header {
@@ -506,17 +506,17 @@
             line-height: 1.6;
         }
 
-        /* CTA Button - RIGHT AFTER CARDS */
+        /* CTA Button - INSIDE container, sticky at bottom */
         .problems-cta {
+            position: sticky;
+            top: 220px;
+            z-index: 4;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: -20vh;
-            position: relative;
-            z-index: 10;
+            padding: 3rem 0;
         }
 
         .btn-pink {
-            background: var(--white);
+            background: transparent;
             color: var(--dark);
             padding: 1.5rem 3rem;
             border-radius: 50px;
@@ -531,11 +531,7 @@
             cursor: pointer;
         }
 
-        .btn-pink:hover {
-            background: var(--green);
-            border-color: var(--green);
-        }
-
+        .btn-pink:hover,
         .btn-pink.lit {
             background: var(--green);
             border-color: var(--green);
