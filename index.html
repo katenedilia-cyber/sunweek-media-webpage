@@ -925,8 +925,17 @@
         .footer-email {
             font-size: clamp(1.2rem, 4vw, 3rem);
             font-weight: 700;
-            color: var(--white);
             margin-bottom: 3rem;
+        }
+
+        .footer-email a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-email a:hover {
+            color: var(--green);
         }
 
         .footer-links-row {
@@ -1572,7 +1581,7 @@
 
     <footer class="grid-bg">
         <div class="footer-content">
-            <div class="footer-email">HELLO@SUNWEEKMEDIA.COM</div>
+            <div class="footer-email"><a href="mailto:hello@sunweekmedia.com">HELLO@SUNWEEKMEDIA.COM</a></div>
 
             <div class="footer-links-row">
                 <div class="footer-column">
