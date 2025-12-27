@@ -890,11 +890,20 @@
         .success-message {
             display: none;
             text-align: center;
-            padding: 4rem 2rem;
+            padding: 2rem;
         }
 
         .success-message.show {
             display: block;
+        }
+
+        .success-message h3 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--dark);
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            font-weight: 800;
         }
 
         .success-message p {
@@ -1555,7 +1564,8 @@
             </form>
 
             <div class="success-message" id="successMessage">
-                <p>Thank you! We'll get back to you soon.</p>
+                <h3>YOU'RE IN ✦</h3>
+                <p>We'll get back to you within 24 hours.</p>
             </div>
         </div>
     </section>
