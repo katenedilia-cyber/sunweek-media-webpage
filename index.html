@@ -886,6 +886,44 @@
             color: var(--white);
         }
 
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: var(--green);
+            border-radius: 50%;
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .success-message h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+        }
+
+        .success-message p {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -1537,6 +1575,12 @@
                     <button type="submit" class="btn-outline-dark">Get Started →</button>
                 </div>
             </form>
+
+            <div class="success-message" id="successMessage">
+                <span class="success-icon">✓</span>
+                <h3>Thank you!</h3>
+                <p>We'll get back to you as soon as possible.</p>
+            </div>
         </div>
     </section>
 
@@ -1729,6 +1773,7 @@
 
         // Form Submission with Make
         const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
 
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -1754,13 +1799,9 @@
             })
                 .then(response => {
                     if (response.ok) {
-                        submitBtn.textContent = 'Thank You! ✓';
-                        contactForm.reset();
-
-                        setTimeout(() => {
-                            submitBtn.textContent = originalText;
-                            submitBtn.disabled = false;
-                        }, 3000);
+                        // Hide form, show success message
+                        contactForm.style.display = 'none';
+                        successMessage.classList.add('show');
                     } else {
                         throw new Error('Network response was not ok');
                     }
