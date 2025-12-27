@@ -890,7 +890,7 @@
         .success-message {
             display: none;
             text-align: center;
-            padding: 2rem;
+            padding: 4rem 2rem;
         }
 
         .success-message.show {
@@ -1543,7 +1543,7 @@
 
     <section class="form-section grid-bg" id="contact">
         <div class="form-wrapper">
-            <div class="form-header">
+            <div class="form-header" id="formHeader">
                 <h2>LET'S GET YOU NOTICED ✦</h2>
                 <p class="form-subtitle">Fill out the form and we'll get back to you within 24 hours.</p>
             </div>
@@ -1760,6 +1760,7 @@
         // Form Submission with Make
         const contactForm = document.getElementById('contactForm');
         const successMessage = document.getElementById('successMessage');
+        const formHeader = document.getElementById('formHeader');
 
         contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -1785,8 +1786,9 @@
             })
                 .then(response => {
                     if (response.ok) {
-                        // Hide form, show success message
+                        // Hide form and header, show success message
                         contactForm.style.display = 'none';
+                        formHeader.style.display = 'none';
                         successMessage.classList.add('show');
                     } else {
                         throw new Error('Network response was not ok');
