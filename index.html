@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap"
         rel="stylesheet">
     <style>
         * {
@@ -31,11 +31,14 @@
         }
 
         :root {
-            --green: #D4FF3D;
-            --green-dark: #B8E035;
+            --pink-light: #FFABEB;
+            --burgundy: #770026;
+            --purple: #9A56AA;
+            --magenta: #AF125A;
+            --cyan: #B5F8FE;
             --pink: #FFB7D5;
             --pink-dark: #C24B7D;
-            --cream: #FAF8F5;
+            --cream: #FAFAFA;
             --dark: #0A0A0A;
             --dark-lighter: #141414;
             --dark-card: #1a1a1a;
@@ -53,12 +56,12 @@
             font-family: 'DM Sans', sans-serif;
             color: var(--white);
             line-height: 1.6;
-            background: var(--dark);
+            background: var(--cream);
             overflow-x: hidden;
         }
 
         ::selection {
-            background: var(--green);
+            background: var(--pink-light);
             color: var(--dark);
         }
 
@@ -149,7 +152,7 @@
         }
 
         .cta-nav {
-            background: var(--green);
+            background: var(--pink-light);
             color: var(--dark);
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
@@ -220,7 +223,7 @@
         }
 
         .mobile-nav-cta a {
-            background: var(--green);
+            background: var(--pink-light);
             color: var(--dark);
             padding: 1rem 2rem;
             border-radius: 50px;
@@ -238,22 +241,88 @@
             flex-direction: column;
             justify-content: center;
             padding: 8rem 5% 2rem;
-            background: var(--dark);
+            background: #FF7E21;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::after {
-            content: '';
+        .hero-stripes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-stripes .stripe {
+            flex: 1;
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .hero-stripes .stripe:last-child {
+            border-right: none;
+        }
+
+        .hero-texture {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('hero-texture.png') center/cover no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Hand-drawn CTA button */
+        .handwritten-btn {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            padding: 1.25rem 3rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .handwritten-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .handwritten-btn .btn-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .handwritten-svg {
             position: absolute;
             top: 50%;
-            right: -10%;
-            width: 900px;
-            height: 900px;
-            background: radial-gradient(circle, rgba(212, 255, 61, 0.15) 0%, rgba(100, 150, 50, 0.1) 30%, transparent 60%);
-            border-radius: 50%;
-            transform: translateY(-50%);
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: calc(100% + 40px);
+            height: calc(100% + 50px);
+            pointer-events: none;
             z-index: 0;
+        }
+
+        .handwritten-path {
+            stroke-dasharray: 1600;
+            stroke-dashoffset: 1600;
+            animation: drawCircle 2.5s cubic-bezier(0.43, 0.13, 0.23, 0.96) 0.8s forwards;
+        }
+
+        @keyframes drawCircle {
+            to {
+                stroke-dashoffset: 0;
+            }
         }
 
         .hero-content {
@@ -262,110 +331,106 @@
             width: 100%;
             position: relative;
             z-index: 2;
-        }
-
-        .hero-agency-text {
-            position: absolute;
-            top: 50%;
-            right: 5%;
-            transform: translateY(-50%);
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .hero-agency-text .brand-name {
-            color: var(--pink);
-            font-size: clamp(1.5rem, 2.5vw, 2rem);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.25rem;
-        }
-
-        .hero-agency-text .tagline {
-            color: var(--white);
-            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
-            font-weight: 400;
-        }
-
-        .hero h1 {
-            font-size: clamp(3.5rem, 12vw, 10rem);
-            font-weight: 800;
+        .hero-swan {
+            width: clamp(120px, 20vw, 220px);
             margin-bottom: 2rem;
-            line-height: 0.9;
-            text-transform: uppercase;
-            letter-spacing: -0.04em;
+            filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.15));
         }
 
-        .hero h1 .hashtag {
+        .hero-tagline-script {
+            font-family: 'Homemade Apple', cursive;
+            font-size: clamp(1.8rem, 4.5vw, 3.5rem);
             color: var(--white);
+            line-height: 1.4;
+            margin-bottom: 2rem;
         }
 
-        .typing-box {
-            display: inline-block;
-            border: 2px solid var(--pink);
-            border-radius: 50px;
-            padding: 1rem 2.5rem;
+        /* Sticker logos */
+        .sticker {
+            position: absolute;
+            z-index: 3;
+            width: clamp(80px, 10vw, 140px);
+            cursor: pointer;
         }
 
-        .typing-box .typing-text {
-            color: var(--pink);
-            font-size: clamp(1rem, 3vw, 2rem);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: -0.01em;
+        .sticker img {
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
         }
 
-        .typing-box .cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1em;
-            background: var(--pink);
-            margin-left: 4px;
-            animation: blink 1s infinite;
-            vertical-align: middle;
+        .sticker-left {
+            top: 15%;
+            left: 3%;
+            animation: stickerFloat 4s ease-in-out infinite;
         }
 
-        @keyframes blink {
+        .sticker-right {
+            bottom: 15%;
+            right: 3%;
+            animation: stickerFloat 4s ease-in-out 2s infinite;
+        }
+
+        .sticker:hover img {
+            transform: scale(1.1) rotate(-5deg);
+        }
+
+        /* Sticker peel/wobble animation */
+        @keyframes stickerFloat {
 
             0%,
-            50% {
-                opacity: 1;
+            100% {
+                transform: rotate(-3deg) translateY(0);
             }
 
-            51%,
+            25% {
+                transform: rotate(2deg) translateY(-8px);
+            }
+
+            50% {
+                transform: rotate(-1deg) translateY(-4px);
+            }
+
+            75% {
+                transform: rotate(3deg) translateY(-10px);
+            }
+        }
+
+        /* Sticker click open/close */
+        .sticker.peel img {
+            animation: stickerPeel 0.6s ease-in-out;
+        }
+
+        @keyframes stickerPeel {
+            0% {
+                transform: perspective(400px) rotateY(0deg);
+            }
+
+            50% {
+                transform: perspective(400px) rotateY(90deg) scale(0.9);
+            }
+
             100% {
-                opacity: 0;
+                transform: perspective(400px) rotateY(0deg) scale(1);
             }
         }
 
         .hero-cta {
-            margin-top: 3rem;
+            margin-top: 2rem;
             display: flex;
             justify-content: center;
             width: 100%;
         }
 
-        .btn-primary {
-            background: var(--green);
-            color: var(--dark);
-            padding: 1.5rem 4rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.25rem;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border: none;
-            cursor: pointer;
-        }
 
-        .btn-primary:hover {
-            background: var(--white);
-            transform: translateY(-2px);
-        }
-
-        /* Main Cream Section - NO OVERFLOW HIDDEN! */
+        /* Main Cream Section */
         .main-section {
             background: var(--cream);
             border-radius: 40px;
@@ -373,7 +438,6 @@
             margin: 0 2%;
             margin-top: 2rem;
             overflow: visible;
-            /* NO overflow: hidden - it breaks sticky! */
         }
 
         /* Creative Partner Section */
@@ -389,7 +453,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            color: var(--pink-dark);
+            color: var(--magenta);
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
@@ -397,8 +461,8 @@
         }
 
         .partner-tag::before {
-            content: '—';
-            color: var(--pink-dark);
+            content: '\2014';
+            color: var(--magenta);
         }
 
         .partner h2 {
@@ -411,7 +475,7 @@
         }
 
         .partner h2 .highlight {
-            color: var(--pink-dark);
+            color: var(--magenta);
         }
 
         .partner p {
@@ -421,9 +485,7 @@
             margin-bottom: 1.25rem;
         }
 
-        /* ============================================
-           STACKING CARDS - WORKING VERSION
-           ============================================ */
+        /* STACKING CARDS */
         .problems-container {
             max-width: 1100px;
             margin: 0 auto;
@@ -463,7 +525,7 @@
         }
 
         .problem-card:nth-child(3) {
-            background: var(--green);
+            background: var(--pink-light);
             color: var(--dark);
             z-index: 3;
             top: 160px;
@@ -522,7 +584,6 @@
             line-height: 1.6;
         }
 
-        /* CTA Button - STROKE ONLY */
         .problems-cta {
             text-align: center;
             padding: 3rem 0 4rem;
@@ -591,8 +652,8 @@
 
         .team-tag.lit {
             opacity: 1;
-            background: var(--green);
-            border-color: var(--green);
+            background: var(--pink-light);
+            border-color: var(--pink-light);
         }
 
         .about-note {
@@ -621,7 +682,7 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            color: var(--pink);
+            color: var(--purple);
             margin-bottom: 1rem;
             display: block;
         }
@@ -669,16 +730,16 @@
         }
 
         .service-item:hover .service-arrow {
-            background: var(--green);
-            border-color: var(--green);
+            background: var(--purple);
+            border-color: var(--purple);
         }
 
         .service-item:hover .service-arrow svg {
-            stroke: var(--dark);
+            stroke: var(--white);
         }
 
         .service-item:hover h3 {
-            color: var(--green);
+            color: var(--pink-light);
         }
 
         .service-content h3 {
@@ -729,8 +790,8 @@
             left: 25px;
             height: 3px;
             width: 0;
-            background: var(--green);
-            box-shadow: 0 0 15px var(--green), 0 0 30px rgba(212, 255, 61, 0.4);
+            background: var(--cyan);
+            box-shadow: 0 0 15px var(--cyan), 0 0 30px rgba(181, 248, 254, 0.4);
         }
 
         .process-step {
@@ -768,10 +829,10 @@
         }
 
         .process-step.active .process-dot {
-            background: var(--green);
-            border-color: var(--green);
+            background: var(--cyan);
+            border-color: var(--cyan);
             color: var(--dark);
-            box-shadow: 0 0 30px rgba(212, 255, 61, 0.6);
+            box-shadow: 0 0 30px rgba(181, 248, 254, 0.6);
             transform: translateX(-50%) scale(1.15);
         }
 
@@ -945,7 +1006,7 @@
         }
 
         .footer-email a:hover {
-            color: var(--green);
+            color: var(--pink-light);
         }
 
         .footer-links-row {
@@ -1001,7 +1062,7 @@
         }
 
         .scroll-top:hover {
-            border-color: var(--green);
+            border-color: var(--pink-light);
         }
 
         .scroll-top svg {
@@ -1017,7 +1078,7 @@
         .footer-brand-text {
             font-size: clamp(2rem, 12vw, 10rem);
             font-weight: 900;
-            color: var(--pink);
+            color: var(--pink-light);
             text-transform: uppercase;
             letter-spacing: -0.03em;
             line-height: 1;
@@ -1111,60 +1172,45 @@
                 text-align: left;
             }
 
-            .hero-agency-text {
-                position: relative;
-                top: auto;
-                right: auto;
-                transform: none;
-                text-align: left;
-                margin-bottom: 1.5rem;
-                display: flex;
-                flex-direction: row;
-                align-items: baseline;
-                gap: 0.75rem;
-            }
-
-            .hero-agency-text .brand-name {
-                font-size: 0.9rem;
-            }
-
-            .hero-agency-text .tagline {
-                font-size: 0.9rem;
-                color: var(--white);
-            }
-
             .hero {
                 min-height: 90vh;
                 min-height: 90dvh;
                 padding-bottom: 5rem;
             }
 
-            .hero h1 {
-                font-size: clamp(6rem, 25vw, 10rem);
-                margin-bottom: 1.5rem;
+            .sticker {
+                width: 60px;
             }
 
-            .typing-box {
-                padding: 1rem 2.5rem;
+            .sticker-left {
+                top: 10%;
+                left: 2%;
             }
 
-            .typing-box .typing-text {
-                font-size: 1rem;
+            .sticker-right {
+                bottom: 10%;
+                right: 2%;
             }
 
-            .hero::after {
-                display: none;
+            .hero-swan {
+                width: 100px;
             }
 
             .hero-cta {
                 margin-top: 2rem;
-                justify-content: flex-start;
+                justify-content: center;
             }
 
-            .btn-primary {
-                padding: 1rem 2.5rem;
+            .handwritten-btn {
+                padding: 1rem 2rem;
                 font-size: 1rem;
             }
+
+            .handwritten-svg {
+                width: calc(100% + 30px);
+                height: calc(100% + 40px);
+            }
+
 
             .main-section {
                 margin: 0 3%;
@@ -1174,7 +1220,6 @@
                 overflow: visible;
             }
 
-            /* Cards - STACKING on mobile */
             .problems-container {
                 overflow: visible;
             }
@@ -1342,10 +1387,6 @@
         }
 
         @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 5rem;
-            }
-
             .problem-card {
                 padding: 1.5rem 1.25rem;
                 min-height: 200px;
@@ -1384,26 +1425,46 @@
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="mobile-nav-cta">
-            <a href="#contact">Get Started →</a>
+            <a href="#contact">Get Started &rarr;</a>
         </div>
     </div>
 
-    <section class="hero grid-bg" id="home">
-        <div class="hero-content">
-            <div class="hero-agency-text">
-                <span class="brand-name">✦ Sunweek Media</span>
-                <span class="tagline">Social Media Agency</span>
-            </div>
+    <section class="hero" id="home">
+        <div class="hero-stripes">
+            <div class="stripe"></div>
+            <div class="stripe"></div>
+            <div class="stripe"></div>
+            <div class="stripe"></div>
+        </div>
 
-            <h1>
-                <span class="hashtag">#</span>WE KNOW<br>HOW TO
-            </h1>
-            <div class="typing-box">
-                <span class="typing-text" id="typingText">MAKE YOUR BRAND STAND OUT</span><span class="cursor"></span>
-            </div>
+        <!-- Background texture -->
+        <div class="hero-texture"></div>
+
+        <!-- Sticker logos on both sides -->
+        <div class="sticker sticker-left">
+            <img src="logo.png" alt="Sunweek Media">
+        </div>
+        <div class="sticker sticker-right">
+            <img src="logo.png" alt="Sunweek Media">
+        </div>
+
+        <div class="hero-content">
+            <img src="logo.png" alt="Sunweek Media" class="hero-swan">
+
+            <p class="hero-tagline-script">the creative home<br>for brands</p>
 
             <div class="hero-cta">
-                <a href="#contact" class="btn-primary">Inquire now →</a>
+                <a href="#contact" class="handwritten-btn">
+                    <svg class="handwritten-svg" viewBox="0 0 500 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="handwritten-path" d="M 460 30 
+                               C 520 80, 490 140, 250 145
+                               C 60 145, 10 120, 10 80
+                               C 10 35, 80 15, 250 15
+                               C 420 15, 460 50, 460 50" stroke="rgba(255,255,255,0.6)" stroke-width="4"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span class="btn-text">Inquire now &rarr;</span>
+                </a>
             </div>
         </div>
     </section>
@@ -1414,7 +1475,8 @@
             <h2>YOUR CREATIVE <span class="highlight">GROWTH</span> PARTNER</h2>
             <p>We're a team of strategists, creators, and social media specialists who create content that actually
                 brings clients.</p>
-            <p>We take social media off your plate completely. Strategy, content, posting, engagement — handled. You
+            <p>We take social media off your plate completely. Strategy, content, posting, engagement &mdash; handled.
+                You
                 focus on your business, we focus on your growth.</p>
         </div>
 
@@ -1444,7 +1506,7 @@
             </div>
 
             <div class="problems-cta">
-                <a href="#contact" class="btn-pink">Fill Out The Form →</a>
+                <a href="#contact" class="btn-pink">Fill Out The Form &rarr;</a>
             </div>
         </div>
 
@@ -1466,7 +1528,7 @@
     <section class="services grid-bg" id="services">
         <div class="services-container">
             <div class="section-header">
-                <span class="section-tag">— What We Do</span>
+                <span class="section-tag">&mdash; What We Do</span>
                 <h2>OUR SERVICES</h2>
             </div>
             <div class="service-item">
@@ -1522,7 +1584,7 @@
     <section class="process grid-bg" id="process">
         <div class="process-container">
             <div class="section-header">
-                <span class="section-tag">— How It Works</span>
+                <span class="section-tag">&mdash; How It Works</span>
                 <h2>OUR PROCESS</h2>
             </div>
             <div class="process-track">
@@ -1563,7 +1625,7 @@
     <section class="form-section grid-bg" id="contact">
         <div class="form-wrapper">
             <div class="form-header" id="formHeader">
-                <h2>LET'S GET YOU NOTICED ✦</h2>
+                <h2>LET'S GET YOU NOTICED &#10022;</h2>
                 <p class="form-subtitle">Fill out the form and we'll get back to you within 24 hours.</p>
             </div>
 
@@ -1578,12 +1640,12 @@
                     <input type="text" name="business" placeholder="Social media link / business name" required>
                 </div>
                 <div class="form-submit">
-                    <button type="submit" class="btn-outline-dark">Get Started →</button>
+                    <button type="submit" class="btn-outline-dark">Get Started &rarr;</button>
                 </div>
             </form>
 
             <div class="success-message" id="successMessage">
-                <h3>YOU'RE IN ✦</h3>
+                <h3>YOU'RE IN &#10022;</h3>
                 <p>We'll get back to you within 24 hours.</p>
             </div>
         </div>
@@ -1649,47 +1711,15 @@
             });
         });
 
-        // Typing Animation
-        const phrases = [
-            'BUILD BRANDS PEOPLE REMEMBER',
-            'CREATE CONTENT THAT CONVERTS',
-            'GROW YOUR BUSINESS ONLINE',
-            'TURN FOLLOWERS INTO CUSTOMERS'
-        ];
-
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 80;
-
-        const typingText = document.getElementById('typingText');
-
-        function type() {
-            const currentPhrase = phrases[phraseIndex];
-
-            if (isDeleting) {
-                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 40;
-            } else {
-                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 80;
-            }
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                isDeleting = true;
-                typingSpeed = 2000;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typingSpeed = 500;
-            }
-
-            setTimeout(type, typingSpeed);
-        }
-
-        type();
+        // Sticker click animation
+        document.querySelectorAll('.sticker').forEach(sticker => {
+            sticker.addEventListener('click', () => {
+                sticker.classList.remove('peel');
+                void sticker.offsetWidth; // force reflow
+                sticker.classList.add('peel');
+                setTimeout(() => sticker.classList.remove('peel'), 600);
+            });
+        });
 
         // Team Tags Animation
         const teamTags = document.querySelectorAll('.team-tag');
@@ -1805,7 +1835,6 @@
             })
                 .then(response => {
                     if (response.ok) {
-                        // Hide form and header, show success message
                         contactForm.style.display = 'none';
                         formHeader.style.display = 'none';
                         successMessage.classList.add('show');
@@ -1837,6 +1866,7 @@
                 }
             });
         });
+
     </script>
 </body>
 
